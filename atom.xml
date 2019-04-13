@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rqtn.github.io/"/>
-  <updated>2019-03-18T04:49:53.977Z</updated>
+  <updated>2019-04-13T03:11:03.619Z</updated>
   <id>https://rqtn.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SAD_hw4</title>
+    <link href="https://rqtn.github.io/2019/04/13/SAD-hw4/"/>
+    <id>https://rqtn.github.io/2019/04/13/SAD-hw4/</id>
+    <published>2019-04-13T03:07:52.000Z</published>
+    <updated>2019-04-13T03:11:03.619Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SAD-hw4"><a href="#SAD-hw4" class="headerlink" title="SAD_hw4"></a>SAD_hw4</h2><p><code>16340237 吴聪</code></p><h3 id="一、简答题"><a href="# 一、简答题" class="headerlink" title="一、简答题"></a>一、简答题 </h3><h4 id="1- 用例的概念"><a href="#1- 用例的概念" class="headerlink" title="1. 用例的概念"></a>1. 用例的概念</h4><p><strong> 用例 </strong>（英语：<strong>use case</strong>），或译<strong> 使用案例 </strong>、<strong> 用况 </strong>，是软件工程或系统工程中对系统如何反应外界请求的描述，是一种<strong> 通过用户的使用场景来获取需求的技术 </strong>。（from<a href="https://baike.baidu.com/item/%E7%94%A8%E4%BE%8B/163511" target="_blank" rel="noopener"> 百度</a>）</p><p>通俗地讲，用例是 <strong> 文本形式的情节描述，</strong> 用以说明某参与者使用系统以实现某些目标。（from《UML 和模式应用》 ）</p><p>根据我的理解，它是一种 <strong> 描述系统需求 </strong> 的方法。而运用用例这种方法来描述系统需求称之为用例建模。用例也是 <strong>UML 规范中的一种标准化的需求表达方式</strong>，其中比较有名的 RUP（Rational Unified Process）就是以用例来驱动的。</p><p>编写用例时要避免使用技术术语，而应该用最终用户或者领域专家的语言。用例一般是由软件开发者和最终用户共同创作的。</p><h4 id="2- 用例和场景的关系？什么是主场景或 -happy-path？"><a href="#2- 用例和场景的关系？什么是主场景或 -happy-path？" class="headerlink" title="2. 用例和场景的关系？什么是主场景或 happy path？"></a>2. 用例和场景的关系？什么是主场景或 happy path？</h4><p>场景</p><ul><li><strong>场景 </strong> (scenario) 是参与者和系统之间的一系列特定的活动和交互，也称为<strong> 用例实例</strong> (use case instance)。</li><li>场景是使用系统的一个特定情节或用例的一条执行路径，即说明了 <strong> 系统是如何和最终用户或其它系统互动，也就是谁可以用系统做什么</strong>，从而获得一个明确的业务目标。</li></ul><p>用例和场景的关系</p><ul><li>通俗地讲，<strong>用例 </strong> (use case) 就是 <strong> 一组相关的成功和失败场景集合</strong>，用来描述参与者如何使用系统来实现其目标。</li></ul><p>主场景或 happy path</p><ul><li><strong>主成功场景（Main Success Scenario）</strong>，也称为 <strong> 理想路径（happy path）场景或基本流程 </strong>，这是用例最基本的组成部分，它描述了<strong> 满足涉众关注点的典型成功路径 </strong>。要注意的是，<strong> 它通常不包括任何条件或分支，这是为了保持连贯性，并且将所有的条件处理都延迟到扩展部分</strong>。这种具有争议的做法更易于理解和扩展。</li></ul><h4 id="3- 用例有哪些形式？"><a href="#3- 用例有哪些形式？" class="headerlink" title="3. 用例有哪些形式？"></a>3. 用例有哪些形式？</h4><p>用例能够以不同形式化程度或格式进行编写：</p><p>摘要 Brief</p><ul><li>简洁的一段式概要，通常用于主成功场景。</li><li>何时使用：在早期需求分析过程中使用，目的是为了快速了解主题和范围。可能只需要几分钟进行编写。</li></ul><p>非正式 Casual</p><ul><li>非正式的段落格式。用几个段落覆盖不同场景。</li><li>何时使用：同上</li></ul><p>详述 Fully</p><ul><li>详细编写所有步骤及各种变化，同时具有补充部分，如前置条件和成功保证。</li><li>何时使用：确定并以摘要形式白那些了大量用例后，在第一次需求讨论会中，详细地编写其中少量（例如 10%）的具有重要架构意义和高价值的用例。</li></ul><h4 id="4- 对于复杂业务，为什么编制完整用例非常难？"><a href="#4- 对于复杂业务，为什么编制完整用例非常难？" class="headerlink" title="4. 对于复杂业务，为什么编制完整用例非常难？"></a>4. 对于复杂业务，为什么编制完整用例非常难？</h4><p>复杂业务的需求多，导致扩展部分较多，即除了主成功场景外的其他场景或分支，包括成功和失败路径。</p><p>而在整个用例编写过程当中，理想路径与扩展场景相结合也只能尽可能满足“几乎”所有涉众所关注的问题，因为有些问题最好是作为非功能性需求在补充规格说明中描述，而不是直接在用例中说明。</p><p>因此由于业务的复杂性，用例的增加也只能覆盖大部分已出现的情形，而无法完全覆盖所有情景，也就“不完整”。同时，用例可能会遗漏一些关键信息或包含错误的陈述。</p><h4 id="5- 什么是用例图？"><a href="#5- 什么是用例图？" class="headerlink" title="5. 什么是用例图？"></a>5. 什么是用例图？</h4><p>用例图是一种优秀的系统 <strong> 语境图（context diagram）</strong>，用例图可以：</p><ul><li>展示系统边界、位于边界之外的事物</li><li>展示系统如何被使用</li><li>作为沟通的工具，用以概括系统及其参与者的行为</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;SAD-hw4&quot;&gt;&lt;a href=&quot;#SAD-hw4&quot; class=&quot;headerlink&quot; title=&quot;SAD_hw4&quot;&gt;&lt;/a&gt;SAD_hw4&lt;/h2&gt;&lt;p&gt;&lt;code&gt;16340237 吴聪&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一、简答题&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+      <category term="大三下" scheme="https://rqtn.github.io/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/"/>
+    
+      <category term="SAD" scheme="https://rqtn.github.io/categories/%E5%A4%A7%E4%B8%89%E4%B8%8B/SAD/"/>
+    
+    
+      <category term="SAD" scheme="https://rqtn.github.io/tags/SAD/"/>
+    
+  </entry>
   
   <entry>
     <title>SAD_hw3</title>
