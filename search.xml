@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>SAD_hw5</title>
+      <link href="/2019/04/30/SAD-hw5/"/>
+      <url>/2019/04/30/SAD-hw5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="SAD-hw5"><a href="#SAD-hw5" class="headerlink" title="SAD_hw5"></a>SAD_hw5</h2><blockquote><p> 使用 <strong>UMLet</strong> 建模 </p></blockquote><p><code>16340237 吴聪 </code></p><h3 id="根据订旅馆建模文档 -Asg-RH-pdf："><a href="# 根据订旅馆建模文档 -Asg-RH-pdf：" class="headerlink" title="根据订旅馆建模文档 Asg-RH.pdf："></a> 根据订旅馆建模文档 <a href="https://sysu-swsad.github.io/swad-guide/material/Asg_RH.pdf" target="_blank" rel="noopener">Asg-RH.pdf</a>：</h3><ul><li> 绘制用例图模型（到子用例）</li></ul><p><img src="/2019/04/30/SAD-hw5/1.png" alt></p><ul><li><p> 给出 make reservation 用例的活动图 </p><p><img src="/2019/04/30/SAD-hw5/2.png" alt></p></li></ul><h3 id="根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景"><a href="# 根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景" class="headerlink" title="根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景"></a> 根据课程练习“投递员使用投递箱给收件人快递包裹”的业务场景 </h3><ul><li><p> 分别用多泳道图建模三个场景的业务过程 </p><ul><li><p> 场景 1</p><blockquote><p>x 科技公司发明了投递柜，它们自建了投递柜以及远程控制系统。注册的投递员在推广期免费使用投递柜。由于缺乏资源，仅能使用 y 移动平台向客户发送短信通知。</p></blockquote><p><img src="/2019/04/30/SAD-hw5/3.png" alt></p></li><li><p> 场景 2</p><blockquote><p> 随着产品推广，x 公司与各大快递 z 公司达成协议。x 公司在快递柜上添加了二维码扫描装置，z 公司的快递员不仅可在快递柜上登陆（由 z 公司提供认证服务），且可扫描快递单号，投递入柜后自动由 z 公司发短信给客户。客户取件后，自动发送给 z 公司投递完成。</p></blockquote><p><img src="/2019/04/30/SAD-hw5/4.png" alt></p></li><li><p> 场景 3</p><blockquote><p>x 公司进一步优化服务，开发了微信小程序实现扫码取快递。如果用户关注了该公司公众号，直接通过过公众号推送给用户取件码等信息。不再发送短信。</p></blockquote><p><img src="/2019/04/30/SAD-hw5/5.png" alt></p></li></ul></li><li><p> 根据上述流程，给出快递柜系统最终的用例图模型 </p><ul><li> 用正常色彩表示第一个业务流程反映的用例 </li><li> 用绿色背景表述第二个业务场景添加或修改的用例，以及支持 Actor</li><li> 用黄色背景表述第三个业务场景添加或修改的用例，以及支持 Actor</li></ul><p><img src="/2019/04/30/SAD-hw5/6.png" alt></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 大三下 </category>
+          
+          <category> SAD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SAD </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SAD_hw4</title>
       <link href="/2019/04/13/SAD-hw4/"/>
       <url>/2019/04/13/SAD-hw4/</url>
