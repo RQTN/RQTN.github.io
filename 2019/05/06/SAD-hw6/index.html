@@ -81,18 +81,23 @@
 
 
 
-<meta name="description" content="SAD_hw616340237 吴聪">
+<meta name="description" content="SAD_hw616340237 吴聪   使用 UMLet 建模   1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键   注意事项：  对象必须是名词、特别是技术名词、报表、描述类的处理   关联必须有多重性、部分有名称与导航方向   属性要注意计算字段">
 <meta name="keywords" content="SAD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SAD_hw6">
 <meta property="og:url" content="https://rqtn.github.io/2019/05/06/SAD-hw6/index.html">
 <meta property="og:site_name" content="summer v">
-<meta property="og:description" content="SAD_hw616340237 吴聪">
+<meta property="og:description" content="SAD_hw616340237 吴聪   使用 UMLet 建模   1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键   注意事项：  对象必须是名词、特别是技术名词、报表、描述类的处理   关联必须有多重性、部分有名称与导航方向   属性要注意计算字段">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-06T06:27:04.426Z">
+<meta property="og:image" content="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-1.png">
+<meta property="og:image" content="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-2.png">
+<meta property="og:image" content="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-3.png">
+<meta property="og:image" content="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-4.png">
+<meta property="og:updated_time" content="2019-05-06T06:31:59.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SAD_hw6">
-<meta name="twitter:description" content="SAD_hw616340237 吴聪">
+<meta name="twitter:description" content="SAD_hw616340237 吴聪   使用 UMLet 建模   1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键   注意事项：  对象必须是名词、特别是技术名词、报表、描述类的处理   关联必须有多重性、部分有名称与导航方向   属性要注意计算字段">
+<meta name="twitter:image" content="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-1.png">
 
 
 
@@ -412,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3
+                  480
                 </span>
               
 
@@ -450,6 +455,64 @@
 
       
         <h2 id="SAD-hw6"><a href="#SAD-hw6" class="headerlink" title="SAD_hw6"></a>SAD_hw6</h2><p><code>16340237 吴聪 </code></p>
+<p><strong> 使用 UMLet 建模 </strong></p>
+<ul>
+<li>1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键 <ul>
+<li> 注意事项：<ul>
+<li> 对象必须是名词、特别是技术名词、报表、描述类的处理 </li>
+<li> 关联必须有多重性、部分有名称与导航方向 </li>
+<li> 属性要注意计算字段 </li>
+</ul>
+</li>
+<li> 数据建模，为了简化描述仅需要给出表清单，例如：<ul>
+<li>Hotel（ID/Key，Name，LoctionID/Fkey，Address…..）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Make Reservation 用例领域建模 </p>
+<p> 对于 Make Reservation，需要建立的类有：Reservation，Customer，Hotel，Shopping Basket，Room，Room Description，Location</p>
+<ul>
+<li>Hotel (HotelID/Key, LocationID/FKey, HotelName, HotelAddress, briefinformation, RoomID)</li>
+<li>Location (LocationID/Key, LocationName, isFavourite)</li>
+<li>Room (RoomID/Key, RoomName, isAvailable, Price, information)</li>
+<li>Room Description(Room Type,Price,Date,Description,Stars)</li>
+<li>Customer (CustomerID/Key,Name, Password,Gender,Email)</li>
+<li>Reservation (ReservationID/Key, CustomerID/FKey, HotelID/FKey, CheckInDate,CheckOutDate)</li>
+<li>Shopping Basket (CustomerID/FKey, Shopping List)</li>
+</ul>
+<p><img src="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-1.png" alt="领域建模"></p>
+<p> 对于 Payment，需要建立的类有：Payment，CreditCard，Customer，CreditCardDescription</p>
+<ul>
+<li>Payment (CustomerID/Key,Reservation_ID/FKey,Detail,Price)</li>
+<li>CreditCard (Type)</li>
+<li>CreditCardDescription (CreditCardNumber/Key,CreditCardPassword,OwnerID)</li>
+<li>Customer (CustomerID/Key,Name,Password,Email,Gender)</li>
+</ul>
+<p><img src="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-2.png" alt="领域建模"></p>
+<ul>
+<li><p>2、使用 UML State Model，对每个订单对象生命周期建模 </p>
+<ul>
+<li><p> 建模对象： 参考 Asg_RH 文档， 对 Reservation/Order 对象建模。</p>
+</li>
+<li><p> 建模要求： 参考练习不能提供足够信息帮助你对订单对象建模，请参考现在 定旅馆 的旅游网站，尽可能分析围绕订单发生的各种情况，直到订单通过销售事件（柜台销售）结束订单。</p>
+<ul>
+<li> 对于 Reservatioin/Order 其状态有 {可入住，锁定房间，支付完成，正在使用，正在维护}</li>
+<li> 事件有 {网上预订 ，取消预订，支付费用， 入住 ， 退房 ， 更换订单并退款}</li>
+</ul>
+<p> 状态建模为：</p>
+<p><img src="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-3.png" alt="Reservation 状态建模"></p>
+<ul>
+<li> 对于支付方式，其状态有 {未支付，正在支付，验证，支付成功，支付失败}</li>
+<li> 事件有 {选择支付方式，输入支付密码，通过验证，验证失败}</li>
+</ul>
+<p> 状态建模为：</p>
+<p><img src="https://zenghui9977.github.io/swsad-homework.github.io/image/hw6-4.png" alt="Payment 状态建模"></p>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -686,7 +749,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.2k</span>
+    <span title="Site words total count">11.6k</span>
   
 </div>
 
