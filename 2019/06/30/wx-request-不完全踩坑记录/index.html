@@ -464,6 +464,7 @@
 <li>对于 <code>POST</code> 方法且 <code>header[&#39;content-type&#39;]</code> 为 <code>application/x-www-form-urlencoded</code> 的数据，会将数据转换成 query string <code>（encodeURIComponent(k)=encodeURIComponent(v)&amp;encodeURIComponent(k)=encodeURIComponent(v)...）</code></li>
 </ul>
 <h3 id="关于 -method"><a href="# 关于 -method" class="headerlink" title="关于 method"></a>关于 method</h3><p>微信小程序许多地方都 <strong> 严格区分大小写</strong>，比如 <code>wx.request()</code> 的 method 的 value 就必须为大写。默认的 method 值为 <code>GET</code>，如果需要使用其他 <code>method</code> 值，需要显式地在 <code>wx.request</code> 中提供。method 的所有合法值如下表所示：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -506,6 +507,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="关于接口调用 -http- 和 -https- 的问题"><a href="# 关于接口调用 -http- 和 -https- 的问题" class="headerlink" title="关于接口调用 http 和 https 的问题"></a>关于接口调用 http 和 https 的问题 </h3><p> 正式发布上线的小程序必须设置 https 地址，但在本地开发中，微信公共平台支持使用 http 测试项目：将项目设置中的 tls 安全检测关闭，便可以使用 127.0.0.1 或者其他地址测试。</p>
 <p>为保证数据传输安全，提高业务安全性，<strong>使用 https 方式调用</strong>。</p>
 <h3 id="关于微信小程序网络请求数限制"><a href="# 关于微信小程序网络请求数限制" class="headerlink" title="关于微信小程序网络请求数限制"></a>关于微信小程序网络请求数限制 </h3><p> 对于比较复杂的应用，往往一个功能的实现需要请求发送多个请求，而一个微信小程序，同时只能有 10 个网络请求连接。解决方案：</p>
@@ -654,7 +656,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,7 +667,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -676,7 +678,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -764,7 +766,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.5k</span>
+    <span title="Site words total count">18k</span>
   
 </div>
 
@@ -1388,26 +1390,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
