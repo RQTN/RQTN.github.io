@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algs4,Coursera,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="summer v" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Assignment1 - backwash in Percolation 作业网站：Assignment1-Percolation，包含本次作业的说明，FAQ，相关的有用资源文件。  [TOC] backwash 问题  在作业网站的 FAQ 中提到了一个叫做 backwash 的问题：  Q: After the system has percolated, my PercolationVis">
+<meta name="keywords" content="Algs4,Coursera">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Assignment1 - backwash in Percolation">
+<meta property="og:url" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/index.html">
+<meta property="og:site_name" content="summer v">
+<meta property="og:description" content="Assignment1 - backwash in Percolation 作业网站：Assignment1-Percolation，包含本次作业的说明，FAQ，相关的有用资源文件。  [TOC] backwash 问题  在作业网站的 FAQ 中提到了一个叫做 backwash 的问题：  Q: After the system has percolated, my PercolationVis">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/percolation-backwash.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/percolation-memory-method3.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/percolation-memory-method4.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/Timing%20Percolation%20method3.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/Timing%20Percolation%20method4.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/union%20ops%20method3.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/union%20ops%20method4.png">
+<meta property="og:updated_time" content="2019-08-11T06:37:53.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Assignment1 - backwash in Percolation">
+<meta name="twitter:description" content="Assignment1 - backwash in Percolation 作业网站：Assignment1-Percolation，包含本次作业的说明，FAQ，相关的有用资源文件。  [TOC] backwash 问题  在作业网站的 FAQ 中提到了一个叫做 backwash 的问题：  Q: After the system has percolated, my PercolationVis">
+<meta name="twitter:image" content="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/percolation-backwash.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/">
+
+
+
+
+
+  <title>Assignment1 - backwash in Percolation | summer v</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">summer v</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RQTN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/RQTN.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="summer v">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Assignment1 - backwash in Percolation</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T14:29:55+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/11/Assignment1-backwash-in-Percolation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/11/Assignment1-backwash-in-Percolation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/11/Assignment1-backwash-in-Percolation/" class="leancloud_visitors" data-flag-title="Assignment1 - backwash in Percolation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Assignment1-backwash-in-Percolation"><a href="#Assignment1-backwash-in-Percolation" class="headerlink" title="Assignment1 - backwash in Percolation"></a>Assignment1 - backwash in Percolation</h2><blockquote>
+<p>作业网站：<a href="https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php" target="_blank" rel="noopener">Assignment1-Percolation</a>，包含本次作业的说明，FAQ，相关的有用资源文件。</p>
+</blockquote>
+<p>[TOC]</p>
+<h3 id="backwash- 问题"><a href="#backwash- 问题" class="headerlink" title="backwash 问题"></a>backwash 问题 </h3><p> 在作业网站的 <a href="https://coursera.cs.princeton.edu/algs4/assignments/percolation/faq.php" target="_blank" rel="noopener">FAQ</a> 中提到了一个叫做 backwash 的问题：</p>
+<blockquote>
+<p><strong>Q</strong>: After the system has percolated, my <code>PercolationVisualizer</code> colors in light blue all sites connected to open sites on the bottom (in addition to those connected to open sites on the top). Is this “backwash” acceptable?</p>
+<p><strong>A</strong>: No, this is likely a bug in <code>Percolation</code>. It is only a minor deduction (because it impacts only the visualizer and not the experiment to estimate the percolation threshold), so don’t go crazy trying to get this detail. However, many students consider this to be the most challenging and creative part of the assignment (especially if you limit yourself to one union–find object).</p>
+<p><img src="/2019/08/11/Assignment1-backwash-in-Percolation/percolation-backwash.png"></p>
+</blockquote>
+<p>正如上面的回答所说的，backwash 并不会影响到我们最终使用蒙特卡洛模拟所得到的结果 <code>p*</code> 的准确性，但 backwash 确实反映了所设计的 <code>Percolation</code> 是有 Bug 的。</p>
+<p>在回答中，实际上已经 <del> 暗示 </del> 明示了你一种解决方案：especially if you limit yourself to one union–find object。</p>
+<p>下面我们将介绍 4 中解决方案，其中方法 4 是我最后提交的答案，它是方法 1 和方法 3 的结合再改进。</p>
+<h3 id="解决 -backwash- 的方法"><a href="# 解决 -backwash- 的方法" class="headerlink" title="解决 backwash 的方法"></a>解决 backwash 的方法</h3><p>backwash 为什么会发生呢？搞清楚这个问题是解决 backwash 现象的关键。问题的答案是，<strong>backwash 现象是虚拟底部节点 <code>virtualBottom</code> 带来的</strong>。</p>
+<p>为了能够快速判断 Percolation System（渗滤系统）是否是渗滤的，我们引入了虚拟顶部节点 <code>virtualTop</code> 和虚拟底部节点 <code>virtualBottom</code>。每次系统顶端的节点开启，就将其与 <code>virtualTop</code> 进行 <code>union</code>，每次系统底端的节点开启，就将其与 <code>virtualBottom</code> 进行 <code>union</code>。这样我们只需要判断 <code>virtualTop</code> 和 <code>virtualBottom</code> 是否 <code>connected</code>，就能知道系统是否是渗滤的。</p>
+<p>引入虚拟节点的做法无疑要比“对于每个系统顶端节点判断其是否和底端某个节点 <code>connected</code> ”要高效的多。但同时它也带来了 backwash 问题。</p>
+<p>那我们能否尝试只引入 <code>virtualTop</code> 呢？</p>
+<p><strong>方法 1：只使用 <code>virtualTop</code></strong></p>
+<p>如果只使用虚拟顶部节点的话，要判断一个系统是否是渗滤的，我们就得对该虚拟顶部节点，判断其是否和底端某个节点 <code>connected</code>。这种方法是 $O(n)$ 的，相比“对于每个系统顶端节点判断其是否和底端某个节点 <code>connected</code> ”的 $O(n^2)$，要好了一些，但还可以继续改进。</p>
+<p><strong>方法 2：使用两个 <code>WeightedQuickUnionUF</code></strong></p>
+<p>这种方法也即 FAQ 中回答里面提示的方法。我们使用两个 <code>WeightedQuickUnionUF</code>：<code>WQUUF1</code> 和 <code>WQUUF2</code>。</p>
+<p><code>WQQUF1</code> 带有 <code>virtualTop</code> 和 <code>virtualBottom</code>，其用于判断系统是否渗滤。</p>
+<p><code>WQQUF2</code> 只带有 <code>virtualTop</code> ，其用于处理 backwash 现象。</p>
+<p><code>WQQUF1</code> 和 <code>WQQUF2</code> 从头到尾执行几乎一样的 <code>union</code> 操作。</p>
+<p>这种方法是不难想到的，但 <code>union</code> 操作本身是比较费时的，仅为了处理反洗现象，我们把相同的 <code>union</code> 操作执行了两次，似乎有点不那么优雅。</p>
+<p><strong>方法 3：既不使用 <code>virtualTop</code> 也不使用 <code>virtualBottom</code>，对每个节点维护两个属性 <code>connectTop</code> 和 <code>connectBottom</code></strong></p>
+<p>该方法是我在网上找到的，在评估中能得到 💯 + Bonus。</p>
+<p>这种方法的思想是，对于每次 <code>union(p, q)</code> 操作，我们都去检查：</p>
+<ul>
+<li><p><code>connectTop</code>：</p>
+<ul>
+<li><code>p</code> 所在的树（连通分量）的根节点是否其 <code>connectTop</code> 为 true。</li>
+<li><code>q</code> 所在的树（连通分量）的根节点是否其 <code>connectTop</code> 为 true。</li>
+</ul>
+<p>但凡有一个为 true，那么两颗树（两个连通分量）合并以后，新树的根节点其 <code>connectTop</code> 也设为 true。可以看出，如果我们要判断一个节点是否和最顶行相连，只需要找到该节点所在的树的根节点，判断其根节点的 <code>connectTop</code> 属性是否为真即可，为真这说明该节点与最顶行相连，为假则不相连。</p>
+</li>
+<li><p><code>connectBottom</code>：</p>
+<ul>
+<li><code>p</code> 所在的树（连通分量）的根节点是否其 <code>connectBottom</code> 为 true。</li>
+<li><code>q</code> 所在的树（连通分量）的根节点是否其 <code>connectBottom</code> 为 true。</li>
+</ul>
+<p>但凡有一个为 true，那么两颗树（两个连通分量）合并以后，新树的根节点其 <code>connectBottom</code> 也设为 true。可以看出，如果我们要判断一个节点是否和最底行相连，只需要找到该节点所在的树的根节点，判断其根节点的 <code>connectBottom</code> 属性是否为真即可，为真这说明该节点与最底行相连，为假则不相连。</p>
+</li>
+</ul>
+<p>我们能看出来 <code>connectTop</code> 以及 <code>connectBottom</code> 属性的传播性，true 最开始是从哪来的呢？如果一个节点被打开，且发现该节点为最顶行的节点，那么其 <code>connectTop</code> 就会被设为 true；如果一个节点被打开，且发现该节点为最底行的节点，那么其 <code>connectTop</code> 就会被设为 true。</p>
+<p>这种方法是如何判断系统是否渗滤的呢？它维护了一个实例变量 <code>percolateFlag</code> ，每次 <code>open</code> 打开一个节点，我们都要将该节点与多个其他节点尝试进行 <code>union</code> 并配置 <code>union</code> 后所得新树的根节点的 <code>connectTop</code> 与 <code>connectBottom</code> 属性，我们在这些操作都完成以后，检查是新树的根节点 <code>connectTop</code> 与 <code>connectBottom</code> 是否都为 true，若是这系统渗滤，否则不渗滤。</p>
+<p>方法 3 的完整代码见最后。</p>
+<p><strong>方法 4：结合方法 1 与方法 3，只使用 <code>virtualTop</code> 且对每个节点只维护属性 <code>connectBottom</code></strong></p>
+<p>方法 3 似乎也不那么优雅，它虽然能取得 💯+ Bonus，但有点复杂。</p>
+<p>引入虚拟节点是很好的思想，我们知道 backwash 现象是由 <code>virtualBottom</code> 造成的，那么结合方法 3，我们是否可以保留 <code>virtualTop</code> 并对节点维护属性 <code>connectBottom</code> 呢？这就是方法 4。</p>
+<p>对于 <code>connectBottom</code> 的维护依然和方法 3 差不多，但引入虚拟节点使得代码简洁了非常多：</p>
+<ul>
+<li>我们不需要再维护 <code>connectTop</code> 了，要知道，<code>connectTop</code> 和 <code>connectBottom</code> 其实是意义相近的两个概念，维护一个就够呛了，现在少一个就少了很多维护的代码（少了很多 <code>union</code> 和 <code>find</code> 操作）。更重要地，我们还省下了创建 <code>connectTop[]</code> 数组的空间！相当于方法 4 所占用的空间是方法 3 的 2/3。</li>
+<li>判断系统是否渗滤也变得非常简单，我们只需要判断 <code>virtualTop</code> 所在的树的根节点其 <code>connectBottom</code> 属性是否是 true 的！</li>
+</ul>
+<p>方法 4 的完整代码见最后。</p>
+<p><strong>效果对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法 3</th>
+<th>方法 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/2019/08/11/Assignment1-backwash-in-Percolation/percolation-memory-method3.png"></td>
+<td><img src="/2019/08/11/Assignment1-backwash-in-Percolation/percolation-memory-method4.png"></td>
+</tr>
+<tr>
+<td><img src="/2019/08/11/Assignment1-backwash-in-Percolation/Timing Percolation method3.png"></td>
+<td><img src="/2019/08/11/Assignment1-backwash-in-Percolation/Timing Percolation method4.png"></td>
+</tr>
+<tr>
+<td><img src="/2019/08/11/Assignment1-backwash-in-Percolation/union ops method3.png"></td>
+<td><img src="/2019/08/11/Assignment1-backwash-in-Percolation/union ops method4.png"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="代码"><a href="# 代码" class="headerlink" title="代码"></a>代码 </h3><p><strong> 方法 3</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> assignment1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.WeightedQuickUnionUF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Percolation</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] site;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] connectTop;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] connectBottom;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> size;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> numberOfOpenSites = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> WeightedQuickUnionUF uf;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> percolateFlag = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Percolation</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        validate(n);</span><br><span class="line">        <span class="keyword">this</span>.size = n;</span><br><span class="line">        <span class="keyword">this</span>.uf = <span class="keyword">new</span> WeightedQuickUnionUF(n * n);</span><br><span class="line">        <span class="keyword">this</span>.site = <span class="keyword">new</span> <span class="keyword">boolean</span>[n * n];</span><br><span class="line">        <span class="keyword">this</span>.connectTop = <span class="keyword">new</span> <span class="keyword">boolean</span>[n * n];</span><br><span class="line">        <span class="keyword">this</span>.connectBottom = <span class="keyword">new</span> <span class="keyword">boolean</span>[n * n];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        validate(row, col);</span><br><span class="line">        <span class="keyword">int</span> index = xyTo1D(row, col);</span><br><span class="line">        <span class="keyword">if</span> (!site[index]) &#123;</span><br><span class="line">            site[index] = <span class="keyword">true</span>;</span><br><span class="line">            numberOfOpenSites++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> topFlag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">boolean</span> bottomFlag = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (row == <span class="number">1</span>) &#123;</span><br><span class="line">            topFlag = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (row == size) &#123;</span><br><span class="line">            bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Optimize if already connected to top/bottom with short-circuit evaluation</span></span><br><span class="line">        <span class="comment">// connect with down site</span></span><br><span class="line">        <span class="keyword">if</span> (row &lt; size &amp;&amp; site[index + size]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!topFlag &amp;&amp; connectTop[uf.find(index + size)] || connectTop[uf.find(index)]) &#123;</span><br><span class="line">                topFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (connectBottom[uf.find(index + size)] || connectBottom[uf.find(index)]) &#123;</span><br><span class="line">                bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            uf.union(index, index + size);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// connect with up site</span></span><br><span class="line">        <span class="keyword">if</span> (row &gt; <span class="number">1</span> &amp;&amp; site[index - size]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!topFlag &amp;&amp; connectTop[uf.find(index - size)] || connectTop[uf.find(index)]) &#123;</span><br><span class="line">                topFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!bottomFlag &amp;&amp; connectBottom[uf.find(index - size)] || connectBottom[uf.find(index)]) &#123;</span><br><span class="line">                bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            uf.union(index, index - size);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// connect with right site</span></span><br><span class="line">        <span class="keyword">if</span> (col &lt; size &amp;&amp; site[index + <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!topFlag &amp;&amp; connectTop[uf.find(index + <span class="number">1</span>)] || connectTop[uf.find(index)]) &#123;</span><br><span class="line">                topFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!bottomFlag &amp;&amp; connectBottom[uf.find(index + <span class="number">1</span>)] || connectBottom[uf.find(index)]) &#123;</span><br><span class="line">                bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            uf.union(index, index + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// connect with left site</span></span><br><span class="line">        <span class="keyword">if</span> (col &gt; <span class="number">1</span> &amp;&amp; site[index - <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!topFlag &amp;&amp; connectTop[uf.find(index - <span class="number">1</span>)] || connectTop[uf.find(index)]) &#123;</span><br><span class="line">                topFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!bottomFlag &amp;&amp; connectBottom[uf.find(index - <span class="number">1</span>)] || connectBottom[uf.find(index)]) &#123;</span><br><span class="line">                bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            uf.union(index, index - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        connectTop[uf.find(index)] = topFlag;</span><br><span class="line">        connectBottom[uf.find(index)] = bottomFlag;</span><br><span class="line">        <span class="keyword">if</span> (!percolateFlag &amp;&amp; connectTop[uf.find(index)] &amp;&amp; connectBottom[uf.find(index)]) &#123;</span><br><span class="line">            percolateFlag = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOpen</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        validate(row, col);</span><br><span class="line">        <span class="keyword">return</span> site[xyTo1D(row, col)];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** A full site is an open site that can be connected to an open site in the</span></span><br><span class="line"><span class="comment">     *  top row via a chain of neighboring (left, right, up, down) open sites.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        validate(row, col);</span><br><span class="line">        <span class="keyword">return</span> connectTop[uf.find(xyTo1D(row, col))];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfOpenSites</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> numberOfOpenSites;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Introduce 2 virtual sites (and connections to top and bottom).</span></span><br><span class="line"><span class="comment">     *  Percolates if virtual top site is connected to virtual bottom site.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">percolates</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> percolateFlag;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">xyTo1D</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        validate(row, col);</span><br><span class="line">        <span class="keyword">return</span> size * (row - <span class="number">1</span>) + col - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (row &lt;= <span class="number">0</span> || row &gt; size || col &lt;= <span class="number">0</span> || col &gt; size) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// test client (optional)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>方法 4：最终方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> percolation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.WeightedQuickUnionUF;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Percolation</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span>[] grid;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span>[] connectBottom;</span><br><span class="line">	<span class="keyword">private</span> WeightedQuickUnionUF uf;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> size;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> virtualTop;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> numberOfOpenSites;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// creates n-by-n grid, with all sites initially blocked</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Percolation</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		validate(n);</span><br><span class="line">		</span><br><span class="line">		grid = <span class="keyword">new</span> <span class="keyword">boolean</span>[n*n];</span><br><span class="line">		<span class="comment">// last 1 use as virtualTop</span></span><br><span class="line">		connectBottom = <span class="keyword">new</span> <span class="keyword">boolean</span>[n*n+<span class="number">1</span>];</span><br><span class="line">		uf = <span class="keyword">new</span> WeightedQuickUnionUF(n*n+<span class="number">1</span>);</span><br><span class="line">		size = n;</span><br><span class="line">		virtualTop = n*n;</span><br><span class="line">		numberOfOpenSites = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// opens the site (row, col) if it is not open already</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		validate(row, col);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> center = xyTo1D(row, col);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// if (row, col) is already opened</span></span><br><span class="line">		<span class="keyword">if</span> (grid[center]) &#123;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// else not opened</span></span><br><span class="line">		grid[center] = <span class="keyword">true</span>;</span><br><span class="line">		numberOfOpenSites++;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> above = xyTo1D(row-<span class="number">1</span>, col);</span><br><span class="line">		<span class="keyword">int</span> below = xyTo1D(row+<span class="number">1</span>, col);</span><br><span class="line">		<span class="keyword">int</span> left = xyTo1D(row, col-<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> right = xyTo1D(row, col+<span class="number">1</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// if (row, col) is on the bottom, set connectBottom[] true </span></span><br><span class="line">		<span class="keyword">if</span> (row == size) &#123;</span><br><span class="line">			connectBottom[center] = <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// judge if exist a union operation that union a tree whose root has connectBottom[root] == true</span></span><br><span class="line">		<span class="keyword">boolean</span> bottomFlag = <span class="keyword">false</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// check above, (row - 1, col)</span></span><br><span class="line">		<span class="keyword">if</span> (row &gt; <span class="number">1</span> &amp;&amp; grid[above]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (connectBottom[uf.find(center)] || connectBottom[uf.find(above)]) &#123;</span><br><span class="line">				bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			uf.union(center, above);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// check below, (row + 1, col)</span></span><br><span class="line">		<span class="keyword">if</span> (row &lt; size &amp;&amp; grid[below]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (connectBottom[uf.find(center)] || connectBottom[uf.find(below)]) &#123;</span><br><span class="line">				bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			uf.union(center, below);</span><br><span class="line">		&#125; </span><br><span class="line">		</span><br><span class="line">		<span class="comment">// check left, (row, col - 1)</span></span><br><span class="line">		<span class="keyword">if</span> (col &gt; <span class="number">1</span> &amp;&amp; grid[left]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (connectBottom[uf.find(center)] || connectBottom[uf.find(left)]) &#123;</span><br><span class="line">				bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			uf.union(center, left);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// check right, (row, col + 1)</span></span><br><span class="line">		<span class="keyword">if</span> (col &lt; size &amp;&amp; grid[right]) &#123;</span><br><span class="line">			<span class="keyword">if</span> (connectBottom[uf.find(center)] || connectBottom[uf.find(right)]) &#123;</span><br><span class="line">				bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			uf.union(center, right);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// if row == 1, should have one more union: union with virtual top</span></span><br><span class="line">		<span class="keyword">if</span> (row == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (connectBottom[uf.find(center)] || connectBottom[uf.find(virtualTop)]) &#123;</span><br><span class="line">				bottomFlag = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			uf.union(center, virtualTop);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// if bottom Flag is true, then set connectBottom[root of center] to true after all union ops</span></span><br><span class="line">		<span class="keyword">if</span> (bottomFlag) &#123;</span><br><span class="line">			connectBottom[uf.find(center)] = <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// is the site (row, col) open?</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOpen</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">		validate(row, col);</span><br><span class="line">		<span class="keyword">return</span> grid[xyTo1D(row, col)];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// is the site (row, col) full?</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">		validate(row, col);</span><br><span class="line">		<span class="keyword">return</span> isOpen(row, col) &amp;&amp; uf.connected(xyTo1D(row, col), virtualTop);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// returns the number of open sites</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numberOfOpenSites</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> numberOfOpenSites;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// does the system percolate?</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">percolates</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> connectBottom[uf.find(virtualTop)];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// mapping 2D coordinates to 1D coordinates</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">xyTo1D</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> (row - <span class="number">1</span>)*size + (col - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"ERROR: grid size n must be greater than 0"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (row &lt; <span class="number">1</span> || row &gt; size || col &lt; <span class="number">1</span> || col &gt; size) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"ERROR: given (row, col) is outside prescribed range"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// test client (optional)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algs4/" <i class="fa fa-tag"> Algs4</a>
+          
+            <a href="/tags/Coursera/" <i class="fa fa-tag"> Coursera</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/30/wx-request-不完全踩坑记录/" rel="next" title="wx.request 不完全踩坑记录">
+                <i class="fa fa-chevron-left"></i> wx.request 不完全踩坑记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/RQTN.png" alt="RQTN">
+            
+              <p class="site-author-name" itemprop="name">RQTN</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+
+          
+          
+
+          
+          
+
+          
+<div id="music163player">
+<iframe frameborder="yes" border="0" marginwidth="0" marginheight="0" width="280" height="100" src="//music.163.com/outchain/player?type=2&id=4346205&auto=1&height=66"></iframe>
+</div>
+
+        </div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Assignment1-backwash-in-Percolation"><span class="nav-number">1.</span> <span class="nav-text">Assignment1 - backwash in Percolation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#backwash- 问题"><span class="nav-number">1.1.</span> <span class="nav-text">backwash 问题 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决 -backwash- 的方法"><span class="nav-number">1.2.</span> <span class="nav-text">解决 backwash 的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码 </span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RQTN</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">15.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Violet.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rqtn.github.io/2019/08/11/Assignment1-backwash-in-Percolation/';
+          this.page.identifier = '2019/08/11/Assignment1-backwash-in-Percolation/';
+          this.page.title = 'Assignment1 - backwash in Percolation';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Violet.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("J3VYNFpzWtRIpuWpeFI8w2kU-gzGzoHsz", "4it4flADjFkpxYvic54wC4KT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+</body>
+</html>
