@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linear Algebra,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="summer v" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第 19 课 行列式公式和代数余子式 上一节我们讲述了行列式的 $10$ 个性质，根据这些性质，我们能够推导出行列式的一般求解过程。本节，我们将更加深入地讲解行列式公式和代数余子式，这两者都是求解行列式的方法。  行列式公式  在上一节中，我们已经提到了二阶行列式公式 $\left|\begin{array}{ll}{a} &amp;amp; {b} \\ {c} &amp;amp; {d}\end{array}">
+<meta name="keywords" content="Linear Algebra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec19 - 行列式公式和代数余子式">
+<meta property="og:url" content="https://rqtn.github.io/2019/08/12/LA-Lec19/index.html">
+<meta property="og:site_name" content="summer v">
+<meta property="og:description" content="第 19 课 行列式公式和代数余子式 上一节我们讲述了行列式的 $10$ 个性质，根据这些性质，我们能够推导出行列式的一般求解过程。本节，我们将更加深入地讲解行列式公式和代数余子式，这两者都是求解行列式的方法。  行列式公式  在上一节中，我们已经提到了二阶行列式公式 $\left|\begin{array}{ll}{a} &amp;amp; {b} \\ {c} &amp;amp; {d}\end{array}">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-12T10:14:32.661Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lec19 - 行列式公式和代数余子式">
+<meta name="twitter:description" content="第 19 课 行列式公式和代数余子式 上一节我们讲述了行列式的 $10$ 个性质，根据这些性质，我们能够推导出行列式的一般求解过程。本节，我们将更加深入地讲解行列式公式和代数余子式，这两者都是求解行列式的方法。  行列式公式  在上一节中，我们已经提到了二阶行列式公式 $\left|\begin{array}{ll}{a} &amp;amp; {b} \\ {c} &amp;amp; {d}\end{array}">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://rqtn.github.io/2019/08/12/LA-Lec19/">
+
+
+
+
+
+  <title>Lec19 - 行列式公式和代数余子式 | summer v</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">summer v</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/12/LA-Lec19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RQTN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/RQTN.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="summer v">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lec19 - 行列式公式和代数余子式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T18:08:08+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathematics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/12/LA-Lec19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/12/LA-Lec19/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/12/LA-Lec19/" class="leancloud_visitors" data-flag-title="Lec19 - 行列式公式和代数余子式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第 -19- 课 - 行列式公式和代数余子式"><a href="# 第 -19- 课 - 行列式公式和代数余子式" class="headerlink" title="第 19 课 行列式公式和代数余子式"></a>第 19 课 行列式公式和代数余子式</h2><blockquote>
+<p>上一节我们讲述了行列式的 $10$ 个性质，根据这些性质，我们能够推导出行列式的一般求解过程。本节，我们将更加深入地讲解行列式公式和代数余子式，这两者都是求解行列式的方法。</p>
+</blockquote>
+<h3 id="行列式公式"><a href="# 行列式公式" class="headerlink" title="行列式公式"></a>行列式公式 </h3><p> 在上一节中，我们已经提到了二阶行列式公式 $\left|\begin{array}{ll}{a} &amp; {b} \\ {c} &amp; {d}\end{array}\right|=a d-b c$，但我们并没有多做任何解释。</p>
+<p>学习了关于行列式的这么多性质，现在我们有能力推导二阶行列式公式了：</p>
+<script type="math/tex; mode=display">
+\begin{vmatrix}a& b\\c& d\end{vmatrix}\stackrel{3.b}{=}\begin{vmatrix}a& 0\\c& d\end{vmatrix}+\begin{vmatrix}0& b\\c& d\end{vmatrix}\stackrel{3.b}{=}\begin{vmatrix}a& 0\\c& 0\end{vmatrix}+\begin{vmatrix}a& 0\\0& d\end{vmatrix}+\begin{vmatrix}0& b\\c& 0\end{vmatrix}+\begin{vmatrix}0& b\\0& d\end{vmatrix}\\
+其中 \begin{vmatrix}a& 0\\c& 0\end{vmatrix}\stackrel{6, 10}{=}0,\quad\begin{vmatrix}a& 0\\0& d\end{vmatrix}\stackrel{7}{=}ad,\quad \begin{vmatrix}0& b\\c& 0\end{vmatrix}\stackrel{2,7}{=}-bc,\quad \begin{vmatrix}0& b\\0& d\end{vmatrix}\stackrel{6,10}{=}0\\
+综上，\begin{vmatrix}a& b\\c& d\end{vmatrix}=ad-bc</script><p>观察上面的推导过程，不难发现，<strong>行列式的值等于使用性质 $3.b$ 分解后所得的那些非零行列式的和，所谓的非零行列式也即该行列式各行各列都有元素，故值不为零。</strong></p>
+<p>带着这个重要发现，我们继续尝试计算三阶行列式。以同样的步骤，先保持第 $2$，$3$ 行不变，将第 $1$ 行进行拆分得到 $3$ 个行列式，分别对这 $3$ 个行列式的第 $2$ 行进行拆分得到共 $9$ 个行列式，再接着拆分这 $9$ 个行列式的第 $3$ 行，最终得到 $27$ 个行列式，而我们只需要其中的非零行列式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\begin{vmatrix}a_{11}& a_{12}& a_{13}\\a_{21}& a_{22}& a_{23}\\a_{31}& a_{32}& a_{33}\end{vmatrix}&=\begin{vmatrix}a_{11}& 0& 0\\0& a_{22}& 0\\0& 0& a_{33}\end{vmatrix}+\begin{vmatrix}a_{11}& 0& 0\\0& 0& a_{23}\\0& a_{32}& 0\end{vmatrix}+\begin{vmatrix}0& a_{12}& 0\\a_{21}& 0& 0\\0& 0& a_{33}\end{vmatrix}\\&+\begin{vmatrix}0& a_{12}& 0\\0& 0& a_{23}\\a_{31}& 0& 0\end{vmatrix}
++\begin{vmatrix}0& 0& a_{13}\\a_{21}& 0& 0\\0& a_{32}& 0\end{vmatrix}+\begin{vmatrix}0& 0& a_{13}\\0& a_{22}& 0\\a_{31}& 0& 0\end{vmatrix}\\
+&=a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}
+\end{align}</script><p>观察以上矩阵的拆分形式，容易发现，<strong>$n$ 阶行列式可以分解得到 $n!$ 个非零行列式（占据第 $1$ 行的元素有 $n$ 种选择，占据第 $2$ 行的元素有 $n-1$ 种选择，以此类推即 $n!$）</strong>：</p>
+<script type="math/tex; mode=display">
+\det A=\sum_{n!} \pm a_{1\alpha}a_{2\beta}a_{3\gamma}\cdots a_{n\omega}, \quad(\alpha, \beta, \gamma, \cdots,\omega)=P_n^n</script><p><strong>其中 $\alpha, \beta, \gamma, \cdots,\omega$ 共 $n$ 个数是列标 $1$ 到 $n$ 的某种排列。上式即为一般的行列式公式。</strong></p>
+<p>我们再补充说明一下如何确定非零行列式的符号，考虑以下行列式：</p>
+<script type="math/tex; mode=display">
+\begin{vmatrix}0& 0& \color{red}1& \color{blue} 1\\0& \color{red} 1& \color{blue} 1& 0\\ \color{red} 1& \color{blue} 1& 0& 0\\\color{blue} 1& 0& 0&  \color{red} 1\end{vmatrix}</script><p>使用行列式公式进行求解，剔除值为零的行列式。容易发现，$\alpha$ 只能为 $3$ 或 $4$。选定 $\alpha=3$，则 $\beta=2,\gamma=1,\omega=4$；选定 $\alpha=4$，则 $\beta=3,\gamma=2,\omega=1$。我们只能找到两组非零行列式。</p>
+<ul>
+<li>对于第一组非零行列式（图中蓝色部分），其对应的排列是 $(4, 3, 2, 1)$，变为 $(1, 2, 3, 4)$ 需要两步操作，由行列式性质 $2,10$ 可知符号应取 $+$。</li>
+<li>对于第二组非零行列式（图中红色部分），其对应的排列是 $(3,2,1,4)$，变为 $(1, 2, 3 ,4)$ 需要一步操作，由行列式性质 $2,10$ 可知符号应取 $-$。</li>
+</ul>
+<p><strong>通过统计当前排列变换到顺序排列 $(1,2,3,\cdots,n)$ 的操作数可以确定非零行列式的符号，但这种方法显然不实用，难以编程实现且当仅适用于行列式的阶数较小时。</strong></p>
+<p><strong>一般我们用逆序数来判断非零行列式的正负号。逆序数就是从左到右遍历当前排列中的每一个数，统计右侧有几个数比自己小 </strong>，比如对于排列 $(4, 3, 2,1)$ ，$4$ 后面有 $3$ 个数比它小，$3$ 后面有 $2$ 个数比它小，$2$ 后面有 $1$ 个数比它小，取其总和 $3+2+1=6$ 即为逆序数。<strong> 逆序数为偶数的，则称排列为偶排列，否则为奇排列，偶排列时非零行列式取 $+$，奇排列时非零行列式取 $-$。其中的道理在于奇排列做一次交换后即为偶排列，偶排列做一次交换后即为奇排列，初始顺序排列 $(1, 2, 3, \cdots, n)$ 为偶排列。</strong></p>
+<h3 id="代数余子式"><a href="# 代数余子式" class="headerlink" title="代数余子式"></a>代数余子式</h3><blockquote>
+<p>接下来引入代数余子式的概念，它是另外一种求解行列式的方法，其作用是把 $n$ 阶行列式化简为 $n−1$ 阶行列式。 </p>
+</blockquote>
+<p>回顾上面的 $3\times 3$ 矩阵，我们已经得到了它的行列式公式：</p>
+<script type="math/tex; mode=display">
+原式 =a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}</script><p>略作改写易得：</p>
+<script type="math/tex; mode=display">
+a_{11}(a_{22}a_{33}-a_{23}a_{32})+a_{12}(-a_{21}a_{33}+a_{23}a_{31})+a_{13}(a_{21}a_{32}-a_{22}a_{31})\\
+=\begin{vmatrix}a_{11}& 0& 0\\0& a_{22}& a_{23}\\0& a_{32}& a_{33}\end{vmatrix}+\begin{vmatrix}0& a_{12}& 0\\a_{21}& 0& a_{23}\\a_{31}& 0& a_{33}\end{vmatrix}+\begin{vmatrix}0& 0& a_{13}\\a_{21}& a_{22}& 0\\a_{31}& a_{32}& 0\end{vmatrix}\\
+=a_{11}(\begin{vmatrix} a_{22}& a_{23}\\a_{32}& a_{33}\end{vmatrix})+a_{12}(-\begin{vmatrix} a_{21}& a_{23}\\a_{31}& a_{33}\end{vmatrix})+a_{13}(\begin{vmatrix} a_{21}& a_{22}\\a_{31}& a_{32}\end{vmatrix})</script><p>容易发现，$3\times 3$ 的行列式由 $2\times 2$ 行列式组成。事实上，<strong>$n$ 阶行列式同样可化为多个 $n-1$ 阶行列式的组合。</strong>下面我们正式介绍 <strong> 代数余子式 </strong> 的概念：</p>
+<ul>
+<li><p><strong>改写中的括号部分就是代数余子式</strong>，比如 $(a_{22}a_{33}-a_{23}a_{32})$ 就是 $a_{11}$ 的代数余子式，$(-a_{21}a_{33}+a_{23}a_{31})$ 就是 $a_{12}$ 的代数余子式。</p>
+</li>
+<li><p><strong>代数余子式 (cofactors) 是与选定元素配套的</strong>，这也即 ‘co-‘ 的意思。</p>
+</li>
+<li><p><strong>选定元素 $a_{ij}$ 的代数余子式即为：将原行列式中的第 $i$ 行和第就 $j$ 列抹去后得到的 $n-1$ 阶行列式，再取正负（ $i+j$ 为偶时取 $+$， $i+j$ 为奇时取 $-$），整个记为 $C_{ij}$ ：</strong></p>
+<script type="math/tex; mode=display">
+C_{ij}=(-1)^{i+j}\cdot det(去掉 i 行和 j 列的一个 n-1 矩阵)</script></li>
+</ul>
+<p>基于代数余子式的概念，我们容易给出新的求行列式的公式：</p>
+<script type="math/tex; mode=display">
+假设我们选取第一行（i=1），那么行列式 A 沿第一行展开有:\\
+det(A)=a_{11}C_{11}+a_{12}C_{12}+...+a_{1n}C_{1n}</script><p>到目前为止，我们学习了三种求解行列式的方法，总结如下：</p>
+<ul>
+<li>消元，将矩阵化为三角矩阵，主元乘积记为行列式的值（最简单）</li>
+<li>按照行列式公式将行列式完全展开，找到 $n!$ 种非零行列式，计算这些行列式的值的和（最复杂）</li>
+<li>使用代数余子式对行列式进行降阶，展开得到更简单的行列式，然后再求解（介于二者之间）</li>
+</ul>
+<p>下面我们举 <strong> 由 $1$ 组成的三对角矩阵 </strong> 为例，来熟悉如何使用代数余子式求解行列式：</p>
+<script type="math/tex; mode=display">
+A_{1}=1, A_{2}=\left|\begin{array}{cc}{1} & {1} \\ {1} & {1}\end{array}\right|, A_{3}=\left|\begin{array}{ccc}{1} & {1} & {0} \\ {1} & {1} & {1} \\ {0} & {1} & {1}\end{array}\right|, A_{4}=\left|\begin{array}{cccc}{1} & {1} & {0} & {0} \\ {1} & {1} & {1} & {0} \\ {0} & {1} & {1} & {1} \\ {0} & {0} & {1} & {1}\end{array}\right|,\cdots, 寻找其行列式值的规律 </script><p> 对于 $A_1$ 和 $A_2$ 我们能够迅速求出其行列式（利用性质）：$A_1=1,A_2=0$。</p>
+<p>对于 $A_3$ 我们无法一眼看出答案，这里我们可以就 $A_3$ 使用这种新方法：</p>
+<script type="math/tex; mode=display">
+显然直接按第一行展开有： A_3 =1\begin{vmatrix} 1&1\\1&1\end{vmatrix}-1\begin{vmatrix}1&1\\0& 1\end{vmatrix}=0-1=-1。\\
+按第二行展开有：A_3 =-1\begin{vmatrix} 1&0\\1&1\end{vmatrix}+1\begin{vmatrix}1&0\\0& 1\end{vmatrix}-1\begin{vmatrix}1&1\\0& 1\end{vmatrix}=-1+1-1=-1。</script><p>注意到，按第二行展开时，我们的工作量会大一些，这与不等于 $0$ 的 <script type="math/tex">a_{ij}</script> 的个数有关。这一点暗示我们，<strong>在使用代数余子式求行列式时，应该尽量选取 $0$ 元素多的行。如果各行 $0$ 元素都很少，那么根据消元不改变行列式的性质（性质 $5$），我们可以先对矩阵进行消元，以得到 $0$ 元素多的行，然后再使用代数余子式进行行列式的求解。</strong></p>
+<script type="math/tex; mode=display">
+\begin{vmatrix}1& 1& 0\\1& 1& 1\\0& 1& 1\end{vmatrix}\xrightarrow{row_2=row_2-row_3}\begin{vmatrix}1& 1& 0\\1& 0& 0\\0& 1& 1\end{vmatrix}\\
+然后选取第二行展开有：A_3=-1\begin{vmatrix} 1&0\\1&1\end{vmatrix}=-1</script><p>同理，对于 $A_4$：</p>
+<script type="math/tex; mode=display">
+A_4=\begin{vmatrix}1& 1& 0& 0\\1& 1& 1& 0\\0& 1& 1& 1\\0& 0& 1& 1\end{vmatrix}\stackrel{沿第一行展开}{=}1\begin{vmatrix}1& 1& 0\\1& 1& 1\\0& 1& 1\end{vmatrix}-1\begin{vmatrix}1& 1& 0\\0& 1& 1\\0& 1& 1\end{vmatrix}=A_3-\begin{vmatrix}1& 1& 0\\0& 1& 1\\0& 1& 1\end{vmatrix}\\</script><p>需要补充说明的是，<strong>使用代数余子式求行列式时我们可以按行展开，也可以按列展开（性质 $10$）</strong>，比如上式中的 $\begin{vmatrix}1&amp; 1&amp; 0\\0&amp; 1&amp; 1\\0&amp; 1&amp; 1\end{vmatrix}$，我们可以选取第一列展开（因为第一列 $0$ 元素多），那么易得 $\begin{vmatrix}1&amp; 1&amp; 0\\0&amp; 1&amp; 1\\0&amp; 1&amp; 1\end{vmatrix}=1\begin{vmatrix}1&amp; 1\\1&amp; 1\end{vmatrix}=A_2$。</p>
+<p>综上，我们得到 $\begin{vmatrix}A_4\end{vmatrix}=\begin{vmatrix}A_3\end{vmatrix}-\begin{vmatrix}A_2\end{vmatrix}=-1-0=-1$。<strong>猜想由 $1$ 组成的三对角矩阵的行列式值的规律可能正是 $\begin{vmatrix}A_n\end{vmatrix}=\begin{vmatrix}A_{n-1}\end{vmatrix}-\begin{vmatrix}A_{n-2}\end{vmatrix}$，事实上，这确实就是由 $1$ 组成的三对角矩阵行列式值的规律，这是由 $1$ 组成的三对角矩阵的特殊结构所决定的。</strong></p>
+<p>由此规律，易得 $\begin{vmatrix}A_5\end{vmatrix}=0$，$\begin{vmatrix}A_6\end{vmatrix}=1$，$\begin{vmatrix}A_7\end{vmatrix}=1$，$\begin{vmatrix}A_8\end{vmatrix}=0$，到这里我们发现：<strong>由 $1$ 组成的 $n$ 阶三对角矩阵的行列式值从 $1$ 阶开始按照 $1,0,-1,-1,0,1$ 循环，周期为 $6$。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linear-Algebra/" <i class="fa fa-tag"> Linear Algebra</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/12/LA-Lec18/" rel="next" title="Lec18 - 行列式及其性质">
+                <i class="fa fa-chevron-left"></i> Lec18 - 行列式及其性质
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/RQTN.png" alt="RQTN">
+            
+              <p class="site-author-name" itemprop="name">RQTN</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+
+          
+          
+
+          
+          
+
+          
+<div id="music163player">
+<iframe frameborder="yes" border="0" marginwidth="0" marginheight="0" width="280" height="100" src="//music.163.com/outchain/player?type=2&id=4346205&auto=1&height=66"></iframe>
+</div>
+
+        </div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -19- 课 - 行列式公式和代数余子式"><span class="nav-number">1.</span> <span class="nav-text">第 19 课 行列式公式和代数余子式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行列式公式"><span class="nav-number">1.1.</span> <span class="nav-text">行列式公式 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代数余子式"><span class="nav-number">1.2.</span> <span class="nav-text">代数余子式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RQTN</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Violet.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rqtn.github.io/2019/08/12/LA-Lec19/';
+          this.page.identifier = '2019/08/12/LA-Lec19/';
+          this.page.title = 'Lec19 - 行列式公式和代数余子式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Violet.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("J3VYNFpzWtRIpuWpeFI8w2kU-gzGzoHsz", "4it4flADjFkpxYvic54wC4KT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+</body>
+</html>

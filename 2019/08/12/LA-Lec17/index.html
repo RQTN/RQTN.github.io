@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linear Algebra,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="summer v" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第 17 课 正交矩阵和 Gram-Schmidt 正交化 上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍  标准正交向量组的性质和优点，以及将一组向量化为标准正交向量组的方法：Gram-Schmidt 正交化。  标准正交向量与正交矩阵  上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则  q_{i}^{T} q_{j}">
+<meta name="keywords" content="Linear Algebra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec17 - 正交矩阵和 Gram-Schmidt 正交化">
+<meta property="og:url" content="https://rqtn.github.io/2019/08/12/LA-Lec17/index.html">
+<meta property="og:site_name" content="summer v">
+<meta property="og:description" content="第 17 课 正交矩阵和 Gram-Schmidt 正交化 上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍  标准正交向量组的性质和优点，以及将一组向量化为标准正交向量组的方法：Gram-Schmidt 正交化。  标准正交向量与正交矩阵  上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则  q_{i}^{T} q_{j}">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/12/LA-Lec17/lec17-2%20vectors.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/12/LA-Lec17/lec17-2%20vectors%20more.png">
+<meta property="og:updated_time" content="2019-08-12T10:13:59.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lec17 - 正交矩阵和 Gram-Schmidt 正交化">
+<meta name="twitter:description" content="第 17 课 正交矩阵和 Gram-Schmidt 正交化 上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍  标准正交向量组的性质和优点，以及将一组向量化为标准正交向量组的方法：Gram-Schmidt 正交化。  标准正交向量与正交矩阵  上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则  q_{i}^{T} q_{j}">
+<meta name="twitter:image" content="https://rqtn.github.io/2019/08/12/LA-Lec17/lec17-2%20vectors.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://rqtn.github.io/2019/08/12/LA-Lec17/">
+
+
+
+
+
+  <title>Lec17 - 正交矩阵和 Gram-Schmidt 正交化 | summer v</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">summer v</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/12/LA-Lec17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RQTN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/RQTN.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="summer v">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lec17 - 正交矩阵和 Gram-Schmidt 正交化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T18:07:47+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathematics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/12/LA-Lec17/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/12/LA-Lec17/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/12/LA-Lec17/" class="leancloud_visitors" data-flag-title="Lec17 - 正交矩阵和 Gram-Schmidt 正交化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第 -17- 课 - 正交矩阵和 -Gram-Schmidt- 正交化"><a href="# 第 -17- 课 - 正交矩阵和 -Gram-Schmidt- 正交化" class="headerlink" title="第 17 课 正交矩阵和 Gram-Schmidt 正交化"></a>第 17 课 正交矩阵和 Gram-Schmidt 正交化</h2><blockquote>
+<p>上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍 <strong> 标准正交向量组的性质和优点</strong>，以及将一组向量化为标准正交向量组的方法：<strong>Gram-Schmidt 正交化</strong>。</p>
+</blockquote>
+<h3 id="标准正交向量与正交矩阵"><a href="# 标准正交向量与正交矩阵" class="headerlink" title="标准正交向量与正交矩阵"></a>标准正交向量与正交矩阵 </h3><p> 上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则</p>
+<script type="math/tex; mode=display">
+q_{i}^{T} q_{j}\left\{\begin{array}{l}{0 \ldots . .(i \neq j)} \\ {1 \ldots . .(i=j)}\end{array}\right.</script><p>这很好地表现了标准正交向量组内各向量的性质：<strong>不同向量之间相互垂直（正交），向量长度都为 1（标准）</strong>。</p>
+<p><strong>标准正交向量组又被称为标准正交基，显然，相互垂直的各列一定是线性无关的。</strong></p>
+<p>为什么我们这么执着于标准正交向量呢？在后续我们就能看到 <strong> 标准正交向量能够极大的简化计算</strong>，许多数值线性代数都建立在标准正交向量的基础上，因为它们容易操控，它们从不上溢或下溢。</p>
+<p>我们再介绍另外一个概念，标准正交矩阵。<strong>所谓标准正交矩阵 $Q$，就是将标准正交向量组中的向量 $q_{1}, q_{2},\cdots,q_{n}$ 列到一个矩阵中去</strong>：</p>
+<script type="math/tex; mode=display">
+Q=\left[\begin{array}{llll}{q_{1}} & {q_{2}} & {\cdots} & {q_{n}}\end{array}\right]</script><p>这样的标准正交矩阵有一个很好的性质：</p>
+<script type="math/tex; mode=display">
+Q^TQ=\begin{bmatrix}q_1^T\\q_2^T\\\vdots\\q_n^T\end{bmatrix}\begin{bmatrix}q_1&q_2&\cdots&q_n\end{bmatrix}=\begin{bmatrix}1& 0& \cdots& 0\\0& 1& \cdots& 0\\\vdots& \vdots& \ddots& \vdots\\0& 0& \cdots& 1\end{bmatrix}=I</script><p><strong>注意，是 $Q^TQ=I$ 而非 $QQ^T=I$。</strong></p>
+<p><strong>特别地，当 $Q$ 是方阵时，我们将这样的矩阵 $Q$ 称为正交矩阵。</strong></p>
+<p>为什么我们要单独将 $Q$ 是方阵的情况拎出来呢？<strong>这是因为当标准正交矩阵 $Q$ 为方阵时，其必有逆矩阵，很明显，由上面的 $Q^TQ=I$ 可知，$Q$ 若为正交矩阵，其逆矩阵正是 $Q^T$，也即 $Q^T=Q^{-1}$。</strong>可以举一些例子：</p>
+<ul>
+<li>回想我们在很久之前提到过的置换矩阵，当时也说明了置换矩阵 $P$ 具有性质：$P^T=P^{-1}$，而显然置换矩阵正是一个正交矩阵：$P=\begin{bmatrix}0&amp; 1&amp; 0\\1&amp; 0&amp; 0\\0&amp; 0&amp; 1\end{bmatrix}$，则 $Q^T=\begin{bmatrix}0&amp; 1&amp; 0\\0&amp; 0&amp; 1\\1&amp; 0&amp; 0\end{bmatrix}$，易得 $Q^TQ=I$。</li>
+<li>另一个例子是我们上一讲介绍过的标准正交向量组：$\left[\begin{array}{c}{\cos \theta} \\ {\sin \theta}\end{array}\right],\left[\begin{array}{c}{-\sin \theta} \\ {\cos \theta}\end{array}\right]$ 。写成矩阵形式即为 $Q=\left[\begin{array}{cc}{\cos \theta} &amp; {-\sin \theta} \\ {\sin \theta} &amp; {\cos \theta}\end{array}\right]$ ，显然该矩阵也有 $Q^TQ=I$。</li>
+<li>$\left[\begin{array}{cc}{1} &amp; {1} \\ {1} &amp; {-1}\end{array}\right]$ 是正交矩阵吗？不是，因为虽然这个矩阵内各列正交，但列向量长度不为 $1$，我们还需要再对其进行单位化（标准化），单位化以后得到 $Q=\frac{1}{\sqrt{2}}\left[\begin{array}{cc}{1} &amp; {1} \\ {1} &amp; {-1}\end{array}\right]$ ，这个矩阵是正交矩阵。</li>
+<li>使用上一个例子中的矩阵 $Q=\frac{1}{\sqrt{2}}\left[\begin{array}{cc}{1} &amp; {1} \\ {1} &amp; {-1}\end{array}\right]$，令 $Q’=c\begin{bmatrix}Q&amp; Q\\Q&amp; -Q\end{bmatrix}$ ，取合适的 $c$ 以使得向量长度为 $1$ 也可以构造出一个正交矩阵：$Q=\frac{1}{2}\begin{bmatrix}1&amp; 1&amp; 1&amp; 1\\1&amp; -1&amp; 1&amp; -1\\1&amp; 1&amp; -1&amp; -1\\1&amp; -1&amp; -1&amp; 1\end{bmatrix}$，这种构造方法以阿德玛（Adhemar）命名，我们现在知道的是这种构造方法在 $Q$ 为 $2, 4, 16, 64, \cdots$ 维矩阵时是有效的，但是没有人知道，究竟哪些维数的正交矩阵可以由 $1$ 和 $-1$ 们构成，阿德玛矩阵是一种只有 $1$ 和 $-1$ 的正交矩阵，有些维度可以，但有些维度就不行，比如说 $5$ 维的矩阵就不可能是阿德玛矩阵，这个比较简单，但有些大小没人能确切地说，能不能由 $1$ 和 $-1$ 构成。</li>
+</ul>
+<p>上面我们介绍了标准正交矩阵 $Q$ 的各种性质，这是一种新的性质优良的矩阵，<strong>这样的矩阵能够极大地简化计算，比如：投影矩阵！</strong></p>
+<p>上一讲中，我们提到，投影矩阵 $P=A(A^TA)^{-1}A^T$，那么到 $A$ 是标准正交矩阵 $Q$ 的时候，根据标准正交矩阵的性质易得：$Q(Q^TQ)^{-1}Q^T=QIQ^T=QQ^T$。特别地，当 $Q$ 还是方阵的时候，由于此时 $Q^T=Q^{-1}$，所以投影矩阵能够进一步化简为 $I$。</p>
+<script type="math/tex; mode=display">
+P=A(A^TA)^{-1}A^T\xrightarrow{A 是标准正交矩阵 Q}P=QQ^T\xrightarrow{A 还是方阵（也即 A 是正交矩阵）}P=I</script><p>化为 $P=QQ^T$ 之后，我们很容易验证投影矩阵的两条性质：</p>
+<ul>
+<li><strong>投影矩阵为对称矩阵：$(QQ^T)^T=(Q^T)^TQ^T=QQ^T$。</strong></li>
+<li><strong>投影两次等于投影一次：$(QQ^T)(QQ^T)=Q(Q^TQ)Q^T=QQ^T$。</strong></li>
+</ul>
+<p>可以看到 $P$ 的形式得到的极大的化简，实际上很多复杂的方程，在使用标准正交基之后都会变得非常简单。</p>
+<p>考虑我们最近讲过的最重要的方程，<strong>正规方程 $A^TA\hat{x}=A^Tb$，现在变为了 $Q^TQ\hat{x} = Q^Tb$，也就是 $\hat{x}=Q^Tb$，分解开来看就是 $\hat x_i=q_i^Tb$，这个式子在很多数学领域都有重要作用。当我们知道标准正交基，则在第 $i$ 个基方向上的投影等于 $q_i^Tb$。</strong></p>
+<hr>
+<h3 id="Gram-Schmidt- 正交化"><a href="#Gram-Schmidt- 正交化" class="headerlink" title="Gram-Schmidt 正交化"></a>Gram-Schmidt 正交化 </h3><p> 我们已经看到标准正交向量的性质特别好，但更多时候我们见到的是线性无关向量组，有没有一种方法能够 <strong> 将线性无关向量组转换为标准正交基 </strong> 呢？这也即今天要讲的第二个内容，<strong>Gram-Schmidt 正交化</strong>。</p>
+<p>在介绍它之前，我们需要先说明，<strong>格拉姆 - 施密特正交化的缺点在于，由于要求的单位向量，我们不可避免地要除以向量的长度，而这个过程很容易产生根号，所以最终产生的标准正交向量组经常会带有根号。</strong></p>
+<p>Gram-Schmidt 正交化的过程如下：</p>
+<script type="math/tex; mode=display">
+线性无关向量 a,b\xrightarrow{Graham}正交向量 A,B\xrightarrow{Schmidt}标准正交向量 q_1=\frac{A}{\|A\|},q_2=\frac{B}{\|B\|}</script><p>可以看到 Schmidt 也即单位化的过程是很简单的，正交化的关键在于找到 $A,B$。</p>
+<p>我们先从简单的情况开始，假设有两个线性无关的向量 $a,b$：</p>
+<p><img src="/2019/08/12/LA-Lec17/lec17-2%20vectors.png" width="50%"></p>
+<p>怎样将其转换为两个相互正交的向量呢？容易联想到我们之前学习的投影，我们可以这样做：</p>
+<p><img src="/2019/08/12/LA-Lec17/lec17-2%20vectors%20more.png" width="40%"></p>
+<p>直接将 $a$ 向量定为 $A$ 向量，而后，我们将 $b$ 向量投影到 $a$ 向量上得到 $p$，注意到，此时误差向量 $e=b-p$ 恰好就垂直于 $A$ 向量，故令 $B=b-p$ 有：</p>
+<script type="math/tex; mode=display">
+B=b-p=b-Pb=b-A(A^TA)^{-1}A^Tb</script><p>需要强调的是，上述公式中的 $A,B$ 指的都是向量，故有 $B=b-\frac{AA^Tb}{A^TA}$，其中 $A^TA$ 是一个内积标量值，而 $AA^T$ 是一个矩阵，注意到 $\frac{A\color{red}{A^Tb}}{\color{red} {A^TA}}$ 中标红部分都是内积标量值，故我们更倾向于让分子中的 $A^Tb$ 先相乘，把 $A$ 向量放到后面，也即写成这样的形式 $B=b-\frac{A^Tb}{A^TA}A$。</p>
+<p>检查一下是否满足 $A\bot B$：</p>
+<script type="math/tex; mode=display">
+A^TB=A^Tb-A^T\frac{A^Tb}{A^TA}A=A^Tb-\frac{A^TA}{A^TA}A^Tb=0</script><p>$A,B$ 正交，求得 $A,B$ 之后，剩下的内容就只是简单的单位化了：$q_1=\frac{A}{\left|A\right|}, q_2=\frac{B}{\left|B\right|}$。</p>
+<p>同样的道理，如果我们有三个线性无关的向量 $a,b,c$，我们如何进行 Gram-Schmidt 正交化呢？</p>
+<p>按照流程，我们首先要得到 $A,B,C$，前两个向量 $A,B$ 我们已经得到了，现在我们要求第三个向量同时垂直于 $A,B$。</p>
+<p>我们依然可以按照上面的思想来求解，也即从 $c$ 中减去其在 $A,B$ 上的分量，即可得到与 $A,B$ 正交的 $C$：</p>
+<script type="math/tex; mode=display">
+C=c-\frac{A^Tc}{A^TA}A-\frac{B^Tc}{B^TB}B</script><p>再把它们单位化：$q_1=\frac{A}{\left|A\right|}, q_2=\frac{B}{\left|B\right|}, q_3=\frac{C}{\left|C\right|}$。</p>
+<p>下面我们通过一个简单的例子来试验一遍：</p>
+<p>假设 $a=\begin{bmatrix}1\\1\\1\end{bmatrix}, b=\begin{bmatrix}1\\0\\2\end{bmatrix}$，求标准正交矩阵 $Q$。</p>
+<script type="math/tex; mode=display">
+首先,\quad A=a=\begin{bmatrix}1\\1\\1\end{bmatrix}\\
+根据公式有,\quad B=b-\frac{A^Tb}{A^TA}A=\begin{bmatrix}1\\0\\2\end{bmatrix}-\frac{3}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}=\begin{bmatrix}0\\-1\\1\end{bmatrix}\\
+验证正交性有,\quad A^TB=0\\
+最后再进行单位化,\quad q_1=\frac{1}{\sqrt 3}\begin{bmatrix}1\\1\\1\end{bmatrix},\quad q_2=\frac{1}{\sqrt 2}\begin{bmatrix}1\\0\\2\end{bmatrix}\\
+则标准正交矩阵为 \quad Q=\begin{bmatrix}\frac{1}{\sqrt 3}& 0\\\frac{1}{\sqrt 3}& -\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 3}& \frac{1}{\sqrt 2}\end{bmatrix}</script><p>这就是 Gram-Schmidt 正交化方法。对比原始矩阵 $A=\left[\begin{array}{ll}{1} &amp; {1} \\ {1} &amp; {0} \\ {1} &amp; {2}\end{array}\right]$ 和标准正交矩阵 $Q=\left[\begin{array}{cc}{1 / \sqrt{3}} &amp; {0} \\ {1 / \sqrt{3}} &amp; {-1 / \sqrt{2}} \\ {1 / \sqrt{3}} &amp; {1 / \sqrt{2}}\end{array}\right]$，观察两个矩阵的列空间，它们是相同的，也就是说我们的正交化过程从头到尾都是在同一个空间（列空间）中进行的，正交化过程本质不过是矩阵各列的列变换（比如 $B=b-\frac{A^Tb}{A^TA}A$，其中 $b$ 是原始的列向量，$\frac{A^Tb}{A^TA}$ 是标量值，$A$ 是原始的列向量 $a$），最后得到了一个更好的标准正交基。</p>
+<hr>
+<h3 id="QR- 分解"><a href="#QR- 分解" class="headerlink" title="QR 分解"></a>QR 分解 </h3><p> 我们曾经用矩阵的眼光审视消元法，故有 $A=LU$，这即是消元法的矩阵表示。</p>
+<p>以同样的眼光来看待 Gram-Schmidt 正交化，故有 $A=QR$，这既是 Gram-Schmidt 正交化的矩阵表示。</p>
+<p>设 $A$ 有两个列向量：$\Bigg[a_1\ a_2\Bigg]$，标准正交化后有 $\Bigg[a_1\ a_2\Bigg]=\Bigg[q_1\ q_2\Bigg]\begin{bmatrix}a_1^Tq_1&amp; a_2^Tq_1\\a_1^Tq_2&amp; a_2^Tq_2\end{bmatrix}$，而左下角的 $a_1^Tq_2$ 为 $0$。$A=QR$ 的重点在于，$R$ 是一个上三角矩阵，这是因为后来构造的向量总是正交于先前的向量。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linear-Algebra/" <i class="fa fa-tag"> Linear Algebra</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/12/LA-Lec16/" rel="next" title="Lec16 - 投影矩阵和最小二乘法">
+                <i class="fa fa-chevron-left"></i> Lec16 - 投影矩阵和最小二乘法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/LA-Lec18/" rel="prev" title="Lec18 - 行列式及其性质">
+                Lec18 - 行列式及其性质 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/RQTN.png" alt="RQTN">
+            
+              <p class="site-author-name" itemprop="name">RQTN</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+
+          
+          
+
+          
+          
+
+          
+<div id="music163player">
+<iframe frameborder="yes" border="0" marginwidth="0" marginheight="0" width="280" height="100" src="//music.163.com/outchain/player?type=2&id=4346205&auto=1&height=66"></iframe>
+</div>
+
+        </div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -17- 课 - 正交矩阵和 -Gram-Schmidt- 正交化"><span class="nav-number">1.</span> <span class="nav-text">第 17 课 正交矩阵和 Gram-Schmidt 正交化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标准正交向量与正交矩阵"><span class="nav-number">1.1.</span> <span class="nav-text">标准正交向量与正交矩阵 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gram-Schmidt- 正交化"><span class="nav-number">1.2.</span> <span class="nav-text">Gram-Schmidt 正交化 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QR- 分解"><span class="nav-number">1.3.</span> <span class="nav-text">QR 分解 </span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RQTN</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Violet.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rqtn.github.io/2019/08/12/LA-Lec17/';
+          this.page.identifier = '2019/08/12/LA-Lec17/';
+          this.page.title = 'Lec17 - 正交矩阵和 Gram-Schmidt 正交化';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Violet.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("J3VYNFpzWtRIpuWpeFI8w2kU-gzGzoHsz", "4it4flADjFkpxYvic54wC4KT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+</body>
+</html>

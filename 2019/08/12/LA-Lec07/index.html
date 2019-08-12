@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linear Algebra,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="summer v" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第 7 课 求解 $Ax=0$ ：主变量，特解 本章主要讲解  如何求解 $Ax=0$。其中涉及到了诸多步骤和概念，包括  消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。注意到，在整个课程的后半部分都在探讨  RREF，这有助于我们更加多角度深入地了解 $Ax=0$ 的求解，当然，RREF 在求解零空间时也有其重要的用途。   首先我们给出一个矩阵：   A">
+<meta name="keywords" content="Linear Algebra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec07 - 求解 Ax=0 ：主变量，特解">
+<meta property="og:url" content="https://rqtn.github.io/2019/08/12/LA-Lec07/index.html">
+<meta property="og:site_name" content="summer v">
+<meta property="og:description" content="第 7 课 求解 $Ax=0$ ：主变量，特解 本章主要讲解  如何求解 $Ax=0$。其中涉及到了诸多步骤和概念，包括  消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。注意到，在整个课程的后半部分都在探讨  RREF，这有助于我们更加多角度深入地了解 $Ax=0$ 的求解，当然，RREF 在求解零空间时也有其重要的用途。   首先我们给出一个矩阵：   A">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-12T10:02:35.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lec07 - 求解 Ax=0 ：主变量，特解">
+<meta name="twitter:description" content="第 7 课 求解 $Ax=0$ ：主变量，特解 本章主要讲解  如何求解 $Ax=0$。其中涉及到了诸多步骤和概念，包括  消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。注意到，在整个课程的后半部分都在探讨  RREF，这有助于我们更加多角度深入地了解 $Ax=0$ 的求解，当然，RREF 在求解零空间时也有其重要的用途。   首先我们给出一个矩阵：   A">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://rqtn.github.io/2019/08/12/LA-Lec07/">
+
+
+
+
+
+  <title>Lec07 - 求解 Ax=0 ：主变量，特解 | summer v</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">summer v</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/12/LA-Lec07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RQTN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/RQTN.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="summer v">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lec07 - 求解 Ax=0 ：主变量，特解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T18:02:04+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathematics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathematics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/12/LA-Lec07/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/12/LA-Lec07/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/12/LA-Lec07/" class="leancloud_visitors" data-flag-title="Lec07 - 求解 Ax=0 ：主变量，特解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第 -7- 课 - 求解 -Ax-0-：主变量，特解"><a href="# 第 -7- 课 - 求解 -Ax-0-：主变量，特解" class="headerlink" title="第 7 课 求解 $Ax=0$ ：主变量，特解"></a>第 7 课 求解 $Ax=0$ ：主变量，特解</h2><blockquote>
+<p>本章主要讲解 <strong> 如何求解 $Ax=0$</strong>。其中涉及到了诸多步骤和概念，包括 <strong> 消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。</strong>注意到，在整个课程的后半部分都在探讨  <strong>RREF</strong>，这有助于我们更加多角度深入地了解 $Ax=0$ 的求解，当然，<strong>RREF 在求解零空间时也有其重要的用途</strong>。</p>
+</blockquote>
+<p> 首先我们给出一个矩阵： </p>
+<script type="math/tex; mode=display">
+A = \left[\begin{matrix}
+1 & 2 & 2 & 2 \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{matrix}
+\right]</script><p>观察该矩阵的行和列，容易发现，列二是列一的倍数，而行三也等于行一加上行二，<strong>这些线性相关的情况都会在消元的过程中表现出来</strong>。</p>
+<ul>
+<li><p><strong>在消元的过程中，零空间不会改变 </strong>。这一点非常重要。<strong> 零空间实际上就是由满足 $Ax=0$ 的所有 $x$ 所组成。在消元过程中，解是不会改变的，因此零空间也不会改变。实际上，消元过程改变的是列空间（行变换改变列空间）。</strong></p>
+<ul>
+<li><p>行变换改变的是列空间这一点应该不难理解。<strong>随着行变换的进行，$A$ 的列向量本身发生了改变，导致 $A$ 的各个列向量的线性组合也发生了变化，从而 $A$ 的列空间发生了变化。</strong>我们就拿上面给出的矩阵 $A$ 来具体说明：</p>
+<script type="math/tex; mode=display">
+对矩阵 A 进行消元，其中 {\color{red}{红色}} 标记的为主元 \\
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  2&4&6&8\\
+  3&6&8&10
+  \end{bmatrix}  
+  \xrightarrow[r_3=r_3-3 \times r_1]{r_2=r_2-2 \times r_1}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&2&4
+  \end{bmatrix}  
+  \xrightarrow{r_3=r_3-r_2}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&0&0
+  \end{bmatrix}</script><p>首先，<strong>矩阵 $A$ 的列空间必定包括其列向量 </strong>，而注意到，<strong> 消元后得到的 $U$ 中其所有列向量的第三行都为 $0$，显然 $U$ 的列向量无论怎么进行线性组合都无法得到 $A$ 中的任何一个列向量（比如 $\left[\begin{array}{l}{2} \\ {4} \\ {6}\end{array}\right]$）。</strong>这说明，列空间随着行变换发生了改变。</p>
+<p>但就上面这个例子来看，我们也应该不难理解，<strong>对有些矩阵而言，行变换并不改变其列空间，这样的矩阵往往是在每一行都有主元存在。</strong></p>
+</li>
+<li><p>行变换不改变其零空间这一点同样很好理解，上面可能说的比较笼统，消元过程中，解是不会改变的，所以零空间不会改变，但为什么解是不会改变的呢？这里简单地用 $3\times 3$ 的例子说明一下：</p>
+<script type="math/tex; mode=display">
+设 A=\left[\begin{matrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{matrix}
+\right], 且存在 x=\left[\begin{matrix}
+x_1\\
+x_2 \\
+x_3
+\end{matrix}
+\right]使得 Ax=0\\
+那么此时显然有 \begin{cases}ax_1+bx_2+cx_3=0\\dx_1+ex_2+fx_3=0\\gx_1+hx_2+ix_3=0\end{cases}
+\\
+简单地，将 A 中 k 倍的行 2 加到行 1 上，A 的行 1 变为 \left[\begin{matrix}a+kd & b+ke & c+kf\end{matrix}\right]。此时仍有:\\
+(a+kd)x_1+(b+ke)x_2+(c+kf)x_3=(ax_1+bx_2+cx_3)+k(dx_1+ex_2+fx_3)=0</script></li>
+</ul>
+</li>
+</ul>
+<p>在最开始我们提到，消元过程中行之间和列之间线性相关的情况会表现出来。我们重新列出 $A$ 的消元过程：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  2&4&6&8\\
+  3&6&8&10
+  \end{bmatrix}  
+  \xrightarrow[r_3=r_3-3 \times r_1]{r_2=r_2-2 \times r_1}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&2&4
+  \end{bmatrix}  
+  \xrightarrow{r_3=r_3-r_2}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&0&0
+  \end{bmatrix}</script><ul>
+<li><strong>列之间的线性相关情况：</strong><ul>
+<li><strong>在进行到第二步时，第二列没有主元，这说明第二列是其前面的列的一个线性组合，显然第二列是第一列的两倍。</strong></li>
+<li><strong>在进行到第三步时，第四列没有主元，这说明第四列是其前面的列的一个线性组合，第四列等于两倍的第三列减去第二列。</strong></li>
+</ul>
+</li>
+<li><strong>行之间的线性相关情况：</strong><ul>
+<li><strong>在进行到第三步时，第三行没有主元，这说明第三行是其前面的行的一个线性组合，显然第三行等于第一行加上第二行。</strong></li>
+</ul>
+</li>
+</ul>
+<p>我们从本课的一开始就提到，消元过程会把行之间和列之间线性相关的情况表现出来，可是为什么呢？</p>
+<ul>
+<li><p><strong>消元过程通过行没有主元（出现零行）来提示行之间的线性相关情况 </strong>，因为消元过程本身就是行变换，也即对行向量进行各种线性组合。<strong> 如果出现了零行，那正好说明，零行前面的行的线性组合，包括了零行所在行的初始行向量。</strong>这也即上面矩阵中的第三行，其在消元完成后第三行为零行，故矩阵第一行和第二行必然能够通过线性组合得到该行的初始行向量 $\left[\begin{array}{cccc}{3} &amp; {6} &amp; {8} &amp; {10}\end{array}\right]$。</p>
+</li>
+<li><p><strong>消元过程通过列没有主元来提示列之间的线性相关情况</strong>。</p>
+<p>首先需要明确的一点是，<strong>消元过程（行变换）虽然能够改变矩阵的列向量（从而改变矩阵的列空间），但其不能改变矩阵的列向量之间的线性相关性！</strong>就这一点你可以观察上面矩阵的第一列和第二列，无论是进行消元之前还是完成消元之后，第二列都是第一列的两倍。</p>
+<p>我们可以把没有主元的列分成两部分来看待，主元位置以下（包括主元位置本身）是一部分，主元位置以上是另外一部分。</p>
+<ul>
+<li><strong>主元位置以下部分全都是 $0$，而该无主元列前面的列也是如此，故主元位置以下部分其实可以完全不管，一堆 $0$ 向量不管你怎么线性组合都会得到 $0$ 向量。</strong></li>
+<li><strong>主元位置以上部分不管存在什么值，这部分的每一行都是有主元的，因此也就一定能够通过线性组合来得到该无主元列在主元位置以上部分的值。</strong></li>
+</ul>
+</li>
+</ul>
+<p>从以上我们就可以看出来，主元是多么地有用。<strong>如果一个矩阵有 $r$ 个主元，那么该矩阵有 $r$ 列线性无关，有 $r$ 行线性无关。</strong></p>
+<p>最后我们 <strong> 通过消元将矩阵化简成阶梯形式（非零元素以一种阶梯形式出现），一般记为 $U$。</strong></p>
+<ul>
+<li><strong>主元的个数对于矩阵而言意义非凡，我们将矩阵中主元的个数称为秩。</strong></li>
+</ul>
+<p>化简完成以后，我们要开始正式对 $Ax = 0$ 进行求解了，只不过我们现在具体是对 $Ux = 0$ 进行求解，但不管是哪个式子，解（也即零空间）都是不变的。</p>
+<ul>
+<li><p>首先我们需要找出 <strong> 主变量和自由变量，主变量也即主列对应的变量，自由变量也即自由列对应的变量 </strong>。<strong> 这里自由变量的“自由”也即我们可以对其分配任意的数值。</strong>注意到，在课程中所提到的分配数值的策略是：<strong>分别地对其中一个自由变量分配 $1$，其他所有自由变量分配 $0$</strong>。</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x_1+2x_2+2x_3+2x_4=0 \\ 
+2x_3+4x_4=0 \\
+\end{cases}
+\rightarrow
+\begin{cases}
+x_1 = 2x_4 - 2x_2\\
+x_3 = -2x_4 \\
+\end{cases}</script><p>按照课程中的分配数值的策略，首先给自由变量 $\left[\begin{matrix}x_2\\x_4\end{matrix}\right]$ 赋值为 $\left[\begin{matrix}1\\0\end{matrix}\right]$，代入方程组得到解向量为 $\left[\begin{array}{c}{-2} \\ {1} \\ {0} \\ {0}\end{array}\right]$。再给自由变量 $\left[\begin{matrix}x_2\\x_4\end{matrix}\right]$ 赋值为 $\left[\begin{matrix}0\\1\end{matrix}\right]$，代入方程组得到解向量为 $\left[\begin{array}{c}{2} \\ {0} \\ {-2} \\ {1}\end{array}\right]$。</p>
+<p>我们一般称这两个解向量为 <strong> 特解，其特殊之处就在于我们给自由变量的赋值策略 </strong>。正如视频中所说的，”<strong> 这样的分配是很有讲究的 </strong>“，那到底讲究在哪呢？我认为其讲究之处就在于，<strong> 这种 $0$ 和 $1$ 的取值对应着一种考虑：即当只考虑某个自由变量时可以取到什么（特）解。这种考虑的好处是，能够确保所得到的特解之间是线性无关的！这一点非常重要也很容易理解，也正是这样，我们才能保证我们所得到的 k（自由变量个数）个特解是能够完整正确地表示整个零空间。</strong></p>
+<p>此外，我们也可以像下面这样把 <strong>$x$ 写成以自然变量为权重的两个向量的线性组合的形式，自然而然地得到特解</strong>。</p>
+<script type="math/tex; mode=display">
+x=\left[\begin{matrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+2x_4 - 2x_2 \\
+x_2 \\
+-2x_4 \\
+x_4
+\end{matrix}\right]
+=
+x_4\left[\begin{matrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{matrix}\right]
++
+x_2\left[\begin{matrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{matrix}\right]</script><p>到这里结论就显而易见了：<strong>零空间所包含的正好是特解的线性组合，每个自由变量对应着有一个特解。而自由变量的个数实际上就由矩阵的列数（设为 $n$）减去矩阵的主列个数（也即秩，设为 $r$）从而得到（$n-r$）</strong></p>
+</li>
+</ul>
+<p>阶梯型矩阵 $U$ 还可以进一步化简为 <strong> 简化行阶梯形式 RREF（主元所在列除主元外其他所有元素都为 $0$ ，且主元为 $1$）</strong>。</p>
+<script type="math/tex; mode=display">
+U=\begin{bmatrix}
+\color{red}{1}&2&2&2\\
+0&0&\color{red}{2}&4\\
+0&0&0&0
+\end{bmatrix}  
+\xrightarrow{r_1=r_1-r_2}  
+\begin{bmatrix}
+\color{red}{1}&2&0&-2\\
+0&0&\color{red}{2}&4\\
+0&0&0&0
+\end{bmatrix}  
+\xrightarrow{r_2=r_2/2}  
+\begin{bmatrix}
+\color{red}{1}&2&0&-2\\
+0&0&\color{red}{1}&2\\
+0&0&0&0
+\end{bmatrix}=R</script><p>课程后半部分花费大量介绍简化行阶梯形式（RREF），其对于我们进一步理解 $Ax = 0$ 的求解具有非常重要的作用。  </p>
+<ul>
+<li><p><strong>观察我们最终得到的 $R$，容易发现它还包含了一个单位阵，位于主元行与主元列的交汇处</strong>，现在我们将 $R$ 中的主元列与自由列分开，即交换一下列，使得主元列在一起，自由列在一起， 从而有：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\color{red}{1}&2&0&-2\\
+0&0&\color{red}{1}&2\\
+0&0&0&0
+\end{bmatrix}
+\xrightarrow{exchange\ c_2=c_3}
+\begin{bmatrix}
+\color{red}{1}&0&2&-2\\
+0&\color{red}{1}&0&2\\
+0&0&0&0
+\end{bmatrix}
+\\
+将矩阵中的 \begin{bmatrix}
+2 & -2\\
+0 & 2
+\end{bmatrix}部分记为 F,\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}部分记为 I\\
+仔细观察前面得到的两个特解：\left[\begin{matrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{matrix}\right]
+\left[\begin{matrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{matrix}\right]
+\\
+注意到前面我们对 R 交换了列，所以特解中的分量也需要进行交换（x_2 和 x_3）\\
+\left[\begin{matrix}
+-2 \\
+0 \\
+1 \\
+0
+\end{matrix}\right]
+\left[\begin{matrix}
+2 \\
+-2 \\
+0 \\
+1
+\end{matrix}\right]
+\\
+仔细观察可发现，这两个解若作为列向量组成一个矩阵，恰好为 \left[\begin{matrix}
+-F \\
+I
+\end{matrix}\right]</script><p>如何解释上面的现象呢？下面给出上面结论的推导过程：</p>
+<p><strong>现假设矩阵已经消元和简化到 RREF 形式为 $R$，其列数为 $n$，其秩为 $r$，且列顺序已经调整好，也即 $R$ 矩阵主列都在前，自由列都在后，$R$ 的下面是零行，故 $R=\begin{bmatrix}I&amp;F\\0&amp;0\end{bmatrix}$ 。那么 $Rx = 0$ 的特解是什么呢？</strong></p>
+<p><strong>我们可以构造一个零空间矩阵 $N = \begin{bmatrix}x_1 &amp;\cdots&amp; x_{n-r}\end{bmatrix}=\begin{bmatrix}X_{pivot}\\X_{free}\end{bmatrix}$，该矩阵的各列由特解（$x_1,\cdots, x_{n-r}$）组成，故显然有 $RN=0（0 矩阵）$。此时 $\begin{bmatrix}I&amp;F\\0&amp;0\end{bmatrix}\begin{bmatrix}X_{pivot}\\X_{free}\end{bmatrix}=IX_{pivot} + FX_{free}=0$，其中 $I$ 为 $r\times r$，$F$ 为 $r\times (n-r)$，$X_{pivot}$ 为 $r\times(n-r) $ ，$X_{free}$ 为 $(n-r)\times (n-r)$。</strong></p>
+<p><strong>如果把单位矩阵赋值给 $N$ 的 $X_{free}$ 部分使得 $X_{free}=I$（所有特解的自由变量部分组成的一个矩阵），那么显然每个特解对应于单位矩阵的一列，也即最上面提到的分配策略：给其中一个自由变量分配 $1$ ，其他所有自由变量分配 $0$。这样一来，$X_{pivot}=-F$，也即 $N = \begin{bmatrix}-F\\I\end{bmatrix}$。</strong></p>
+</li>
+<li><p><strong>矩阵的主元的个数与其转置的主元的个数相同。</strong> </p>
+<p><strong>主元的概念是伴随消元而生的。假设矩阵 $A$ 消元后所得的主元个数为 $a$，那么就表示矩阵 $A$ 有 $a$ 行线性无关，有 $a$ 列线性无关；假设矩阵 $A^T$ 消元后所得的主元个数为 $b$，那么就表示矩阵 $A^T$ 有 $b$ 行线性无关，有 $b$ 列线性无关。</strong></p>
+<p><strong>而由矩阵的转置的定义，我们知道，矩阵 $A$ 的行就是矩阵 $A^T$ 的列，因此 $a=b$。</strong></p>
+<p><strong>换句话说，$A$ 的主元个数 = $A$ 矩阵线性无关的列的个数 = $A^T$ 矩阵线性无关的行的个数 = $A^T$ 的主元个数。</strong></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linear-Algebra/" <i class="fa fa-tag"> Linear Algebra</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/12/LA-Lec06/" rel="next" title="Lec06 - 列空间和零空间">
+                <i class="fa fa-chevron-left"></i> Lec06 - 列空间和零空间
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/LA-Lec08/" rel="prev" title="Lec08 - 求解 Ax=b ：可解性和解的结构">
+                Lec08 - 求解 Ax=b ：可解性和解的结构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/RQTN.png" alt="RQTN">
+            
+              <p class="site-author-name" itemprop="name">RQTN</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+
+          
+          
+
+          
+          
+
+          
+<div id="music163player">
+<iframe frameborder="yes" border="0" marginwidth="0" marginheight="0" width="280" height="100" src="//music.163.com/outchain/player?type=2&id=4346205&auto=1&height=66"></iframe>
+</div>
+
+        </div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -7- 课 - 求解 -Ax-0-：主变量，特解"><span class="nav-number">1.</span> <span class="nav-text">第 7 课 求解 $Ax=0$ ：主变量，特解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RQTN</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Violet.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rqtn.github.io/2019/08/12/LA-Lec07/';
+          this.page.identifier = '2019/08/12/LA-Lec07/';
+          this.page.title = 'Lec07 - 求解 Ax=0 ：主变量，特解';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Violet.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("J3VYNFpzWtRIpuWpeFI8w2kU-gzGzoHsz", "4it4flADjFkpxYvic54wC4KT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+</body>
+</html>
