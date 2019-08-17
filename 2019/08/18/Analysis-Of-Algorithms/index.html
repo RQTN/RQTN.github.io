@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algs4,Coursera,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="summer v" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Analysis Of AlgorithmInterview Questions: Analysis of Algorithms (ungraded)1. 3-SUM in quadratic time.  Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst cas">
+<meta name="keywords" content="Algs4,Coursera">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Analysis Of Algorithms">
+<meta property="og:url" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/index.html">
+<meta property="og:site_name" content="summer v">
+<meta property="og:description" content="Analysis Of AlgorithmInterview Questions: Analysis of Algorithms (ungraded)1. 3-SUM in quadratic time.  Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst cas">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/ThreeSumCompare.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/2-bitonicArray.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/BitonicSearchCompare.png">
+<meta property="og:updated_time" content="2019-08-17T18:02:14.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Analysis Of Algorithms">
+<meta name="twitter:description" content="Analysis Of AlgorithmInterview Questions: Analysis of Algorithms (ungraded)1. 3-SUM in quadratic time.  Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst cas">
+<meta name="twitter:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/ThreeSumCompare.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/">
+
+
+
+
+
+  <title>Analysis Of Algorithms | summer v</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">summer v</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RQTN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/RQTN.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="summer v">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Analysis Of Algorithms</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-18T02:00:12+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/18/Analysis-Of-Algorithms/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/18/Analysis-Of-Algorithms/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/18/Analysis-Of-Algorithms/" class="leancloud_visitors" data-flag-title="Analysis Of Algorithms">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Analysis-Of-Algorithm"><a href="#Analysis-Of-Algorithm" class="headerlink" title="Analysis Of Algorithm"></a>Analysis Of Algorithm</h2><h3 id="Interview-Questions-Analysis-of-Algorithms-ungraded"><a href="#Interview-Questions-Analysis-of-Algorithms-ungraded" class="headerlink" title="Interview Questions: Analysis of Algorithms (ungraded)"></a>Interview Questions: Analysis of Algorithms (ungraded)</h3><p><strong>1. 3-SUM in quadratic time.</strong> </p>
+<p>Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst case. You may assume that you can sort the $n$ integers in time proportional to $n^2$ or better.</p>
+<p><em>Note: these interview questions are ungraded and purely for your own enrichment. To get a hint, submit a solution.</em></p>
+<p><strong>Solution</strong></p>
+<p>在课程中已经给出了两个求解 3-SUM 问题的算法：暴力方法 <code>ThreeSum</code> 和改进算法 <code>ThreeSumFast</code>。</p>
+<p>其中暴力方法 <code>ThreeSum</code> 的时间复杂度为 $O(N^3)$，改进算法 <code>ThreeSumFast</code> 的时间复杂度为 $O(N^2logN)$。</p>
+<p>题目要求我们再实现一种求解 3-SUM 问题的算法 <code>ThreeSumQuadratic</code>，要求其时间复杂度为 $O(N^2)$。</p>
+<p>分析 <code>ThreeSumFast</code>，虽然其对数组 <code>a</code> 进行排序，但排序后，仍然需要对一堆二元整数组 <code>(a[i], a[j])</code> 做关于其和的负数 <code>-(a[i]+a[j])</code> 的 <code>BinarySearch</code>，这堆二元整数组有 $\sim\frac{1}{2}N^2$ 多个，这意味着我们要做 $\sim \frac{1}{2}N^2$ 次 <code>BinarySearch</code>。</p>
+<blockquote>
+<p><strong>Note</strong>：</p>
+<p><strong>我们说时间复杂度一般是指 Big-Oh：$O$。</strong></p>
+<p>排序的时间复杂度可以是 $O(NlogN)$ 也可以是 $O(N^2)$，取决于排序算法。但显然，在 <code>FastThreeSum</code> 中，在一堆二元组上做 <code>BinarySearch</code> 才是主要操作。</p>
+</blockquote>
+<p>我们需要摆脱二元整数组，否则时间复杂度不可能降低到 $O(N^2)$，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> analysis_of_algs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.In;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.Stopwatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeSumQuadratic</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">int</span> N = a.length;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N - <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> k = N - <span class="number">1</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> (j &lt; k) &#123;</span><br><span class="line">				<span class="keyword">int</span> sum = a[i] + a[j] + a[k];</span><br><span class="line">				<span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">					j++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					k--;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					count++;</span><br><span class="line">					j++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] a = <span class="keyword">new</span> In(args[<span class="number">0</span>]).readAllInts();</span><br><span class="line">		Stopwatch stopwatch = <span class="keyword">new</span> Stopwatch();</span><br><span class="line">		StdOut.println(count(a));</span><br><span class="line">		<span class="keyword">double</span> time = stopwatch.elapsedTime();</span><br><span class="line">		StdOut.println(time);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只要排序算法的时间复杂度低于 $O(N^2)$，以上代码的方法即满足需求。</p>
+<p><strong>效果对比（<code>ThreeSumFast</code> 和 <code>ThreeSumQuadratic</code> 使用相同的排序算法）：</strong></p>
+<p><img src="/2019/08/18/Analysis-Of-Algorithms/ThreeSumCompare.png"></p>
+<p><strong>2. Search in a bitonic array.</strong> </p>
+<p>An array is <strong>bitonic (双调)</strong> if it is comprised of an increasing sequence of integers followed immediately by a decreasing sequence of integers. Write a program that, given a bitonic array of $n$ distinct integer values, determines whether a given integer is in the array.</p>
+<ul>
+<li>Standard version: Use $\sim 3\lg n$ compares in the worst case.</li>
+<li>Signing bonus: Use $\sim 2\lg n$ compares in the worst case (and prove that no algorithm can guarantee to perform fewer than $\sim 2\lg n$ compares in the worst case).</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>这里将列出三种算法。</p>
+<ul>
+<li><p>首先是我想到的算法（算法一 <code>BitonicSearch</code>），我想当然地以为算法一是 $\sim2\lg n$ 的，实际上，算法一的性能是最差的，其时间复杂度为 $O(\lg^2N)$。思路如下：</p>
+<ul>
+<li><p>寻找数组的中间点 <code>mid</code></p>
+</li>
+<li><p>确定 <code>a[mid]</code> 附近的排序情况，是降序还是升序（等价于确定最大值是在 <code>a[mid]</code> 的左边还是右边）</p>
+</li>
+<li><p>确定 <code>key</code> 与 <code>a[mid]</code> 的大小情况</p>
+</li>
+<li><p>如果是降序，那么显然 <code>a[mid]~a[hi]</code> 都是降序，此时：</p>
+<ul>
+<li><p>若 <code>key</code> 比 <code>a[mid]</code> 要小，那么 <code>key</code> 可能在 <code>a[mid]~a[hi]</code> 中，也可能在 <code>a[lo]~a[mid]</code> 中。</p>
+<p>对于 <code>a[mid]~a[hi]</code>，其为降序数组，使用 <code>BinarySearch</code>，找到则返回，否则再到 <code>a[lo]~a[mid]</code> 中寻找，显然 <code>a[lo]~a[mid]</code> 是一个更小的双调数组，可递归求解。</p>
+</li>
+<li><p>若 <code>key</code> 比 <code>a[mid]</code> 要大，那么 <code>key</code> 只可能在 <code>a[lo]~a[mid]</code> 中，可递归求解。</p>
+</li>
+</ul>
+</li>
+<li><p>如果是升序，那么显然 <code>a[lo]~a[mid]</code> 都是升序，此时：</p>
+<ul>
+<li><p>若 <code>key</code> 比 <code>a[mid]</code> 要小，那么 <code>key</code> 可能在 <code>a[lo]~a[mid]</code> 中，也可能在 <code>a[mid]~a[hi]</code> 中。</p>
+<p>对于 <code>a[lo]~a[mid]</code>，其为升序数组，使用 <code>BinarySearch</code>，找到则返回，否则再到 <code>a[mid]~a[hi]</code> 中寻找，显然 <code>a[mid]~a[hi]</code> 是一个更小的双调数组，可递归求解。</p>
+</li>
+<li><p>若 <code>key</code> 比 <code>a[mid]</code> 要大，那么 <code>key</code> 只可能在 <code>a[mid]~a[hi]</code> 中，可递归求解。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>网上🏄 发现，其实也有很多人和我一样把算法一想当然地认为是 $\sim2\lg N$ 的，对于其时间复杂度为 $O(\lg^2N)$ 的解释参考：<a href="https://stackoverflow.com/questions/19372930/given-a-bitonic-array-and-element-x-in-the-array-find-the-index-of-x-in-2logn" target="_blank" rel="noopener">StackOverflow - Given a bitonic array and element x in the array, find the index of x in 2log(n) time</a>。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> analysis_of_algs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitonicSearch</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leftBinarySearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span> ;</span><br><span class="line">			<span class="keyword">if</span> (key &lt; a[mid]) hi = mid - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (key &gt; a[mid]) lo = mid + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rightBinarySearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (key &gt; a[mid]) hi = mid - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (key &lt; a[mid]) lo = mid + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> find(a, key, <span class="number">0</span>, a.length-<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (lo &gt; hi) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (a[mid] == key) <span class="keyword">return</span> mid;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> rbResult = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> lbResult = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// if a[mid] nearby is descending order</span></span><br><span class="line">		<span class="keyword">if</span> (a[mid] &gt; a[mid+<span class="number">1</span>]) &#123;</span><br><span class="line">			<span class="comment">// if a[mid] &gt; key, rightBinarySearch on a[mid+1]~a[hi]  </span></span><br><span class="line">			<span class="keyword">if</span> (a[mid] &gt; key) &#123;</span><br><span class="line">				rbResult = rightBinarySearch(a, key, mid+<span class="number">1</span>, hi);</span><br><span class="line">				<span class="comment">// if rightBinarySearch not find, then key also may on a[lo]~a[mid-1]</span></span><br><span class="line">				<span class="keyword">if</span> (rbResult == -<span class="number">1</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> find(a, key, lo, mid-<span class="number">1</span>);</span><br><span class="line">				&#125; </span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">return</span> rbResult;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// else a[mid] &lt; key, then key only possible on a[lo]~a[mid-1]</span></span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> find(a, key, lo, mid-<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// else a[mid] nearby is ascending order</span></span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// if a[mid] &gt; key, leftBinarySearch on a[lo]~a[mid-1]</span></span><br><span class="line">			<span class="keyword">if</span> (a[mid] &gt; key) &#123;</span><br><span class="line">				lbResult = leftBinarySearch(a, key, lo, mid-<span class="number">1</span>);</span><br><span class="line">				<span class="comment">// if leftBinarySearch not find, then key also may on a[mid+1]~a[hi]</span></span><br><span class="line">				<span class="keyword">if</span> (lbResult == -<span class="number">1</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> find(a, key, mid+<span class="number">1</span>, hi);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">return</span> lbResult;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// else a[mid] &lt; key, then key only possible on a[mid+1]~a[hi]</span></span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> find(a, key, mid+<span class="number">1</span>, hi);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">29</span>, <span class="number">28</span>, <span class="number">27</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">19</span>, <span class="number">17</span>, <span class="number">16</span>, <span class="number">15</span>, <span class="number">14</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">        	<span class="keyword">int</span> ret = find(a, i);</span><br><span class="line">            StdOut.println(i + <span class="string">":"</span> + (ret == -<span class="number">1</span> ? <span class="string">"not find"</span> : <span class="string">"find at"</span> + ret));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其次是算法二 <code>BitonicSearchStd</code>，也即题目中要求的 Standard version，$\sim 3\lg N$ 的比较数。</p>
+<p>算法二的思想很简单，先采用 <code>BinarySearch</code> 的变式把最大值给找到，这在 worst case 下是 $\sim \lg N$ 的比较数，然后对最大值的左半边和右半边分别使用 <code>BinarySearch</code>，左右各有 $2\lg \frac{N}{2}=\lg N-2=\sim\lg N$ 的比较数，故总共有 $\sim 3\lg N$ 的比较数。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> analysis_of_algs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitonicSearchStd</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leftBinarySearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span> ;</span><br><span class="line">			<span class="keyword">if</span> (key &lt; a[mid]) hi = mid - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (key &gt; a[mid]) lo = mid + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rightBinarySearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt;= hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (key &gt; a[mid]) hi = mid - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (key &lt; a[mid]) lo = mid + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findMaxIndex</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> lo = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> hi = a.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt; hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (a[mid] &gt; a[mid+<span class="number">1</span>]) &#123;</span><br><span class="line">				hi = mid;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				lo = mid + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> hi;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> lo = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> hi = a.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> maxIndex = findMaxIndex(a);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (key == a[maxIndex]) <span class="keyword">return</span> maxIndex;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> lbResult = leftBinarySearch(a, key, lo, maxIndex - <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span> (lbResult != -<span class="number">1</span>) <span class="keyword">return</span> lbResult;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> rbResult = rightBinarySearch(a, key, maxIndex + <span class="number">1</span>, hi);</span><br><span class="line">		<span class="keyword">if</span> (rbResult != -<span class="number">1</span>) <span class="keyword">return</span> rbResult;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">29</span>, <span class="number">28</span>, <span class="number">27</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">19</span>, <span class="number">17</span>, <span class="number">16</span>, <span class="number">15</span>, <span class="number">14</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">        	<span class="keyword">int</span> ret = find(a, i);</span><br><span class="line">            StdOut.println(i + <span class="string">":"</span> + (ret == -<span class="number">1</span> ? <span class="string">"not find"</span> : <span class="string">"find at"</span> + ret));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>：</p>
+<p>算法一和算法二中使用的 <code>leftBinarySearch</code> 和 <code>rightBinarySearch</code> 都是课程中所说的 “3-way compare” 实现，也即有 2 次比较，程序流有 3 路分支。所以，算法二中对左右半边进行 <code>BinarySearch</code> 比较数为 $2\lg \frac{N}{2}$ 而非 $\lg\frac{N}{2}$。<strong>在算法三中，将给出 “2-way compare” 实现 <code>leftSearch</code> 和 <code>rightSearch</code>（一般我们还是会用更加直观的 “3-way compare”）</strong>。</p>
+<p>此外，我们在查看 <code>a[mid]</code> 附近的情况时，一般用 <code>a[mid+1]</code> 而非 <code>a[mid-1]</code>，因为在 <code>while(lo &lt; hi)</code> 的前提下，<code>a[mid+1]</code> 总是存在的，而 <code>a[mid-1]</code> 我们需要额外检查 <code>mid-1</code> 下标的合法性。</p>
+</blockquote>
+<ul>
+<li><p>最后是算法三 <code>BitonicSearchBonus</code>，也即题目中要求的 bonus，$\sim 2\lg N$ 的比较数。</p>
+<p>综合算法一和算法三，容易想到 <strong> 去掉寻找最大值 </strong> 的过程。</p>
+<p>事实上，算法三和算法一只有一个关键的地方有不同，就 <code>a[mid]</code> 附近是降序的情况而言，算法一是：</p>
+<blockquote>
+<p>若 <code>key</code> 比 <code>a[mid]</code> 要小，那么 <code>key</code> 可能在 <code>a[mid]~a[hi]</code> 中，也可能在 <code>a[lo]~a[mid]</code> 中。</p>
+<p>对于 <code>a[mid]~a[hi]</code>，其为降序数组，使用 <code>BinarySearch</code>，找到则返回，否则再到 <code>a[lo]~a[mid]</code> 中寻找，显然 <code>a[lo]~a[mid]</code> 是一个更小的双调数组，可递归求解。</p>
+</blockquote>
+<p>关键的地方就在后者，<code>a[lo]~a[mid]</code> 我们知道是一个相对更小的双调数组（对应下图中的蓝色和黑色部分），故在算法一中，我们将其视为子问题递归求解。</p>
+<p>而实际上，<strong>当 <code>key &lt; a[mid]</code> 时（也即要寻找的 <code>key</code> 值位于蓝色部分时），我们可以直接在 <code>a[lo]~a[mid]</code> 这个双调数组上使用 <code>BinarySearch</code> 并得到正确的结果</strong> 。</p>
+<p>这就是算法三的关键思想：对于一个双调数组，如果你要寻找的 <code>key</code> 值位于 <code>a[lo]</code> 和 <code>a[hi]</code> 之间，那么直接使用 <code>BinarySearch</code> 是正确的。</p>
+<p><img src="/2019/08/18/Analysis-Of-Algorithms/2-bitonicArray.png" width="40%"></p>
+<p>好了，对于 <code>key &lt; a[mid]</code> 的情况，<code>key</code> 在两边都有可能存在（蓝色和红色部分），我们直接对两边进行 <code>BinarySearch</code> 就好了，即使其中一边是双调数组，此时有 $\sim 2\lg N$ 的比较数。</p>
+<p>那对于 <code>key &gt; a[mid]</code> 的情况，<code>key</code> 处于黑色部分，我们只需要根据 <code>a[mid]</code> 附近的情况进行范围缩小即可。比如若我们要找到 <code>key</code> 是上图中的绿点，由于 <code>a[mid]</code> 附近是降序（说明 <code>key</code> 位于 <code>mid</code> 的左边），显然此时 <code>key</code> 只可能存在于左边 <code>a[lo]~a[mid]</code>，此时令 <code>hi=mid-1</code> 。依次类推，不断重复地缩小范围，使转换到 <code>key &lt; a[mid]</code> 的情况，然后就能对两边 <code>BinarySearch</code> 进行求解。</p>
+<p>如果要寻找的 <code>key</code> 特别大（比数组中的所有元素都大），那么此时有 $\sim \lg N$ 的比较数。一般地，假设 <code>k</code> 次缩小范围，则有：<script type="math/tex">k+2\lg \frac{N}{2^{k+1}}=k+2(\lg N - (k+1))=2\lg N-k-2=\sim \lg N</script>。</p>
+<p>代码如下（注意其中 <code>BinarySearch</code> 的 “2-way compare” 实现）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> analysis_of_algs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitonicSearchBonus</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leftSearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt; hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (key &lt;= a[mid]) &#123;</span><br><span class="line">				hi = mid;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				lo = mid + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (key == a[lo]) <span class="keyword">return</span> lo;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rightSearch</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt; hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (key &gt;= a[mid]) &#123;</span><br><span class="line">				hi = mid;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				lo = mid + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (key == a[lo]) <span class="keyword">return</span> lo;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> lo = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> hi = a.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (lo &lt; hi) &#123;</span><br><span class="line">			<span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (key == a[mid]) <span class="keyword">return</span> mid;</span><br><span class="line">			<span class="keyword">if</span> (key &lt; a[mid]) &#123;</span><br><span class="line">				<span class="keyword">int</span> lbResult = leftSearch(a, key, lo, mid);</span><br><span class="line">				<span class="keyword">if</span> (lbResult != -<span class="number">1</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> lbResult;</span><br><span class="line">				&#125; </span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">return</span> rightSearch(a, key, mid, hi);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (a[mid] &lt; a[mid+<span class="number">1</span>]) &#123;</span><br><span class="line">					lo = mid + <span class="number">1</span>;</span><br><span class="line">				&#125; </span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					hi = mid - <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">29</span>, <span class="number">28</span>, <span class="number">27</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">19</span>, <span class="number">17</span>, <span class="number">16</span>, <span class="number">15</span>, <span class="number">14</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">31</span>; i++) &#123;</span><br><span class="line">        	<span class="keyword">int</span> ret = find(a, i);</span><br><span class="line">            StdOut.println(i + <span class="string">":"</span> + (ret == -<span class="number">1</span> ? <span class="string">"not find"</span> : <span class="string">"find at"</span> + ret));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>效果对比</strong></p>
+<p><img src="/2019/08/18/Analysis-Of-Algorithms/BitonicSearchCompare.png" width="100%"></p>
+<p><strong>3. Egg drop.</strong> </p>
+<p>Suppose that you have an $n$-story building (with floors $1$ through $n$) and plenty of eggs. An egg breaks if it is dropped from floor $T$ or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of $T$ given the following limitations on the number of eggs and tosses:</p>
+<ul>
+<li>Version 0: $1$ egg,  $\le T$ tosses.</li>
+<li>Version 1: $\sim1\lg n$ eggs and  $\sim1\lg n$ tosses.</li>
+<li>Version 2: $\sim\lg T$ eggs and  $\sim2\lg T$ tosses.</li>
+<li>Version 3: $2$ eggs and $\sim2\sqrt{n}$ tosses.</li>
+<li>Version 4: $2$ eggs and $\le c \sqrt T$ tosses for some fixed constant $c$.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algs4/" <i class="fa fa-tag"> Algs4</a>
+          
+            <a href="/tags/Coursera/" <i class="fa fa-tag"> Coursera</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/12/LA-Lec19/" rel="next" title="Lec19 - 行列式公式和代数余子式">
+                <i class="fa fa-chevron-left"></i> Lec19 - 行列式公式和代数余子式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/RQTN.png" alt="RQTN">
+            
+              <p class="site-author-name" itemprop="name">RQTN</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+
+          
+          
+
+          
+          
+
+          
+<div id="music163player">
+<iframe frameborder="yes" border="0" marginwidth="0" marginheight="0" width="280" height="100" src="//music.163.com/outchain/player?type=2&id=4346205&auto=1&height=66"></iframe>
+</div>
+
+        </div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-Of-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">Analysis Of Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Interview-Questions-Analysis-of-Algorithms-ungraded"><span class="nav-number">1.1.</span> <span class="nav-text">Interview Questions: Analysis of Algorithms (ungraded)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RQTN</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">54.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Violet.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/';
+          this.page.identifier = '2019/08/18/Analysis-Of-Algorithms/';
+          this.page.title = 'Analysis Of Algorithms';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Violet.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("J3VYNFpzWtRIpuWpeFI8w2kU-gzGzoHsz", "4it4flADjFkpxYvic54wC4KT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+</body>
+</html>
