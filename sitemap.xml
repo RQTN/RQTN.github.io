@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://rqtn.github.io/2019/08/11/Union-Find/</loc>
+    
+    <lastmod>2019-08-18T08:40:24.480Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/</loc>
     
-    <lastmod>2019-08-17T18:02:14.874Z</lastmod>
+    <lastmod>2019-08-18T08:39:54.699Z</lastmod>
     
   </url>
   
@@ -145,13 +152,6 @@
     <loc>https://rqtn.github.io/2019/06/30/wx-request-%E4%B8%8D%E5%AE%8C%E5%85%A8%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2019-08-11T12:10:58.661Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://rqtn.github.io/2019/08/11/Union-Find/</loc>
-    
-    <lastmod>2019-08-11T06:43:51.359Z</lastmod>
     
   </url>
   
