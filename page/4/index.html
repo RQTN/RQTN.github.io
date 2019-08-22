@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linear Algebra,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,18 +81,13 @@
 
 
 
-<meta name="description" content="第 3 课 乘法和逆矩阵 第 3 课的主要内容是  矩阵乘法  和逆矩阵 。矩阵乘法主要介绍了 矩阵乘法的多种求解方法 、 乘法的结合律  以及  能够相乘的条件 。逆矩阵主要介绍了 如何判断一个矩阵是逆矩阵 ，最后顺带提及了 求解一个好矩阵（非奇异矩阵）的逆矩阵的方法。   矩阵乘法 $AB=C$ 的 $5$ 种求解方法：  从元素的角度（$A$ 的行乘以 $B$ 的列）  c_{ij} = (">
-<meta name="keywords" content="Linear Algebra">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Lec03 - 乘法和逆矩阵">
-<meta property="og:url" content="https://rqtn.github.io/2019/08/11/LA-Lec03/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="summer v">
+<meta property="og:url" content="https://rqtn.github.io/page/4/index.html">
 <meta property="og:site_name" content="summer v">
-<meta property="og:description" content="第 3 课 乘法和逆矩阵 第 3 课的主要内容是  矩阵乘法  和逆矩阵 。矩阵乘法主要介绍了 矩阵乘法的多种求解方法 、 乘法的结合律  以及  能够相乘的条件 。逆矩阵主要介绍了 如何判断一个矩阵是逆矩阵 ，最后顺带提及了 求解一个好矩阵（非奇异矩阵）的逆矩阵的方法。   矩阵乘法 $AB=C$ 的 $5$ 种求解方法：  从元素的角度（$A$ 的行乘以 $B$ 的列）  c_{ij} = (">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-11T13:16:58.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lec03 - 乘法和逆矩阵">
-<meta name="twitter:description" content="第 3 课 乘法和逆矩阵 第 3 课的主要内容是  矩阵乘法  和逆矩阵 。矩阵乘法主要介绍了 矩阵乘法的多种求解方法 、 乘法的结合律  以及  能够相乘的条件 。逆矩阵主要介绍了 如何判断一个矩阵是逆矩阵 ，最后顺带提及了 求解一个好矩阵（非奇异矩阵）的逆矩阵的方法。   矩阵乘法 $AB=C$ 的 $5$ 种求解方法：  从元素的角度（$A$ 的行乘以 $B$ 的列）  c_{ij} = (">
+<meta name="twitter:title" content="summer v">
 
 
 
@@ -122,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://rqtn.github.io/2019/08/11/LA-Lec03/">
+  <link rel="canonical" href="https://rqtn.github.io/page/4/">
 
 
 
 
 
-  <title>Lec03 - 乘法和逆矩阵 | summer v</title>
+  <title>summer v</title>
   
 
 
@@ -147,7 +142,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 <a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,9 +278,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -297,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/11/LA-Lec03/">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/03/15/SAD-hw1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RQTN">
@@ -314,7 +310,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lec03 - 乘法和逆矩阵</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/SAD-hw1/" itemprop="url">SAD_hw1</a></h1>
         
 
         <div class="post-meta">
@@ -326,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T21:10:06+08:00">
-                2019-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T05:18:27+08:00">
+                2019-03-15
               </time>
             
 
@@ -349,8 +347,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathematics/" itemprop="url" rel="index">
-                    <span itemprop="name">Mathematics</span>
+                  <a href="/categories/大三下/" itemprop="url" rel="index">
+                    <span itemprop="name">大三下</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大三下/SAD/" itemprop="url" rel="index">
+                    <span itemprop="name">SAD</span>
                   </a>
                 </span>
 
@@ -367,8 +376,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/11/LA-Lec03/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/11/LA-Lec03/" itemprop="commentCount"></span>
+                <a href="/2019/03/15/SAD-hw1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/15/SAD-hw1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -376,7 +385,7 @@
 
           
           
-             <span id="/2019/08/11/LA-Lec03/" class="leancloud_visitors" data-flag-title="Lec03 - 乘法和逆矩阵">
+             <span id="/2019/03/15/SAD-hw1/" class="leancloud_visitors" data-flag-title="SAD_hw1">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  842
+                  3.9k
                 </span>
               
 
@@ -417,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -438,80 +447,20 @@
       
 
       
-        <h2 id="第 -3- 课 - 乘法和逆矩阵"><a href="# 第 -3- 课 - 乘法和逆矩阵" class="headerlink" title="第 3 课 乘法和逆矩阵"></a>第 3 课 乘法和逆矩阵</h2><blockquote>
-<p>第 3 课的主要内容是 <strong> 矩阵乘法 </strong> 和<strong>逆矩阵 </strong>。矩阵乘法主要介绍了<strong> 矩阵乘法的多种求解方法 </strong>、<strong> 乘法的结合律 </strong> 以及 <strong> 能够相乘的条件 </strong>。逆矩阵主要介绍了<strong> 如何判断一个矩阵是逆矩阵 </strong>，最后顺带提及了<strong> 求解一个好矩阵（非奇异矩阵）的逆矩阵的方法</strong>。</p>
-</blockquote>
-<ul>
-<li><p>矩阵乘法 $AB=C$ 的 $5$ 种求解方法：</p>
-<ul>
-<li><p><strong>从元素的角度（$A$ 的行乘以 $B$ 的列）</strong></p>
-<script type="math/tex; mode=display">
-c_{ij} = (Row_i\ of\ A)\cdot(Col_j\ of\ B)=
-\begin{bmatrix}
-a_{i1}&a_{i2}&\cdots&a_{in}
-\end{bmatrix}
-\begin{bmatrix}
-b_{1j}\\b_{2j}\\\vdots\\b_{nj}
-\end{bmatrix}
-= \sum^{n}_{k=1}a_{ik}\cdot b_{kj}</script></li>
-<li><p><strong>从列的角度（列的线性组合）：$C$ 的各列是 $A$ 中各列的一个线性组合，组合方式由 $B$ 决定。</strong>比如 $C$ 的第一列是 $A$ 中各列相对于 $B$ 的第一列的一个线性组合。</p>
-</li>
-<li><p><strong>从行的角度（行的线性组合）：$C$ 的各行是 $B$ 中各行的一个线性组合，组合方式由 $A$ 决定。</strong>比如 $C$ 的第一行是 $B$ 中各行相对于 $A$ 的第一行的一个线性组合。</p>
-</li>
-<li><p><strong>从矩阵的角度（$A$ 的列乘以 $B$ 的行）</strong></p>
-<script type="math/tex; mode=display">
-C = \sum_{i = 1}^{n}(Col_i\ of\ A)\cdot(Row_i\ of\ B)</script></li>
-<li><p><strong>从分块的角度：</strong>其中 $C_1=A_1B_1+A_2B_3$</p>
-<script type="math/tex; mode=display">
-\left[\begin{matrix}
-A_1 &  A_2 \\
-A_3 & A_4
-\end{matrix}
-\right]
-
-\left[\begin{matrix}
-B_1 &  B_2 \\
-B_3 & B_4
-\end{matrix}
-\right]
-=
-\left[\begin{matrix}
-C_1 &  C_2 \\
-C_3 & C_4
-\end{matrix}
-\right]</script></li>
-</ul>
-</li>
-<li><p><strong>行空间：也即行的所有可能的线性组合对应的向量空间</strong></p>
-</li>
-<li><p><strong>列空间：也即列的所有可能的线性组合对应的向量空间</strong></p>
-</li>
-<li><p><strong>逆矩阵分为左逆和右逆，对于方阵来说，左逆是等于右逆的，但对于非方阵来说，左逆不等于右逆。需要明确声明的是，这句话中的逆矩阵指的是广义逆矩阵。在线性代数范围的定义下，可逆矩阵一定是方阵。</strong></p>
-</li>
-<li><p>一个重要的问题：<strong>如何判断一个矩阵是否有逆？</strong></p>
-<ul>
-<li>从 <strong> 行列式 </strong> 的角度：<strong>行列式等于零，矩阵不可逆</strong></li>
-<li>从 <strong> 列图像 </strong> 的角度：<strong>若矩阵 $A^{-1}$ 存在，那么有 $AA^{-1}=I$ ，也即 $I$ 的各列是 $A$ 中各列的线性组合，如果 $A$ 中的各列无法线性组合成 $I$ 中的任何一列，那么矩阵不可逆</strong></li>
-<li><strong>能否找到非零向量 $x$ 使得 $Ax = 0$。假设 $Ax=0$ 且 $A^{-1}$ 存在，那么有 $A^{-1}Ax=A^{-1}0=0$， 于是有 $A^{-1}Ax=Ix=x=0$，这也即逆矩阵存在则 $x$ 必为零向量，若能找到非零向量 $x$ 使得 $Ax = 0$，则该矩阵必然不可逆。</strong></li>
-</ul>
-</li>
-<li><p><strong>如何求解逆矩阵——使用高斯 - 若尔当思想，同时处理多个方程组</strong></p>
-<script type="math/tex; mode=display">
-E
-\left[\begin{matrix}
-A & I
-\end{matrix}
-\right]
-=
-\left[\begin{matrix}
-I & A^{-1}
-\end{matrix}
-\right]</script><p>将 $A$ 和 $I$ 矩阵放到一起形成一个增广矩阵，$E$ 矩阵也即总的消元矩阵，其能够将 $A$ 行变换为 $I$， 也即 $EA=I$。</p>
-<p>由 $EA=I$ 此可知 $E$ 是 $A$ 的逆矩阵 ($E=A^{-1}$)，又因为 $EI=E$，所以变换后的增广矩阵右侧自然就得到了逆矩阵。</p>
-<p>同时，<strong>高斯 - 若尔当思想也告诉我们，如果矩阵 $A$ 可以行变换化简成 $I$，那么显然 $A$ 是一个可逆矩阵。</strong></p>
-</li>
-</ul>
-
+        
+          
+          SAD_hw116340237 吴聪
+简答题
+软件工程的定义Software engineering is “(1) the application of a systematic(系统的), disciplined(有纪律的), quantifiable(可量化的) approach to the
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/SAD-hw1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -526,40 +475,14 @@ I & A^{-1}
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Linear-Algebra/" <i class="fa fa-tag"> Linear Algebra</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/11/LA-Lec02/" rel="next" title="Lec02 - 矩阵消元">
-                <i class="fa fa-chevron-left"></i> Lec02 - 矩阵消元
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/11/LA-Lec04/" rel="prev" title="Lec04 - A 的 LU 分解">
-                Lec04 - A 的 LU 分解 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -569,11 +492,214 @@ I & A^{-1}
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/03/15/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RQTN">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/RQTN.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="summer v">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/hello-world/" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T00:13:37+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/15/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/15/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/15/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  73
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
 
 
           </div>
@@ -581,13 +707,6 @@ I & A^{-1}
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -607,17 +726,8 @@ I & A^{-1}
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -691,22 +801,6 @@ I & A^{-1}
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -3- 课 - 乘法和逆矩阵"><span class="nav-number">1.</span> <span class="nav-text">第 3 课 乘法和逆矩阵</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
 
@@ -867,10 +961,6 @@ I & A^{-1}
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

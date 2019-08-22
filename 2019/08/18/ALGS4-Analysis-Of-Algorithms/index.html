@@ -85,18 +85,18 @@
 <meta name="keywords" content="Algs4,Coursera">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Analysis Of Algorithms">
-<meta property="og:url" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/index.html">
+<meta property="og:url" content="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/index.html">
 <meta property="og:site_name" content="summer v">
 <meta property="og:description" content="Analysis Of AlgorithmInterview Questions: Analysis of Algorithms (ungraded)1. 3-SUM in quadratic time.Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst case.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/ThreeSumCompare.png">
-<meta property="og:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/2-bitonicArray.png">
-<meta property="og:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/BitonicSearchCompare.png">
-<meta property="og:updated_time" content="2019-08-18T10:00:34.994Z">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/ThreeSumCompare.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/2-bitonicArray.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/BitonicSearchCompare.png">
+<meta property="og:updated_time" content="2019-08-22T12:21:38.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Analysis Of Algorithms">
 <meta name="twitter:description" content="Analysis Of AlgorithmInterview Questions: Analysis of Algorithms (ungraded)1. 3-SUM in quadratic time.Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst case.">
-<meta name="twitter:image" content="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/ThreeSumCompare.png">
+<meta name="twitter:image" content="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/ThreeSumCompare.png">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/">
+  <link rel="canonical" href="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/">
 
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/18/Analysis-Of-Algorithms/">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/18/ALGS4-Analysis-Of-Algorithms/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RQTN">
@@ -382,8 +382,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/18/Analysis-Of-Algorithms/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/18/Analysis-Of-Algorithms/" itemprop="commentCount"></span>
+                <a href="/2019/08/18/ALGS4-Analysis-Of-Algorithms/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/18/ALGS4-Analysis-Of-Algorithms/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,7 +391,7 @@
 
           
           
-             <span id="/2019/08/18/Analysis-Of-Algorithms/" class="leancloud_visitors" data-flag-title="Analysis Of Algorithms">
+             <span id="/2019/08/18/ALGS4-Analysis-Of-Algorithms/" class="leancloud_visitors" data-flag-title="Analysis Of Algorithms">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,7 +469,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> analysis_of_algs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.In;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.StdOut;</span><br><span class="line"><span class="keyword">import</span> edu.princeton.cs.algs4.Stopwatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeSumQuadratic</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">int</span> N = a.length;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N - <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> k = N - <span class="number">1</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> (j &lt; k) &#123;</span><br><span class="line">				<span class="keyword">int</span> sum = a[i] + a[j] + a[k];</span><br><span class="line">				<span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">					j++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					k--;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					count++;</span><br><span class="line">					j++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] a = <span class="keyword">new</span> In(args[<span class="number">0</span>]).readAllInts();</span><br><span class="line">		Stopwatch stopwatch = <span class="keyword">new</span> Stopwatch();</span><br><span class="line">		StdOut.println(count(a));</span><br><span class="line">		<span class="keyword">double</span> time = stopwatch.elapsedTime();</span><br><span class="line">		StdOut.println(time);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>只要排序算法的时间复杂度低于 $O(N^2)$，以上代码的方法即满足需求。</p>
 <p><strong>效果对比（<code>ThreeSumFast</code> 和 <code>ThreeSumQuadratic</code> 使用相同的排序算法）：</strong></p>
-<p><img src="/2019/08/18/Analysis-Of-Algorithms/ThreeSumCompare.png"></p>
+<p><img src="/2019/08/18/ALGS4-Analysis-Of-Algorithms/ThreeSumCompare.png"></p>
 <h4 id="2-Search-in-a-bitonic-array"><a href="#2-Search-in-a-bitonic-array" class="headerlink" title="2. Search in a bitonic array."></a><strong>2. Search in a bitonic array.</strong></h4><p>An array is <strong>bitonic (双调)</strong> if it is comprised of an increasing sequence of integers followed immediately by a decreasing sequence of integers. Write a program that, given a bitonic array of $n$ distinct integer values, determines whether a given integer is in the array.</p>
 <ul>
 <li>Standard version: Use $\sim 3\lg n$ compares in the worst case.</li>
@@ -530,7 +530,7 @@
 <p>关键的地方就在后者，<code>a[lo]~a[mid]</code> 我们知道是一个相对更小的双调数组（对应下图中的蓝色和黑色部分），故在算法一中，我们将其视为子问题递归求解。</p>
 <p>而实际上，<strong>当 <code>key &lt; a[mid]</code> 时（也即要寻找的 <code>key</code> 值位于蓝色部分时），我们可以直接在 <code>a[lo]~a[mid]</code> 这个双调数组上使用 <code>BinarySearch</code> 并得到正确的结果</strong> 。</p>
 <p>这就是算法三的关键思想：<strong>对于一个双调数组，如果你要寻找的 <code>key</code> 值位于 <code>a[lo]</code> 和 <code>a[hi]</code> 之间，那么直接使用 <code>BinarySearch</code> 是正确的。</strong></p>
-<p><img src="/2019/08/18/Analysis-Of-Algorithms/2-bitonicArray.png" width="40%"></p>
+<p><img src="/2019/08/18/ALGS4-Analysis-Of-Algorithms/2-bitonicArray.png" width="40%"></p>
 <p>好了，对于 <code>key &lt; a[mid]</code> 的情况，<code>key</code> 在两边都有可能存在（蓝色和红色部分），我们直接对两边进行 <code>BinarySearch</code> 就好了，即使其中一边是双调数组，此时有 $\sim 2\lg N$ 的比较数。</p>
 <p>那对于 <code>key &gt; a[mid]</code> 的情况，<code>key</code> 处于黑色部分，我们只需要根据 <code>a[mid]</code> 附近的情况进行范围缩小即可。比如若我们要找到 <code>key</code> 是上图中的绿点，由于 <code>a[mid]</code> 附近是降序（说明 <code>key</code> 位于 <code>mid</code> 的左边），显然此时 <code>key</code> 只可能存在于左边 <code>a[lo]~a[mid]</code>，此时令 <code>hi=mid-1</code> 。依次类推，不断重复地缩小范围，使转换到 <code>key &lt; a[mid]</code> 的情况，然后就能对两边 <code>BinarySearch</code> 进行求解。</p>
 <p>如果要寻找的 <code>key</code> 特别大（比数组中的所有元素都大），那么此时有 $\sim \lg N$ 的比较数。一般地，假设 <code>k</code> 次缩小范围，则有：<script type="math/tex">k+2\lg \frac{N}{2^{k+1}}=k+2(\lg N - (k+1))=2\lg N-k-2=\sim 2\lg N</script>。</p>
@@ -540,7 +540,7 @@
 </li>
 </ul>
 <p><strong>效果对比</strong></p>
-<p><img src="/2019/08/18/Analysis-Of-Algorithms/BitonicSearchCompare.png" width="100%"></p>
+<p><img src="/2019/08/18/ALGS4-Analysis-Of-Algorithms/BitonicSearchCompare.png" width="100%"></p>
 <h4 id="3-Egg-drop"><a href="#3-Egg-drop" class="headerlink" title="3. Egg drop."></a><strong>3. Egg drop.</strong></h4><p>Suppose that you have an $n$-story building (with floors $1$ through $n$) and plenty of eggs. An egg breaks if it is dropped from floor $T$ or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of $T$ given the following limitations on the number of eggs and tosses:</p>
 <ul>
 <li>Version 0: $1$ egg,  $\le T$ tosses.</li>
@@ -625,6 +625,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/08/22/ALGS4-Assignment2-Queues/" rel="prev" title="ALGS4-Assignment2-Queues">
+                ALGS4-Assignment2-Queues <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -704,7 +708,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -814,7 +818,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.6k</span>
+    <span title="Site words total count">60.8k</span>
   
 </div>
 
