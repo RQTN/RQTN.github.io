@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linear Algebra,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,18 +81,13 @@
 
 
 
-<meta name="description" content="第 5 课 转置、置换和向量空间 $R$ 本章介绍的主要内容包括  置换、转置和向量空间 。在最开始部分对置换矩阵给予介绍：包括 对于 $LU$ 分解的扩展 $PA = LU$ 以及  置换矩阵的定义和性质 。然后介绍了矩阵的转置，并延伸介绍了 对称矩阵  的概念。后半部分的课程主要对  向量空间尤其是 $R^n$ 及其子空间  进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申">
-<meta name="keywords" content="Linear Algebra">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Lec05 - 转置、置换和向量空间 R">
-<meta property="og:url" content="https://rqtn.github.io/2019/08/12/LA-Lec05/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="summer v">
+<meta property="og:url" content="https://rqtn.github.io/archives/2019/09/index.html">
 <meta property="og:site_name" content="summer v">
-<meta property="og:description" content="第 5 课 转置、置换和向量空间 $R$ 本章介绍的主要内容包括  置换、转置和向量空间 。在最开始部分对置换矩阵给予介绍：包括 对于 $LU$ 分解的扩展 $PA = LU$ 以及  置换矩阵的定义和性质 。然后介绍了矩阵的转置，并延伸介绍了 对称矩阵  的概念。后半部分的课程主要对  向量空间尤其是 $R^n$ 及其子空间  进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T10:01:04.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lec05 - 转置、置换和向量空间 R">
-<meta name="twitter:description" content="第 5 课 转置、置换和向量空间 $R$ 本章介绍的主要内容包括  置换、转置和向量空间 。在最开始部分对置换矩阵给予介绍：包括 对于 $LU$ 分解的扩展 $PA = LU$ 以及  置换矩阵的定义和性质 。然后介绍了矩阵的转置，并延伸介绍了 对称矩阵  的概念。后半部分的课程主要对  向量空间尤其是 $R^n$ 及其子空间  进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申">
+<meta name="twitter:title" content="summer v">
 
 
 
@@ -122,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://rqtn.github.io/2019/08/12/LA-Lec05/">
+  <link rel="canonical" href="https://rqtn.github.io/archives/2019/09/">
 
 
 
 
 
-  <title>Lec05 - 转置、置换和向量空间 R | summer v</title>
+  <title>归档 | summer v</title>
   
 
 
@@ -147,7 +142,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 <a href="https://github.com/RQTN" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,269 +278,71 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+         
+        
+        OK! 目前共计 35 篇日志。 继续努力。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/12/LA-Lec05/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RQTN">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/RQTN.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="summer v">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2019/09/01/LA-Lec21/" itemprop="url">
+              
+                <span itemprop="name">Lec21 - 特征值和特征向量</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">Lec05 - 转置、置换和向量空间 R</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T18:00:11+08:00">
-                2019-08-12
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-09-01T12:12:29+08:00" content="2019-09-01">
+          09-01
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathematics/" itemprop="url" rel="index">
-                    <span itemprop="name">Mathematics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/12/LA-Lec05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/12/LA-Lec05/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/08/12/LA-Lec05/" class="leancloud_visitors" data-flag-title="Lec05 - 转置、置换和向量空间 R">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="第 -5- 课 - 转置、置换和向量空间 -R"><a href="# 第 -5- 课 - 转置、置换和向量空间 -R" class="headerlink" title="第 5 课 转置、置换和向量空间 $R$"></a>第 5 课 转置、置换和向量空间 $R$</h2><blockquote>
-<p>本章介绍的主要内容包括 <strong> 置换、转置和向量空间 </strong>。在最开始部分对置换矩阵给予介绍：包括<strong> 对于 $LU$ 分解的扩展 $PA = LU$</strong> 以及 <strong> 置换矩阵的定义和性质 </strong>。然后介绍了矩阵的转置，并延伸介绍了<strong> 对称矩阵 </strong> 的概念。后半部分的课程主要对 <strong> 向量空间尤其是 $R^n$ 及其子空间 </strong> 进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申出 <strong> 列空间 </strong> 的概念。</p>
-</blockquote>
-<ul>
-<li><p><strong>考虑消元过程中的行交换，可得到扩展有：$A = LU \rightarrow PA = LU$。后式对所有的可逆矩阵 $A$ 都适用。</strong></p>
-<p>在前一讲中我们已经提到了，对于可逆矩阵 $A$ ，其在消元过程中可能出现主元为零的情况，此时需要进行行交换，而 <strong> 行交换无非就是乘上一个置换矩阵而已 </strong>，矩阵 $A$ 通过左乘多个置换矩阵变换成一个相当好的矩阵（也即在消元过程中不需要进行行交换），此时进行 $LU$ 分解就没有任何问题了，而<strong> 这些左乘的多个置换矩阵的总乘积记为 $P$</strong>。</p>
-</li>
-<li><p><strong>置换矩阵是行重新排列了的单位矩阵。</strong></p>
-<ul>
-<li><strong>这意味着置换矩阵显然必须是一个方阵，因为单位矩阵就是方阵，且单位矩阵也是一个置换矩阵（只不过单位矩阵不做任何行为）</strong></li>
-<li><strong>$n\times n$ 阶的置换矩阵的个数：$n!=n(n-1)…3\cdot2\cdot1$</strong></li>
-<li><strong>置换矩阵显然都可逆。</strong>因为行交换是可逆的。<strong>且有 $P^{-1} = P^T$。故 $P^TP=I$。</strong></li>
-</ul>
-</li>
-<li><p><strong>对称矩阵：转置以后矩阵没有发生变化，也即 $A^T = A$</strong></p>
-<p>对称矩阵在实验中是经常会用到的。现在的问题是我们如何产生一个对称矩阵呢？<strong>一个非常常用的方法是将矩阵的转置和其本身相乘（$R^TR$）。</strong>其证明也相当简单：$(R^TR)^T=R^T(R^T)^T=R^TR$，显然 $R^TR$ 是一个对称矩阵。</p>
-</li>
-<li><p><strong>向量空间 R</strong></p>
-<blockquote>
-<p>在讲述这个概念之前我们必须要明确向量有什么运算。主要包括两种：<strong>数乘和加法 </strong>。<strong> 如果我们将数乘和加法结合来看，可以用线性代数里的语言描述为线性组合。</strong></p>
-</blockquote>
-<p>我们可以对向量空间进行描述了：<strong>向量空间必须对数乘和加法两种运算是封闭的，也即对线性组合封闭。</strong></p>
-<p> <strong>$R^n$ 就是一个非常重要的向量空间。但有时候我们更加关注 $R^n$ 内的向量空间，这些较小的向量空间既满足既定的规则，又无需包含所有向量，我们把这些向量空间称为子空间。</strong></p>
-<p>现在我们把目光放到子空间上：如何找到向量空间里的子空间呢？我们可以从 $R^2$ 和 $R^3$ 出发，容易发现</p>
-<ul>
-<li><strong>对于 $R^2$，我们能找到其子空间有：</strong><ul>
-<li><strong>$R^2$（即本身，$R^2$ 最大的向量子空间）</strong></li>
-<li><strong>任何过原点的直线</strong></li>
-<li><strong>零向量空间（最小的向量子空间，其只包含零向量）</strong></li>
-</ul>
-</li>
-<li><strong>对于 $R^3$，我们能找到其子空间有：</strong><ul>
-<li><strong>$R^3$（即本身，$R^3$ 最大的向量子空间）</strong></li>
-<li><strong>任何过原点的平面</strong></li>
-<li><strong>任何过原点的直线</strong></li>
-<li><strong>零向量空间（最小的向量子空间，其只包含零向量）</strong></li>
-</ul>
-</li>
-</ul>
-<p>由上我们可以发现 $R^n$ 向量空间及其子空间的规律。</p>
-</li>
-<li><p><strong>从矩阵中构造出子空间</strong></p>
-<p>一种显而易见的方法是 <strong> 通过列向量来进行构造：取出矩阵各列，然后线性组合，所有的线性组合就能构成一个子空间，我们一般把构造出的子空间称为矩阵的列空间，记为 $C(A)$。这是矩阵中我们提及的第一种重要的子空间。</strong></p>
-</li>
-</ul>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Linear-Algebra/" <i class="fa fa-tag"> Linear Algebra</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/11/LA-Lec04/" rel="next" title="Lec04 - A 的 LU 分解">
-                <i class="fa fa-chevron-left"></i> Lec04 - A 的 LU 分解
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/12/LA-Lec06/" rel="prev" title="Lec06 - 列空间和零空间">
-                Lec06 - 列空间和零空间 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
     </div>
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -553,13 +350,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -579,17 +369,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -663,22 +444,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -5- 课 - 转置、置换和向量空间 -R"><span class="nav-number">1.</span> <span class="nav-text">第 5 课 转置、置换和向量空间 $R$</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
 
@@ -839,10 +604,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

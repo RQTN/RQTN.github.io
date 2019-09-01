@@ -81,18 +81,21 @@
 
 
 
-<meta name="description" content="第 5 课 转置、置换和向量空间 $R$ 本章介绍的主要内容包括  置换、转置和向量空间 。在最开始部分对置换矩阵给予介绍：包括 对于 $LU$ 分解的扩展 $PA = LU$ 以及  置换矩阵的定义和性质 。然后介绍了矩阵的转置，并延伸介绍了 对称矩阵  的概念。后半部分的课程主要对  向量空间尤其是 $R^n$ 及其子空间  进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申">
+<meta name="description" content="第 21 课 特征值和特征向量  特征值与特征向量初探  给定矩阵 $A$ ，矩阵 $A$ 乘以向量 $x$，就像是使用矩阵 $A$ 作用在向量 $x$ 上，最后得到新的向量 $Ax$。在这里，矩阵 $A$ 就像是一个函数，接受一个向量 $x$ 作为输入，给出向量 $Ax$ 作为输出。 在这一过程中，我们对一些特殊的向量很感兴趣，也即 $x$ 和 $Ax$ 始终保持同一个方向，这是比较特殊的，因为">
 <meta name="keywords" content="Linear Algebra">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lec05 - 转置、置换和向量空间 R">
-<meta property="og:url" content="https://rqtn.github.io/2019/08/12/LA-Lec05/index.html">
+<meta property="og:title" content="Lec21 - 特征值和特征向量">
+<meta property="og:url" content="https://rqtn.github.io/2019/09/01/LA-Lec21/index.html">
 <meta property="og:site_name" content="summer v">
-<meta property="og:description" content="第 5 课 转置、置换和向量空间 $R$ 本章介绍的主要内容包括  置换、转置和向量空间 。在最开始部分对置换矩阵给予介绍：包括 对于 $LU$ 分解的扩展 $PA = LU$ 以及  置换矩阵的定义和性质 。然后介绍了矩阵的转置，并延伸介绍了 对称矩阵  的概念。后半部分的课程主要对  向量空间尤其是 $R^n$ 及其子空间  进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申">
+<meta property="og:description" content="第 21 课 特征值和特征向量  特征值与特征向量初探  给定矩阵 $A$ ，矩阵 $A$ 乘以向量 $x$，就像是使用矩阵 $A$ 作用在向量 $x$ 上，最后得到新的向量 $Ax$。在这里，矩阵 $A$ 就像是一个函数，接受一个向量 $x$ 作为输入，给出向量 $Ax$ 作为输出。 在这一过程中，我们对一些特殊的向量很感兴趣，也即 $x$ 和 $Ax$ 始终保持同一个方向，这是比较特殊的，因为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T10:01:04.204Z">
+<meta property="og:image" content="https://rqtn.github.io/2019/09/01/LA-Lec21/lec21-b%20can%20divide%20into%202%20components.png">
+<meta property="og:image" content="https://rqtn.github.io/2019/09/01/LA-Lec21/lec21-prove%20rotate%20Q.png">
+<meta property="og:updated_time" content="2019-09-01T04:15:27.766Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lec05 - 转置、置换和向量空间 R">
-<meta name="twitter:description" content="第 5 课 转置、置换和向量空间 $R$ 本章介绍的主要内容包括  置换、转置和向量空间 。在最开始部分对置换矩阵给予介绍：包括 对于 $LU$ 分解的扩展 $PA = LU$ 以及  置换矩阵的定义和性质 。然后介绍了矩阵的转置，并延伸介绍了 对称矩阵  的概念。后半部分的课程主要对  向量空间尤其是 $R^n$ 及其子空间  进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申">
+<meta name="twitter:title" content="Lec21 - 特征值和特征向量">
+<meta name="twitter:description" content="第 21 课 特征值和特征向量  特征值与特征向量初探  给定矩阵 $A$ ，矩阵 $A$ 乘以向量 $x$，就像是使用矩阵 $A$ 作用在向量 $x$ 上，最后得到新的向量 $Ax$。在这里，矩阵 $A$ 就像是一个函数，接受一个向量 $x$ 作为输入，给出向量 $Ax$ 作为输出。 在这一过程中，我们对一些特殊的向量很感兴趣，也即 $x$ 和 $Ax$ 始终保持同一个方向，这是比较特殊的，因为">
+<meta name="twitter:image" content="https://rqtn.github.io/2019/09/01/LA-Lec21/lec21-b%20can%20divide%20into%202%20components.png">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://rqtn.github.io/2019/08/12/LA-Lec05/">
+  <link rel="canonical" href="https://rqtn.github.io/2019/09/01/LA-Lec21/">
 
 
 
 
 
-  <title>Lec05 - 转置、置换和向量空间 R | summer v</title>
+  <title>Lec21 - 特征值和特征向量 | summer v</title>
   
 
 
@@ -297,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/08/12/LA-Lec05/">
+    <link itemprop="mainEntityOfPage" href="https://rqtn.github.io/2019/09/01/LA-Lec21/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RQTN">
@@ -314,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lec05 - 转置、置换和向量空间 R</h1>
+          <h1 class="post-title" itemprop="name headline">Lec21 - 特征值和特征向量</h1>
         
 
         <div class="post-meta">
@@ -326,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T18:00:11+08:00">
-                2019-08-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-01T12:12:29+08:00">
+                2019-09-01
               </time>
             
 
@@ -367,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/12/LA-Lec05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/12/LA-Lec05/" itemprop="commentCount"></span>
+                <a href="/2019/09/01/LA-Lec21/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/01/LA-Lec21/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -376,7 +379,7 @@
 
           
           
-             <span id="/2019/08/12/LA-Lec05/" class="leancloud_visitors" data-flag-title="Lec05 - 转置、置换和向量空间 R">
+             <span id="/2019/09/01/LA-Lec21/" class="leancloud_visitors" data-flag-title="Lec21 - 特征值和特征向量">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  4.1k
                 </span>
               
 
@@ -417,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  17 分钟
                 </span>
               
             </div>
@@ -438,49 +441,141 @@
       
 
       
-        <h2 id="第 -5- 课 - 转置、置换和向量空间 -R"><a href="# 第 -5- 课 - 转置、置换和向量空间 -R" class="headerlink" title="第 5 课 转置、置换和向量空间 $R$"></a>第 5 课 转置、置换和向量空间 $R$</h2><blockquote>
-<p>本章介绍的主要内容包括 <strong> 置换、转置和向量空间 </strong>。在最开始部分对置换矩阵给予介绍：包括<strong> 对于 $LU$ 分解的扩展 $PA = LU$</strong> 以及 <strong> 置换矩阵的定义和性质 </strong>。然后介绍了矩阵的转置，并延伸介绍了<strong> 对称矩阵 </strong> 的概念。后半部分的课程主要对 <strong> 向量空间尤其是 $R^n$ 及其子空间 </strong> 进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申出 <strong> 列空间 </strong> 的概念。</p>
-</blockquote>
+        <h2 id="第 -21- 课 - 特征值和特征向量"><a href="# 第 -21- 课 - 特征值和特征向量" class="headerlink" title="第 21 课 特征值和特征向量"></a>第 21 课 特征值和特征向量 </h2><h3 id="特征值与特征向量初探"><a href="# 特征值与特征向量初探" class="headerlink" title="特征值与特征向量初探"></a> 特征值与特征向量初探 </h3><p> 给定矩阵 $A$ ，矩阵 $A$ 乘以向量 $x$，就像是使用矩阵 $A$ 作用在向量 $x$ 上，最后得到新的向量 $Ax$。在这里，矩阵 $A$ 就像是一个函数，接受一个向量 $x$ 作为输入，给出向量 $Ax$ 作为输出。</p>
+<p>在这一过程中，我们对一些特殊的向量很感兴趣，也即 $x$ 和 $Ax$ 始终保持同一个方向，这是比较特殊的，因为在大多情况下，$Ax$ 与 $x$ 指向不同的方向。</p>
+<p>在这种特殊的情况下，$Ax$ 平行于 $x$，<strong>我们把满足这个条件的 <u> 非零 </u> 向量 $x$ 称为 $A$ 特征向量，而 $\lambda$ 为 $A$ 的特征值 。</strong>这个平行条件用方程表示就是： </p>
+<script type="math/tex; mode=display">
+Ax=\lambda x</script><p>对这个式子，我们试着计算特征值为 $0$ 的特征向量，易得 $Ax=0x=0$，因此，特征值为 $0$ 的特征向量位于 $A$ 的零空间中。</p>
+<p>显然对于奇异矩阵（不可逆），必然存在非零向量使得 $Ax=0$，所以 <strong> 若矩阵是奇异的，那么它有一个特征值为 $\lambda =0$。</strong></p>
 <ul>
-<li><p><strong>考虑消元过程中的行交换，可得到扩展有：$A = LU \rightarrow PA = LU$。后式对所有的可逆矩阵 $A$ 都适用。</strong></p>
-<p>在前一讲中我们已经提到了，对于可逆矩阵 $A$ ，其在消元过程中可能出现主元为零的情况，此时需要进行行交换，而 <strong> 行交换无非就是乘上一个置换矩阵而已 </strong>，矩阵 $A$ 通过左乘多个置换矩阵变换成一个相当好的矩阵（也即在消元过程中不需要进行行交换），此时进行 $LU$ 分解就没有任何问题了，而<strong> 这些左乘的多个置换矩阵的总乘积记为 $P$</strong>。</p>
-</li>
-<li><p><strong>置换矩阵是行重新排列了的单位矩阵。</strong></p>
+<li><p>我们先来看投影矩阵 $P=A(A^TA)^{-1}A^T$ 的特征值和特征向量。</p>
+<p><img src="/2019/09/01/LA-Lec21/lec21-b can divide into 2 components.png" width="40%"></p>
 <ul>
-<li><strong>这意味着置换矩阵显然必须是一个方阵，因为单位矩阵就是方阵，且单位矩阵也是一个置换矩阵（只不过单位矩阵不做任何行为）</strong></li>
-<li><strong>$n\times n$ 阶的置换矩阵的个数：$n!=n(n-1)…3\cdot2\cdot1$</strong></li>
-<li><strong>置换矩阵显然都可逆。</strong>因为行交换是可逆的。<strong>且有 $P^{-1} = P^T$。故 $P^TP=I$。</strong></li>
+<li>用向量 $b$ 乘以投影矩阵 $P$ 得到投影向量 $Pb$，在这个过程中，只有当 $b$ 本身已经处于投影平面（即 $A$ 的列空间）中时，$Pb$ 才可能与 $b$ 是同向的，此时 $b$ 投影前后完全相同（$Pb=1\cdot b$）。因此，<strong>投影平面（$A$ 的列空间）中的所有向量都是投影矩阵的特征向量，且它们的特征值为 $1$</strong>。</li>
+<li>再来观察投影平面的法向量，也即向量 $e$ 。既然向量 $e$ 与投影平面垂直，那么必然有 $Pe=0$，任何向量都与 $0$ 向量是同向的。因此，<strong>投影平面的所有法向量（$A$ 的左零空间）也同样是投影矩阵的特征向量，且它们的特征值为 $0$。</strong></li>
 </ul>
+<p>综上可知，<strong>投影矩阵 $P=A(A^TA)^{-1}A^T$ 的特征值为 $\lambda=1,0$。</strong></p>
 </li>
-<li><p><strong>对称矩阵：转置以后矩阵没有发生变化，也即 $A^T = A$</strong></p>
-<p>对称矩阵在实验中是经常会用到的。现在的问题是我们如何产生一个对称矩阵呢？<strong>一个非常常用的方法是将矩阵的转置和其本身相乘（$R^TR$）。</strong>其证明也相当简单：$(R^TR)^T=R^T(R^T)^T=R^TR$，显然 $R^TR$ 是一个对称矩阵。</p>
-</li>
-<li><p><strong>向量空间 R</strong></p>
-<blockquote>
-<p>在讲述这个概念之前我们必须要明确向量有什么运算。主要包括两种：<strong>数乘和加法 </strong>。<strong> 如果我们将数乘和加法结合来看，可以用线性代数里的语言描述为线性组合。</strong></p>
-</blockquote>
-<p>我们可以对向量空间进行描述了：<strong>向量空间必须对数乘和加法两种运算是封闭的，也即对线性组合封闭。</strong></p>
-<p> <strong>$R^n$ 就是一个非常重要的向量空间。但有时候我们更加关注 $R^n$ 内的向量空间，这些较小的向量空间既满足既定的规则，又无需包含所有向量，我们把这些向量空间称为子空间。</strong></p>
-<p>现在我们把目光放到子空间上：如何找到向量空间里的子空间呢？我们可以从 $R^2$ 和 $R^3$ 出发，容易发现</p>
+<li><p>再看另外一个例子，二阶置换矩阵  $A=\begin{bmatrix}0&amp; 1\\1&amp; 0\end{bmatrix}$，经过这个矩阵处理的二维向量 $x$，其元素会互相交换，即：$\begin{bmatrix}x_1\\x_2\end{bmatrix}$ 会变为 $\begin{bmatrix}x_2\\x_1\end{bmatrix}$。若交换后的 $\begin{bmatrix}x_2\\x_1\end{bmatrix}$ 是初始向量 $\begin{bmatrix}x_1\\x_2\end{bmatrix}$ 与一个因子的乘积，那么根据特征值和特征向量的定义可知：</p>
 <ul>
-<li><strong>对于 $R^2$，我们能找到其子空间有：</strong><ul>
-<li><strong>$R^2$（即本身，$R^2$ 最大的向量子空间）</strong></li>
-<li><strong>任何过原点的直线</strong></li>
-<li><strong>零向量空间（最小的向量子空间，其只包含零向量）</strong></li>
+<li>$A$ 有特征值为 $1$ 的特征向量（即经过矩阵交换元素前后仍然不变），型为 $\begin{bmatrix}1\\1\end{bmatrix}$。</li>
+<li>$A$ 有特征值为 $-1$ 的特征向量（即经过矩阵交换元素前后方向相反），型为 $\begin{bmatrix}1\-1\end{bmatrix}$。</li>
+</ul>
+<p>就此例，我们提前说一些特征值的性质：</p>
+<ul>
+<li><p><strong>一个 $n\times n$ 的矩阵包含 $n$ 个特征值（可能其中有一些特征值的值相同，甚至有些特征值非实数），而这些特征值的和与该矩阵对角线元素的和相同（$\sum_{i=1}^n    \lambda_i=\sum_{i=1}^n a_{ii}$），我们把矩阵对角线元素之和称为矩阵的迹</strong>。 </p>
+<p>在上面二阶转置矩阵的例子中，如果我们求得了一个特征值 $1$，那么利用迹的性质，我们就可以直接推出另一个特征值是 $-1$。这条性质我们将在本课后面给予证明。</p>
+</li>
+<li><p><strong>对称矩阵，其特征向量互相垂直</strong>。 </p>
+<p>矩阵越特殊，则我们得到的特征值与特征向量也就越特殊。<strong>看上面的二阶置换矩阵中，因为它是一个对称矩阵，所以其特征值为实数：$1,−1$，而且它们的特征向量是正交的。</strong> </p>
+<p><strong>证明：对称矩阵的特征向量正交。</strong></p>
+<script type="math/tex; mode=display">
+设 \ \lambda_1\ 和 \ \lambda_2\ 是对称矩阵 \ A\ 的两个不同的特征值，对应的特征向量分别为 \ x_1\ 和 \ x_2\\
+\therefore Ax_1=\lambda_1x_1,\ Ax_2=\lambda_2x_2\\
+对 \ Ax_1=\lambda_1x_1\ 左乘 \ x_2^T\ 得：\quad x_2^TAx_1=\lambda_1x^T_2x_1\qquad\\
+x^T_2Ax_1=(Ax_2)^Tx_1=(\lambda_2x_2)^Tx_1=\lambda_2x^T_2x_1=\lambda_1x^T_2x_1\\
+也即 \ (\lambda_1-\lambda_2)x^T_2x_1=0\\
+又 \because \lambda_1\ne\lambda_2\ \\\therefore x^T_2x_1=0\\
+\therefore 对称矩阵的特征向量正交。</script></li>
 </ul>
 </li>
-<li><strong>对于 $R^3$，我们能找到其子空间有：</strong><ul>
-<li><strong>$R^3$（即本身，$R^3$ 最大的向量子空间）</strong></li>
-<li><strong>任何过原点的平面</strong></li>
-<li><strong>任何过原点的直线</strong></li>
-<li><strong>零向量空间（最小的向量子空间，其只包含零向量）</strong></li>
 </ul>
+<hr>
+<h3 id="求解特征值和特征向量：-Ax-lambda-x"><a href="# 求解特征值和特征向量：-Ax-lambda-x" class="headerlink" title="求解特征值和特征向量：$Ax=\lambda x$"></a>求解特征值和特征向量：$Ax=\lambda x$</h3><p>对于方程 $Ax=\lambda x$ ，有两个未知数，我们需要利用一些技巧从这一个方程中一次解出两个未知数（一个是特征值一个是特征向量），<strong>首先移项得 $(A-\lambda I)x=0$</strong>。</p>
+<p>观察新方程 $(A-\lambda I)x=0$，右边的矩阵 $\lambda I$ 相当于将 $A$ 矩阵平移了 $\lambda$ 个单位，而 <strong> 如果新方程有非零解 $x$（因为要求特征向量不可为零向量），则这个平移后的矩阵 $(A-\lambda I)$ 一定是奇异矩阵。 </strong></p>
+<p>我们现在想要求的特征向量正是 $(A-\lambda I)x=0$ 的非零解 $x$，这就需要 $(A-\lambda I)$ 为奇异矩阵，结合行列式可得：</p>
+<script type="math/tex; mode=display">
+\det(A-\lambda I) =0</script><p>这样一来，方程中就没有 $x$ 了，<strong>$\det(A-\lambda I) =0$ 也叫作特征方程。求解特征方程的带特征值 $\lambda$，代回  $(A-\lambda I)x=0$，继续求 $(A-\lambda I)$ 的零空间即可</strong>。</p>
+<ul>
+<li><p>举一个简单的例子，求解 $A=\begin{bmatrix}3&amp; 1\\1&amp; 3\end{bmatrix}$ 的特征值与相应的特征向量。</p>
+<p>首先计算 $\det{(A-\lambda{I})}=\begin{vmatrix}3-\lambda&amp; 1\\1&amp; 3-\lambda\end{vmatrix}=0$，由二阶行列式公式可得：$(3-\lambda)^2-1=\lambda^2-6\lambda+8=0$，求得 $\lambda_1=4,\lambda_2=2$。可以看到 <strong> 一次项系数 $-6$ 和矩阵的迹 $3+3$ 有关，此外，常数项 $8$ 与矩阵的行列式有关。至于为什么，我们将在后面给予解释。</strong> </p>
+<p>继续计算特征向量，$A-4I=\begin{bmatrix}-1&amp; 1\\1&amp; -1\end{bmatrix}$，显然矩阵是奇异的（如果是非奇异说明特征值计算有误），解出 $\lambda_1$ 对应的一个特征向量 $x_1=\begin{bmatrix}1\\1\end{bmatrix}$；同理计算另一个特征向量，$A-2I=\begin{bmatrix}1&amp; 1\\1&amp; 1\end{bmatrix}$，解出 $\lambda_2$ 对应的一个特征向量 $x_2=\begin{bmatrix}1\-1\end{bmatrix}$。</p>
+<p>回顾前面转置矩阵的例子，对矩阵  $A’=\begin{bmatrix}0&amp; 1\\1&amp; 0\end{bmatrix}$ 有 $\lambda_1=1, x_1=\begin{bmatrix}1\\1\end{bmatrix},$$ \lambda_2=-1, x_2=\begin{bmatrix}-1\\1\end{bmatrix}$。</p>
+<p>看转置矩阵 $A’$ 与本例中的对称矩阵 $A$ 有什么联系。 </p>
+<p>易知 $A=A’+3I$，两个矩阵特征向量相同，而其特征值刚好相差 $3$。也就是 <strong> 如果给一个矩阵加上 $3I$，则它的特征值会加 $3$，而特征向量不变。</strong> </p>
+<p>这一点是很容易证明的，<strong>如果 $Ax=\lambda x$，则 $(A+3I)x=\lambda x+3x=(\lambda+3)x$，所以 $x$ 还是原来的 $x$ ，而 $\lambda$ 变为 $\lambda+3$。</strong></p>
+<p>但 <strong> 假设我们加的不是 $cI$ （$c$ 为常数）而是其他一般的矩阵 $B$，那么就不能像上面这么做了。比如已知 $Ax=\lambda x, Bx=\alpha x$，那么 $(A+B)x=(\lambda+\alpha)x$ 一般是错误的。问题的关键在于：我们无法相信 $A$ 的特征向量 $x$ 也是 $B$ 的特征向量，也即这两个式子中的特征向量 $x$ 并不一定相同，所以上述两个式子的通常情况是：$Ax=\lambda x, By=\alpha y$ ，它们也就无从相加了。而若 $B=cI$，那么我们总能保证 $A$ 的特征向量 $x$ 也会是 $B$ 的特征向量，因为给定任意向量 $x$，显然都有 $cIx=cx$，也即 $B$ 的特征向量实际上包含了 $A$ 的特征向量。</strong></p>
 </li>
 </ul>
-<p>由上我们可以发现 $R^n$ 向量空间及其子空间的规律。</p>
-</li>
-<li><p><strong>从矩阵中构造出子空间</strong></p>
-<p>一种显而易见的方法是 <strong> 通过列向量来进行构造：取出矩阵各列，然后线性组合，所有的线性组合就能构成一个子空间，我们一般把构造出的子空间称为矩阵的列空间，记为 $C(A)$。这是矩阵中我们提及的第一种重要的子空间。</strong></p>
+<p>对于刚刚的例子，我们已经发现一次项系数似乎和矩阵的迹存在关系，更普遍地，能注意到矩阵的特征值之和等于矩阵的迹。同时如果我们计算矩阵 $A$ 的行列式，能发现 $\det(A)=8=\lambda_1\cdot\lambda_2$。下面我们给出两条有关矩阵特征值的性质：</p>
+<ul>
+<li>矩阵的特征值之和等于矩阵的迹</li>
+<li>矩阵的特征值之积等于矩阵的行列式</li>
+</ul>
+<p>鉴于这两条性质的证明需要用到根与系数的关系，也即韦达定理，所以我们先给予韦达定理的证明。</p>
+<script type="math/tex; mode=display">
+给定方程 \ a_nx^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}+\cdots+a_1x+a_0=0\ \ \ (1)\\
+假设上述方程的有根 \ x_1,x_2,\cdots,x_n，那么给定方程可改写为如下形式：\\
+\qquad\qquad a_n(x-x_1)(x-x_2)(x-x_3)\cdots(x-x_n)=0\ \ \ \ \qquad(2)\\
+根据初高中多项式展开的知识可知：\\ 对于所有括号只取第一项 \ x，则有 \ C^n_nx^n=x^n\\ 所以 \ x_n\ 的系数为 \ C^n_na_n=a_n，与 \ (1)\ 中相符。\\ 同理，所有括号中我们对其中 \ n-1\ 个取第一项，那么 \ x^{n-1}\ 的系数为 \\-a_n(x_1+x_2+...+x_n)，也即 \ (1)\ 中 \ a_{n-1}=-a_n(x_1+x_2+...+x_n)。\\
+\therefore -\frac{x^{n-1}的系数}{x^n 的系数}=-\frac{a_{n-1}}{a_{n}}=-\frac{-a_n(x_1+x_2+...+x_n)}{a_n}=(x_1+...+x_n)
+\\ 对应到一元二次方程 \ ax^2+bx+c=0\ 里即 \ x_1+x_2=-\frac{b}{a}。\\
+同理，所有括号中我们都取第二项，那么我们将得到常数项 \ (-1)^na_nx_1x_2...x_n\\
+也即 \ (1)\ 中 \ a_0=(-1)^na_nx_1x_2...x_n。\\
+\therefore \frac{常数项}{x^n 的系数}=\frac{a_0}{a_n}=\frac{(-1)^na_nx_1x_2...x_n}{a_n}=(-1)^nx_1x_2...x_n\\
+\therefore  (-1)^n\frac{常数项}{x^n 的系数}=x_1x_2...x_n\\
+对应到一元二次方程 \ ax^2+bx+c=0\ 里也即 \ x_1x_2=(-1)^2\frac{c}{a}=\frac{c}{a}</script><ul>
+<li><strong>矩阵的特征值之和等于矩阵的迹：$\sum_{i=1}^n    \lambda_i=\sum_{i=1}^n a_{ii}$</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+证明：设 \ A=\begin{bmatrix}a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+a_{21}&a_{22}&a_{23}&\cdots&a_{2n}\\a_{31}&a_{32}&a_{33}&\cdots&a_{3n}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}\end{bmatrix}，则 \\
+\det(A-\lambda I)=\begin{vmatrix}a_{11}-\lambda &a_{12}&a_{13}&\cdots&a_{1n}\\
+a_{21}&a_{22}-\lambda&a_{23}&\cdots&a_{2n}\\a_{31}&a_{32}&a_{33}-\lambda&\cdots&a_{3n}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}-\lambda\end{vmatrix}\\
+按行列式的定义可以将其展开成 \ n!\ 项非零行列式相加的形式 \\ 除了 \ 
+(a_{11}-\lambda)(a_{22}-\lambda)\cdots(a_{nn}-\lambda)\ 项含有所有 \ (a_{11}-\lambda),(a_{22}-\lambda),\cdots,(a_{nn}-\lambda)\\
+的 \ n\ 个因子外，其他项最多仅含 \ (a_{11}-\lambda)(a_{22}-\lambda)...(a_{nn}-\lambda)\ 这些因子中的 \ n-2\ 个 \\ 比如 \ a_{12}a_{21}(a_{33}-\lambda)...(a_{nn}-\lambda)。\\
+\therefore \lambda^n\ 和 \ \lambda^{n-1} 只可能来自包含所有因子的 \ (a_{11}-\lambda)(a_{22}-\lambda)...(a_{nn}-\lambda)\ 项 \\
+\therefore \det(A-\lambda I)=(a_{11}-\lambda)(a_{22}-\lambda)\cdots(a_{nn}-\lambda)+\cdots\\=(-1)^n\lambda^{n}+(-1)^{n-1}(a_{11}+a_{22}+\cdots+a_{nn})\lambda^{n-1}+\cdots\\
+于是 \ 可知 \det(A-\lambda I)\ 的 \ \lambda^{n-1}\ 的系数为(-1)^{n-1}(a_{11}+a_{22}+...+a_{nn})
+\\ 令 \ \det(A-\lambda I)=0\ 可得特征方程，根据根与系数关系可知：\\ 特征值之和 = 特征方程的根之和 =-\frac{\lambda^{n-1}项的系数}{\lambda^{n}项的系数}\\
+综上，\lambda_1+\lambda_2+...+\lambda_n(特征值之和)=(a_{11}+a_{22}+...+a_{nn})</script><ul>
+<li><strong>矩阵的特征值之积等于矩阵的行列式：$\prod_{i=1}^n\lambda_i=\det(A)$</strong></li>
+</ul>
+<script type="math/tex; mode=display">
+证明：设 \ A=\begin{bmatrix}a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+a_{21}&a_{22}&a_{23}&\cdots&a_{2n}\\a_{31}&a_{32}&a_{33}&\cdots&a_{3n}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}\end{bmatrix}，则 \\
+\det(A-\lambda I)=\begin{vmatrix}a_{11}-\lambda &a_{12}&a_{13}&\cdots&a_{1n}\\
+a_{21}&a_{22}-\lambda&a_{23}&\cdots&a_{2n}\\a_{31}&a_{32}&a_{33}-\lambda&\cdots&a_{3n}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}-\lambda\end{vmatrix}\\
+按行列式的定义可以将其展开成 \ n!\ 项非零行列式相加的形式 \\ 这 \ n!\ 项中必然存在不包含
+任何诸如 \ (a_{11}-\lambda),(a_{22}-\lambda),\cdots,(a_{nn}-\lambda)的因子的非零行列式 \\
+这样的行列式自然也就不包括 \ \lambda\ 项。\\
+\det(A-\lambda I)=\underbrace{(a_{11}-\lambda)(a_{22}-\lambda)\cdots(a_{nn}-\lambda)}_{(-1)^n\lambda^{n}+(-1)^{n-1}(a_{11}+a_{22}+...+a_{nn})\lambda^{n-1}}+\underbrace{(\cdots)}_{其他项, 包含 \ \lambda^{n-2}\ 到 \ \lambda\ 的项}+\underbrace{(C)}_{常数项, 不包含任何 \ \lambda\ 项}\\
+于是可知 \ \lambda^n\ 的系数为 \ (-1)^n， 令 \ \lambda=0，则有 \ \det(A)=C。\\
+令 \ \det(A-\lambda I)=0\ 可得特征方程，根据根与系数的关系可知：\\
+特征值之积 = 特征方程的根之积 =(-1)^n\frac{常数项}{\lambda^n 项的系数}\\
+也即 \ \lambda_1\lambda_2...\lambda_3(特征值之积)=\det(A)</script><ul>
+<li><p>我们再来看旋转矩阵的例子，旋转 $90^{\circ}$ 的矩阵 $Q=\begin{bmatrix}\cos {90^{\circ}}&amp; -\sin   {90^{\circ}}\\\sin {90^{\circ}}&amp; \cos   {90^{\circ}}\end{bmatrix}=\begin{bmatrix}0&amp; -1\\1&amp; 0\end{bmatrix} $（作用到向量上能将向量旋转 $90^{\circ}$，用 $Q$ 表示旋转矩阵是因为 <strong> 旋转矩阵是正交矩阵中相当重要的例子</strong>）。</p>
+<p>根据上面提到特征值的两个性质：特征值之和等于矩阵的迹，特征值之积等于矩阵的行列式，则对于 $Q$ 矩阵，有 $\begin{cases}\lambda_1+\lambda_2&amp; =0\\\lambda_1\cdot\lambda_2&amp; =1\end{cases}$，再来思考特征值与特征向量的由来，哪些非向量旋转 $90^{\circ}$ 后与自己平行，于是就遇到了麻烦，我们发现，似乎不存在非零向量旋转 $90^{\circ}$ 能与旋转前的自己同向，同时似乎也不存在特征值来满足前面的方程组（$\lambda_1$ 与 $\lambda_2$ 异号但其相乘结果却为正数）。 </p>
+<p>由 $\det(Q-\lambda I)=\begin{vmatrix}\lambda&amp; -1\\1&amp; \lambda\end{vmatrix}=\lambda^2+1=0$ 可得特征值为 $\lambda_1=i, \lambda_2=-i$。这两个特征值显然满足 $\begin{cases}\lambda_1+\lambda_2&amp; =0\\\lambda_1\cdot\lambda_2&amp; =1\end{cases}$，但这两个特征值并不是实数。我们发现，<strong>即使矩阵全是实数，其特征值也可能不是实数，本例中的实数矩阵其特征值就为一对共轭复数。</strong></p>
+<p>实际上，<strong>如果矩阵是对称的或者说接近对称的，那么特征值一般就是实数。如果越不对称，就像上面旋转矩阵的例子，$Q^T=-Q$，这说明旋转矩阵是一个反对称的矩阵，这样的矩阵，其特征值往往就是纯虚数。</strong></p>
+<p><strong>实数特征值让特征向量伸缩而虚数让其旋转。</strong> </p>
+<p>到现在为止我们看到，对于好的矩阵（最上面提到的置换矩阵）有实特征值及正交的特征向量，对于不好的矩阵（$90^{\circ}$ 旋转矩阵）有纯虚的特征值。 </p>
+<p>上面我们提到了旋转矩阵，下面将就二维情况进行推导</p>
+<p><img src="/2019/09/01/LA-Lec21/lec21-prove rotate Q.png" width="30%"></p>
+<p>如图所示点 $v$ 绕原点旋转 $\theta$ 角，得到点 $v’$，假设 $v$ 点的坐标是 $(x,y)$，那么可以推导得到 $v’$ 的坐标 $(x’,y’)$ </p>
+<script type="math/tex; mode=display">
+首先假设原点到 \ v\ 的距离是 \ r，v\ 点对应的向量与 \ x\ 轴的夹角是 \ \phi，那么：\\
+x=r\cos\phi\quad y=r\sin\phi\\
+x'=r\cos(\theta+\phi)\quad y'=r\sin(\theta+\phi)\\
+通过三角函数展开易得：\\
+x'=r\cos\theta\cos\phi-r\sin\theta\sin\phi\\
+y'=r\sin\theta\cos\phi+r\cos\theta\sin\phi\\
+用 \ x\ 和 \ y\ 进行替换有：\\
+x'=x\cos\theta-y\sin\theta\\
+y'=x\sin\theta+y\cos\theta</script></li>
+<li><p>再来看一个更糟的情况，$A=\begin{bmatrix}3&amp; 1\\0&amp; 3\end{bmatrix}$。</p>
+<p><strong>这是一个三角矩阵，对于这样的矩阵我们可以直接得出其特征值，即矩阵对角线上的元素。</strong>$\det(A-\lambda I)=\begin{vmatrix}3-\lambda&amp; 1\\0&amp; 3-\lambda\end{vmatrix}=(3-\lambda)^2=0$，于是 $\lambda _1=3,\lambda_2=3$。特征值为实数，看上去似乎很好，但实际上这是非常糟糕的情况，这体现在特征向量上。</p>
+<p>代入特征值计算特征向量：代入 $\lambda_1=3$ 得 $(A-\lambda I)x=\begin{bmatrix}0&amp; 1\\0&amp; 0\end{bmatrix}\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}0\\0\end{bmatrix}$，算出 $x_1=\begin{bmatrix}1\\0\end{bmatrix}$。而当我们把第二个特征值 $\lambda_2=3$ 代入时，等式和之前是一样的，又得到相同的向量。于是，我们根本无法找到另外一个与 $x_1$ 线性无关的特征向量了。</p>
+<p><strong>本例中的矩阵是一个退化矩阵，我们只能找到一个方向上的特征向量而不是两个。对于一个退化矩阵，重复的特征值在特殊情况下可能导致特征向量的短缺。</strong> </p>
 </li>
 </ul>
 
@@ -513,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/11/LA-Lec04/" rel="next" title="Lec04 - A 的 LU 分解">
-                <i class="fa fa-chevron-left"></i> Lec04 - A 的 LU 分解
+              <a href="/2019/08/31/ALGS4-Elementary-Sorts/" rel="next" title="Elementary Sorts">
+                <i class="fa fa-chevron-left"></i> Elementary Sorts
               </a>
             
           </div>
@@ -522,10 +617,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/12/LA-Lec06/" rel="prev" title="Lec06 - 列空间和零空间">
-                Lec06 - 列空间和零空间 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -673,7 +764,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -5- 课 - 转置、置换和向量空间 -R"><span class="nav-number">1.</span> <span class="nav-text">第 5 课 转置、置换和向量空间 $R$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第 -21- 课 - 特征值和特征向量"><span class="nav-number">1.</span> <span class="nav-text">第 21 课 特征值和特征向量 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特征值与特征向量初探"><span class="nav-number">1.1.</span> <span class="nav-text"> 特征值与特征向量初探 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求解特征值和特征向量：-Ax-lambda-x"><span class="nav-number">1.2.</span> <span class="nav-text">求解特征值和特征向量：$Ax=\lambda x$</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://rqtn.github.io/2019/08/12/LA-Lec14/lec14-summary.png">
 <meta property="og:image" content="https://rqtn.github.io/2019/08/12/LA-Lec14/lec14-orthogonal%20vectors.png">
-<meta property="og:updated_time" content="2019-08-12T10:11:33.412Z">
+<meta property="og:updated_time" content="2019-09-01T02:37:00.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lec14 - 正交向量与子空间">
 <meta name="twitter:description" content="第 14 课 正交向量与子空间  本章我们研究的重点还是之前提到过的子空间，但是本章我们主要  从正交的角度来探讨这些子空间具有的性质，主要内容见下图。  注意，上图指出了我们之前没有关注到的子空间的一些性质：对于一个矩阵，其零空间与行空间正交，其列空间与左零空间正交。 向量正交与空间正交  在线性代数中，正交就是垂直。无论我们讨论的是向量正交还是空间正交，都可以理解为垂直。 我们先研究最简单的">
@@ -470,7 +470,7 @@ Ax=\begin{bmatrix}row_1\ of\ A\\row_2\ of\ A\\...\\row_m\ of\ A\end{bmatrix}\beg
 <script type="math/tex; mode=display">
 设 A=\begin{bmatrix}1&2&5\\2&4&10\end{bmatrix}\\
 Ax=0 可写为：\begin{bmatrix}1&2&5\\2&4&10\end{bmatrix}\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}</script><p>一眼就可以看出， $A$ 的秩为 $1$，所以其行空间的是 $1$ 维的，其零空间是 $2$ 维的（可以理解为垂直于向量 $\begin{bmatrix}1&amp;2&amp;5\end{bmatrix}^T$ 的一个平面），行空间维数与零空间维数相加为 $3$。而有意思的是行空间和零空间中的向量都是 $3$ 维的。</p>
-<p>为了更加确切地讲述一分为二，我们引入 <strong> 正交补 </strong> 这个概念。<strong>称行空间和列空间是 $n$ 维空间里的正交补，是因为行空间和列空间正交且这两个子空间的维数之和为 $n$。</strong>举个简单的例子，<strong>三维空间中两条过原点的互相垂直的直线显然是相互正交的，但这两条直线对应的空间却不能被称为正交补，正交补的补就意味着，对于其中一个向量空间 $S$，另外一个向量空间 $T$ 则包含了所有垂直于 $S$ 的向量而不是部分。一分为二描述了一种彻底的程度。</strong></p>
+<p>为了更加确切地讲述一分为二，我们引入 <strong> 正交补 </strong> 这个概念。<strong>称行空间和零空间是 $n$ 维空间里的正交补，是因为行空间和零空间正交且这两个子空间的维数之和为 $n$。</strong>举个简单的例子，<strong>三维空间中两条过原点的互相垂直的直线显然是相互正交的，但这两条直线对应的空间却不能被称为正交补，正交补的补就意味着，对于其中一个向量空间 $S$，另外一个向量空间 $T$ 则包含了所有垂直于 $S$ 的向量而不是部分。一分为二描述了一种彻底的程度。</strong></p>
 <hr>
 <h3 id="无解方程 -Ax-b- 的最优解"><a href="# 无解方程 -Ax-b- 的最优解" class="headerlink" title="无解方程 $Ax=b$ 的最优解"></a>无解方程 $Ax=b$ 的最优解 </h3><p> 在上一课中我们看到了，矩阵的数据来源于实际测量，既然是测量，那么就存在测量不准确的情况，从而导致 $Ax=b$ 无解。此外，测量过程中极其细微的误差也可能导致无解。</p>
 <p>除了测量因素以外，有时候 $A$ 是一个长方形矩阵，其行数 $m$ 很多，列数 $n$ 很少（也即较少的未知数要满足非常多的方程），这时候有些方程得到的结果可能是有很大误差的，这个误差来自 $b$，也即 $b$ 中有一部分是“坏数据”，这些“坏数据”使得方程无解。</p>
@@ -617,7 +617,7 @@ Ax=0 可写为：\begin{bmatrix}1&2&5\\2&4&10\end{bmatrix}\begin{bmatrix}x_1\\x_
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -727,7 +727,7 @@ Ax=0 可写为：\begin{bmatrix}1&2&5\\2&4&10\end{bmatrix}\begin{bmatrix}x_1\\x_
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">65.7k</span>
+    <span title="Site words total count">69.8k</span>
   
 </div>
 
