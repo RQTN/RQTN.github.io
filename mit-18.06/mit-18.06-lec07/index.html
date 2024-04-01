@@ -1,0 +1,432 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec07 - 求解 Ax=0 ：主变量，特解 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第 7 课 求解 $Ax&#x3D;0$ ：主变量，特解 本章主要讲解如何求解 $Ax&#x3D;0$。其中涉及到了诸多步骤和概念，包括消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。注意到，在整个课程的后半部分都在探讨  RREF，这有助于我们更加多角度深入地了解 $Ax&#x3D;0$ 的求解，当然，RREF 在求解零空间时也有其重要的用途。   首先我们给出一个矩阵：  \displa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec07 - 求解 Ax&#x3D;0 ：主变量，特解">
+<meta property="og:url" content="http://example.com/mit-18.06/mit-18.06-lec07/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="第 7 课 求解 $Ax&#x3D;0$ ：主变量，特解 本章主要讲解如何求解 $Ax&#x3D;0$。其中涉及到了诸多步骤和概念，包括消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。注意到，在整个课程的后半部分都在探讨  RREF，这有助于我们更加多角度深入地了解 $Ax&#x3D;0$ 的求解，当然，RREF 在求解零空间时也有其重要的用途。   首先我们给出一个矩阵：  \displa">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2019-08-12T10:02:04.000Z">
+<meta property="article:modified_time" content="2024-03-31T11:19:40.073Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="mit-18.06">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/mit-18.06/mit-18.06-lec07/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lec07 - 求解 Ax=0 ：主变量，特解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-31 19:19:40'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec07 - 求解 Ax=0 ：主变量，特解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2019-08-12T10:02:04.000Z" title="发表于 2019-08-12 18:02:04">2019-08-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec07 - 求解 Ax=0 ：主变量，特解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="第-7-课-求解-Ax-0-：主变量，特解"><a href="#第-7-课-求解-Ax-0-：主变量，特解" class="headerlink" title="第 7 课 求解 $Ax=0$ ：主变量，特解"></a>第 7 课 求解 $Ax=0$ ：主变量，特解</h2><blockquote>
+<p>本章主要讲解<strong>如何求解 $Ax=0$</strong>。其中涉及到了诸多步骤和概念，包括<strong>消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。</strong>注意到，在整个课程的后半部分都在探讨  <strong>RREF</strong>，这有助于我们更加多角度深入地了解 $Ax=0$ 的求解，当然，<strong>RREF 在求解零空间时也有其重要的用途</strong>。</p>
+</blockquote>
+<p> 首先我们给出一个矩阵： </p>
+<script type="math/tex; mode=display">\displaylines{
+A = \left[
+\begin{matrix}
+1 & 2 & 2 & 2 \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{matrix}
+\right]
+}</script><p>观察该矩阵的行和列，容易发现，列二是列一的倍数，而行三也等于行一加上行二，<strong>这些线性相关的情况都会在消元的过程中表现出来</strong>。</p>
+<ul>
+<li><p><strong>在消元的过程中，零空间不会改变</strong>。这一点非常重要。<strong>零空间实际上就是由满足 $Ax=0$ 的所有 $x$ 所组成。在消元过程中，解是不会改变的，因此零空间也不会改变。实际上，消元过程改变的是列空间（行变换改变列空间）。</strong></p>
+<ul>
+<li><p>行变换改变的是列空间这一点应该不难理解。<strong>随着行变换的进行，$A$ 的列向量本身发生了改变，导致 $A$ 的各个列向量的线性组合也发生了变化，从而 $A$ 的列空间发生了变化。</strong>我们就拿上面给出的矩阵 $A$ 来具体说明：</p>
+<script type="math/tex; mode=display">\displaylines{
+对矩阵A进行消元，其中{\color{red}{红色}}标记的为主元\\
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  2&4&6&8\\
+  3&6&8&10
+  \end{bmatrix}  
+  \xrightarrow[r_3=r_3-3 \times r_1]{r_2=r_2-2 \times r_1}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&2&4
+  \end{bmatrix}  
+  \xrightarrow{r_3=r_3-r_2}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&0&0
+  \end{bmatrix}
+}</script><p>首先，<strong>矩阵 $A$ 的列空间必定包括其列向量</strong>，而注意到，<strong>消元后得到的 $U$ 中其所有列向量的第三行都为 $0$，显然 $U$ 的列向量无论怎么进行线性组合都无法得到 $A$ 中的任何一个列向量（比如 $\left[\begin{array}{l}{2} \\ {4} \\ {6}\end{array}\right]$）。</strong>这说明，列空间随着行变换发生了改变。</p>
+<p>但就上面这个例子来看，我们也应该不难理解，<strong>对有些矩阵而言，行变换并不改变其列空间，这样的矩阵往往是在每一行都有主元存在。</strong></p>
+</li>
+<li><p>行变换不改变其零空间这一点同样很好理解，上面可能说的比较笼统，消元过程中，解是不会改变的，所以零空间不会改变，但为什么解是不会改变的呢？这里简单地用 $3\times 3$ 的例子说明一下：</p>
+<script type="math/tex; mode=display">\displaylines{
+设A=\left[
+\begin{matrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{matrix}
+\right], 且存在x=\left[
+\begin{matrix}
+x_1\\
+x_2 \\
+x_3
+\end{matrix}
+\right]使得Ax=0\\
+那么此时显然有\begin{cases}ax_1+bx_2+cx_3=0\\dx_1+ex_2+fx_3=0\\gx_1+hx_2+ix_3=0\end{cases}
+\\
+简单地，将A中k倍的行2加到行1上，A的行1变为\left[\begin{matrix}a+kd & b+ke & c+kf\end{matrix}\right]。此时仍有:\\
+(a+kd)x_1+(b+ke)x_2+(c+kf)x_3=(ax_1+bx_2+cx_3)+k(dx_1+ex_2+fx_3)=0
+}</script></li>
+</ul>
+</li>
+</ul>
+<p>在最开始我们提到，消元过程中行之间和列之间线性相关的情况会表现出来。我们重新列出 $A$ 的消元过程：</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  2&4&6&8\\
+  3&6&8&10
+  \end{bmatrix}  
+  \xrightarrow[r_3=r_3-3 \times r_1]{r_2=r_2-2 \times r_1}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&2&4
+  \end{bmatrix}  
+  \xrightarrow{r_3=r_3-r_2}  
+  \begin{bmatrix}
+  \color{red}{1}&2&2&2\\
+  0&0&\color{red}{2}&4\\
+  0&0&0&0
+  \end{bmatrix}
+}</script><ul>
+<li><strong>列之间的线性相关情况：</strong><ul>
+<li><strong>在进行到第二步时，第二列没有主元，这说明第二列是其前面的列的一个线性组合，显然第二列是第一列的两倍。</strong></li>
+<li><strong>在进行到第三步时，第四列没有主元，这说明第四列是其前面的列的一个线性组合，第四列等于两倍的第三列减去第二列。</strong></li>
+</ul>
+</li>
+<li><strong>行之间的线性相关情况：</strong><ul>
+<li><strong>在进行到第三步时，第三行没有主元，这说明第三行是其前面的行的一个线性组合，显然第三行等于第一行加上第二行。</strong></li>
+</ul>
+</li>
+</ul>
+<p>我们从本课的一开始就提到，消元过程会把行之间和列之间线性相关的情况表现出来，可是为什么呢？</p>
+<ul>
+<li><p><strong>消元过程通过行没有主元（出现零行）来提示行之间的线性相关情况</strong>，因为消元过程本身就是行变换，也即对行向量进行各种线性组合。<strong>如果出现了零行，那正好说明，零行前面的行的线性组合，包括了零行所在行的初始行向量。</strong>这也即上面矩阵中的第三行，其在消元完成后第三行为零行，故矩阵第一行和第二行必然能够通过线性组合得到该行的初始行向量 $\left[\begin{array}{cccc}{3} &amp; {6} &amp; {8} &amp; {10}\end{array}\right]$。</p>
+</li>
+<li><p><strong>消元过程通过列没有主元来提示列之间的线性相关情况</strong>。</p>
+<p>首先需要明确的一点是，<strong>消元过程（行变换）虽然能够改变矩阵的列向量（从而改变矩阵的列空间），但其不能改变矩阵的列向量之间的线性相关性！</strong>就这一点你可以观察上面矩阵的第一列和第二列，无论是进行消元之前还是完成消元之后，第二列都是第一列的两倍。</p>
+<p>我们可以把没有主元的列分成两部分来看待，主元位置以下（包括主元位置本身）是一部分，主元位置以上是另外一部分。</p>
+<ul>
+<li><strong>主元位置以下部分全都是 $0$，而该无主元列前面的列也是如此，故主元位置以下部分其实可以完全不管，一堆 $0$ 向量不管你怎么线性组合都会得到 $0$ 向量。</strong></li>
+<li><strong>主元位置以上部分不管存在什么值，这部分的每一行都是有主元的，因此也就一定能够通过线性组合来得到该无主元列在主元位置以上部分的值。</strong></li>
+</ul>
+</li>
+</ul>
+<p>从以上我们就可以看出来，主元是多么地有用。<strong>如果一个矩阵有 $r$ 个主元，那么该矩阵有 $r$ 列线性无关，有 $r$ 行线性无关。</strong></p>
+<p>最后我们<strong>通过消元将矩阵化简成阶梯形式（非零元素以一种阶梯形式出现），一般记为 $U$。</strong></p>
+<ul>
+<li><strong>主元的个数对于矩阵而言意义非凡，我们将矩阵中主元的个数称为秩。</strong></li>
+</ul>
+<p>化简完成以后，我们要开始正式对 $Ax = 0$ 进行求解了，只不过我们现在具体是对 $Ux = 0$ 进行求解，但不管是哪个式子，解（也即零空间）都是不变的。</p>
+<ul>
+<li><p>首先我们需要找出<strong>主变量和自由变量，主变量也即主列对应的变量，自由变量也即自由列对应的变量</strong>。<strong>这里自由变量的“自由”也即我们可以对其分配任意的数值。</strong>注意到，在课程中所提到的分配数值的策略是：<strong>分别地对其中一个自由变量分配 $1$，其他所有自由变量分配 $0$</strong>。</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{cases}
+x_1+2x_2+2x_3+2x_4=0 \\ 
+2x_3+4x_4=0 \\
+\end{cases}
+\rightarrow
+\begin{cases}
+x_1 = 2x_4 - 2x_2\\
+x_3 = -2x_4 \\
+\end{cases}
+}</script><p>按照课程中的分配数值的策略，首先给自由变量 $\left[\begin{matrix}x_2\\x_4\end{matrix}\right]$ 赋值为 $\left[\begin{matrix}1\\0\end{matrix}\right]$，代入方程组得到解向量为 $\left[\begin{array}{c}{-2} \\ {1} \\ {0} \\ {0}\end{array}\right]$。再给自由变量 $\left[\begin{matrix}x_2\\x_4\end{matrix}\right]$ 赋值为 $\left[\begin{matrix}0\\1\end{matrix}\right]$，代入方程组得到解向量为 $\left[\begin{array}{c}{2} \\ {0} \\ {-2} \\ {1}\end{array}\right]$。</p>
+<p>我们一般称这两个解向量为<strong>特解，其特殊之处就在于我们给自由变量的赋值策略</strong>。正如视频中所说的，”<strong>这样的分配是很有讲究的</strong>“，那到底讲究在哪呢？我认为其讲究之处就在于，<strong>这种 $0$ 和 $1$ 的取值对应着一种考虑：即当只考虑某个自由变量时可以取到什么（特）解。这种考虑的好处是，能够确保所得到的特解之间是线性无关的！这一点非常重要也很容易理解，也正是这样，我们才能保证我们所得到的 k（自由变量个数）个特解是能够完整正确地表示整个零空间。</strong></p>
+<p>此外，我们也可以像下面这样把 <strong>$x$ 写成以自然变量为权重的两个向量的线性组合的形式，自然而然地得到特解</strong>。</p>
+<script type="math/tex; mode=display">\displaylines{
+x=\left[\begin{matrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{matrix}\right]
+=
+\left[\begin{matrix}
+2x_4 - 2x_2 \\
+x_2 \\
+-2x_4 \\
+x_4
+\end{matrix}\right]
+=
+x_4\left[\begin{matrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{matrix}\right]
++
+x_2\left[\begin{matrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{matrix}\right]
+}</script><p>到这里结论就显而易见了：<strong>零空间所包含的正好是特解的线性组合，每个自由变量对应着有一个特解。而自由变量的个数实际上就由矩阵的列数（设为 $n$）减去矩阵的主列个数（也即秩，设为 $r$）从而得到（$n-r$）</strong></p>
+</li>
+</ul>
+<p>阶梯型矩阵 $U$ 还可以进一步化简为<strong>简化行阶梯形式 RREF（主元所在列除主元外其他所有元素都为 $0$ ，且主元为 $1$）</strong>。</p>
+<script type="math/tex; mode=display">\displaylines{
+U=\begin{bmatrix}
+\color{red}{1}&2&2&2\\
+0&0&\color{red}{2}&4\\
+0&0&0&0
+\end{bmatrix}  
+\xrightarrow{r_1=r_1-r_2}  
+\begin{bmatrix}
+\color{red}{1}&2&0&-2\\
+0&0&\color{red}{2}&4\\
+0&0&0&0
+\end{bmatrix}  
+\xrightarrow{r_2=r_2/2}  
+\begin{bmatrix}
+\color{red}{1}&2&0&-2\\
+0&0&\color{red}{1}&2\\
+0&0&0&0
+\end{bmatrix}=R
+}</script><p>课程后半部分花费大量介绍简化行阶梯形式（RREF），其对于我们进一步理解 $Ax = 0$ 的求解具有非常重要的作用。  </p>
+<ul>
+<li><p><strong>观察我们最终得到的 $R$，容易发现它还包含了一个单位阵，位于主元行与主元列的交汇处</strong>，现在我们将 $R$ 中的主元列与自由列分开，即交换一下列，使得主元列在一起，自由列在一起， 从而有：</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{bmatrix}
+\color{red}{1}&2&0&-2\\
+0&0&\color{red}{1}&2\\
+0&0&0&0
+\end{bmatrix}
+\xrightarrow{exchange\ c_2=c_3}
+\begin{bmatrix}
+\color{red}{1}&0&2&-2\\
+0&\color{red}{1}&0&2\\
+0&0&0&0
+\end{bmatrix}
+\\
+将矩阵中的 \begin{bmatrix}
+2 & -2\\
+0 & 2
+\end{bmatrix}部分记为F,\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}部分记为I\\
+仔细观察前面得到的两个特解：\left[\begin{matrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{matrix}\right]
+\left[\begin{matrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{matrix}\right]
+\\
+注意到前面我们对 R 交换了列，所以特解中的分量也需要进行交换（x_2和x_3）\\
+\left[\begin{matrix}
+-2 \\
+0 \\
+1 \\
+0
+\end{matrix}\right]
+\left[\begin{matrix}
+2 \\
+-2 \\
+0 \\
+1
+\end{matrix}\right]
+\\
+仔细观察可发现，这两个解若作为列向量组成一个矩阵，恰好为\left[\begin{matrix}
+-F \\
+I
+\end{matrix}\right]
+}</script><p>如何解释上面的现象呢？下面给出上面结论的推导过程：</p>
+<p><strong>现假设矩阵已经消元和简化到 RREF 形式为 $R$，其列数为 $n$，其秩为 $r$，且列顺序已经调整好，也即 $R$ 矩阵主列都在前，自由列都在后，$R$ 的下面是零行，故$R=\begin{bmatrix}I&amp;F\\0&amp;0\end{bmatrix}$ 。那么 $Rx = 0$ 的特解是什么呢？</strong></p>
+<p><strong>我们可以构造一个零空间矩阵 $N = \begin{bmatrix}x_1 &amp;\cdots&amp; x_{n-r}\end{bmatrix}=\begin{bmatrix}X_{pivot}\\X_{free}\end{bmatrix}$，该矩阵的各列由特解（$x_1,\cdots, x_{n-r}$）组成，故显然有 $RN=0（0矩阵）$。此时 $\begin{bmatrix}I&amp;F\\0&amp;0\end{bmatrix}\begin{bmatrix}X_{pivot}\\X_{free}\end{bmatrix}=IX_{pivot} + FX_{free}=0$，其中 $I$ 为 $r\times r$，$F$ 为 $r\times (n-r)$，$X_{pivot}$ 为 $r\times(n-r) $ ，$X_{free}$ 为 $(n-r)\times (n-r)$。</strong></p>
+<p><strong>如果把单位矩阵赋值给 $N$ 的 $X_{free}$ 部分使得 $X_{free}=I$（所有特解的自由变量部分组成的一个矩阵），那么显然每个特解对应于单位矩阵的一列，也即最上面提到的分配策略：给其中一个自由变量分配 $1$ ，其他所有自由变量分配 $0$。这样一来，$X_{pivot}=-F$，也即 $N = \begin{bmatrix}-F\\I\end{bmatrix}$。</strong></p>
+</li>
+<li><p><strong>矩阵的主元的个数与其转置的主元的个数相同。</strong> </p>
+<p><strong>主元的概念是伴随消元而生的。假设矩阵 $A$ 消元后所得的主元个数为 $a$，那么就表示矩阵 $A$ 有 $a$ 行线性无关，有 $a$ 列线性无关；假设矩阵 $A^T$ 消元后所得的主元个数为 $b$，那么就表示矩阵 $A^T$ 有 $b$ 行线性无关，有 $b$ 列线性无关。</strong></p>
+<p><strong>而由矩阵的转置的定义，我们知道，矩阵 $A$ 的行就是矩阵 $A^T$ 的列，因此 $a=b$。</strong></p>
+<p><strong>换句话说，$A$ 的主元个数 = $A$ 矩阵线性无关的列的个数 = $A^T$ 矩阵线性无关的行的个数 = $A^T$ 的主元个数。</strong></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/mit-18.06/mit-18.06-lec07/">http://example.com/mit-18.06/mit-18.06-lec07/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/mit-18.06/mit-18.06-lec06/" title="Lec06 - 列空间和零空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec06 - 列空间和零空间</div></div></a></div><div class="next-post pull-right"><a href="/mit-18.06/mit-18.06-lec08/" title="Lec08 - 求解 Ax=b ：可解性和解的结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec08 - 求解 Ax=b ：可解性和解的结构</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/mit-18.06/mit-18.06-lec01/" title="Lec01 - 方程组的几何解释"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec01 - 方程组的几何解释</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec02/" title="Lec02 - 矩阵消元"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec02 - 矩阵消元</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec03/" title="Lec03 - 乘法和逆矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec03 - 乘法和逆矩阵</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec04/" title="Lec04 - A 的 LU 分解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec04 - A 的 LU 分解</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec05/" title="Lec05 - 转置、置换和向量空间 R"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec05 - 转置、置换和向量空间 R</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec06/" title="Lec06 - 列空间和零空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec06 - 列空间和零空间</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-7-%E8%AF%BE-%E6%B1%82%E8%A7%A3-Ax-0-%EF%BC%9A%E4%B8%BB%E5%8F%98%E9%87%8F%EF%BC%8C%E7%89%B9%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">第 7 课 求解 $Ax&#x3D;0$ ：主变量，特解</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

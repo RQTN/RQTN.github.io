@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ResourceBundle 中文乱码问题解决 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ResourceBundle 中文乱码问题解决问题国际化 i18n 中文的配置文件 i18n_zh_CN.properties 内容如下： 12345678910username&#x3D;用户名password&#x3D;密码sex&#x3D;性别age&#x3D;年龄register&#x3D;注册boy&#x3D;男girl&#x3D;女email&#x3D;邮箱reset&#x3D;重置submit&#x3D;提交 下面 bundle.getString 会输出乱码： 123456789">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ResourceBundle 中文乱码问题解决">
+<meta property="og:url" content="http://example.com/atguigu-javaweb/ResourceBundle%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="ResourceBundle 中文乱码问题解决问题国际化 i18n 中文的配置文件 i18n_zh_CN.properties 内容如下： 12345678910username&#x3D;用户名password&#x3D;密码sex&#x3D;性别age&#x3D;年龄register&#x3D;注册boy&#x3D;男girl&#x3D;女email&#x3D;邮箱reset&#x3D;重置submit&#x3D;提交 下面 bundle.getString 会输出乱码： 123456789">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2022-09-26T09:10:39.000Z">
+<meta property="article:modified_time" content="2024-04-01T01:47:31.039Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="atguigu-javaweb">
+<meta property="article:tag" content="乱码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/atguigu-javaweb/ResourceBundle%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ResourceBundle 中文乱码问题解决',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 09:47:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ResourceBundle 中文乱码问题解决</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-09-26T09:10:39.000Z" title="发表于 2022-09-26 17:10:39">2022-09-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/JavaWeb/">JavaWeb</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">608</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ResourceBundle 中文乱码问题解决"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="ResourceBundle-中文乱码问题解决"><a href="#ResourceBundle-中文乱码问题解决" class="headerlink" title="ResourceBundle 中文乱码问题解决"></a><code>ResourceBundle</code> 中文乱码问题解决</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>国际化 <code>i18n</code> 中文的配置文件 <code>i18n_zh_CN.properties</code> 内容如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>=<span class="string">用户名</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">密码</span></span><br><span class="line"><span class="attr">sex</span>=<span class="string">性别</span></span><br><span class="line"><span class="attr">age</span>=<span class="string">年龄</span></span><br><span class="line"><span class="attr">register</span>=<span class="string">注册</span></span><br><span class="line"><span class="attr">boy</span>=<span class="string">男</span></span><br><span class="line"><span class="attr">girl</span>=<span class="string">女</span></span><br><span class="line"><span class="attr">email</span>=<span class="string">邮箱</span></span><br><span class="line"><span class="attr">reset</span>=<span class="string">重置</span></span><br><span class="line"><span class="attr">submit</span>=<span class="string">提交</span></span><br></pre></td></tr></table></figure>
+<p>下面 <code>bundle.getString</code> 会输出乱码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testI18n</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Locale</span> <span class="variable">locale</span> <span class="operator">=</span> Locale.CHINA;</span><br><span class="line"></span><br><span class="line">    <span class="type">ResourceBundle</span> <span class="variable">bundle</span> <span class="operator">=</span> ResourceBundle.getBundle(<span class="string">&quot;i18n&quot;</span>, locale);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出中文会乱码</span></span><br><span class="line">    System.out.println(<span class="string">&quot;username: &quot;</span> + bundle.getString(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;password: &quot;</span> + bundle.getString(<span class="string">&quot;password&quot;</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;sex: &quot;</span> + bundle.getString(<span class="string">&quot;sex&quot;</span>));</span><br><span class="line">    System.out.println(<span class="string">&quot;age: &quot;</span> + bundle.getString(<span class="string">&quot;age&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p><code>Java</code> 读取 <code>.properties</code> 文件时默认使用的编码是 <code>ISO-8859-1</code>，<code>ISO-8859-1</code> 是单字节编码，自身不能显示中文，因此导致了乱码现象。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h4><p>将 <code>bundle.getString</code> 获取到的内容按 <code>ISO-8859-1</code> 单字节编码形式进行转换，得到对应的 <code>byte[]</code> 字节数组，然后使用 <code>new String(byte[] bytes, String charsetName)</code> 构造器再将 <code>byte[]</code> 字节数组转换为 <code>utf-8</code> 格式的字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">String</span>(bundle.getString(<span class="string">&quot;username&quot;</span>).getBytes(<span class="string">&quot;ISO-8859-1&quot;</span>), <span class="string">&quot;utf-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这种方法的缺点在于，每次 <code>bundle.getString</code> 都需要手工进行转换，如果需要进行国际化的文本信息很多，这种方法需要大量的手工转换，同时也造成代码冗余且可读性很差。</p>
+<p>另外，在 <code>jsp</code> 页面中使用表达式脚本，尚能使用该方案：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%=<span class="keyword">new</span> <span class="title class_">String</span>(bundle.getString(<span class="string">&quot;username&quot;</span>).getBytes(<span class="string">&quot;ISO-8859-1&quot;</span>), <span class="string">&quot;utf-8&quot;</span>)%&gt;</span><br></pre></td></tr></table></figure>
+<p>但如果希望使用 <code>jstl</code> 标签库中的 <code>&lt;fmt:message&gt;</code> 标签来进行国际化信息输出，显然该方案就无法使用了。</p>
+<h4 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h4><p>使用 <code>Java SDK</code> 提供的转码 <code>native2ascii.exe</code> 工具（在 <code>bin</code> 目录下可以找到）</p>
+<p>首先将原文件 <code>i18n_zh_CN.properties</code> 重命名为 <code>i18n_zh.properties</code></p>
+<p>然后进入 <code>i18n_zh.properties</code> 所在的文件目录，使用如下命令进行转码（指定转换为 <code>UTF-8</code> 编码）</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">native2ascii -encoding utf-<span class="number">8</span> i18n_zh.properties i18n_zh_CN.properties</span><br></pre></td></tr></table></figure>
+<p>命令执行完后，会生成 <code>i18n_zh_CN.properties</code> 文件，该文件已经经过转码处理，原文件的中文在该文件中已经转码为 <code>Unicode</code>，如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>=<span class="string">\u7528\u6237\u540d</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">\u5bc6\u7801</span></span><br><span class="line"><span class="attr">sex</span>=<span class="string">\u6027\u522b</span></span><br><span class="line"><span class="attr">age</span>=<span class="string">\u5e74\u9f84</span></span><br><span class="line"><span class="attr">register</span>=<span class="string">\u6ce8\u518c</span></span><br><span class="line"><span class="attr">boy</span>=<span class="string">\u7537</span></span><br><span class="line"><span class="attr">girl</span>=<span class="string">\u5973</span></span><br><span class="line"><span class="attr">email</span>=<span class="string">\u90ae\u7bb1</span></span><br><span class="line"><span class="attr">reset</span>=<span class="string">\u91cd\u7f6e</span></span><br><span class="line"><span class="attr">submit</span>=<span class="string">\u63d0\u4ea4</span></span><br></pre></td></tr></table></figure>
+<p>补充说明：<code>native2ascii</code> 命令的 <code>-encoding</code> 参数表示转换为指定编码。Web 项目中一般统一使用 <code>UTF-8</code> 编码，因此我们这里指定转换为 <code>UTF-8</code> 编码。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/atguigu-javaweb/ResourceBundle%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">http://example.com/atguigu-javaweb/ResourceBundle%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/atguigu-javaweb/">atguigu-javaweb</a><a class="post-meta__tags" href="/tags/%E4%B9%B1%E7%A0%81/">乱码</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/hsp-javase/ch24-MySQL%20%E6%9D%82%E8%AE%B0/" title="MySQL 杂记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MySQL 杂记</div></div></a></div><div class="next-post pull-right"><a href="/laodu-mybatis/%E7%AC%AC%204%20%E7%AB%A0%20Mybatis%20%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20%E6%95%B0%E6%8D%AE%E6%BA%90%20JNDI%20%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/atguigu-springmvc/%E7%AC%AC%208%20%E7%AB%A0%20HttpMessageConverter%20-%20%E5%93%8D%E5%BA%94%E4%B8%AD%E6%96%87%E5%86%85%E5%AE%B9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" title="HttpMessageConverter - 响应中文内容乱码问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">HttpMessageConverter - 响应中文内容乱码问题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ResourceBundle-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-number">1.</span> <span class="toc-text">ResourceBundle 中文乱码问题解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.2.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">方案一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">1.3.2.</span> <span class="toc-text">方案二</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

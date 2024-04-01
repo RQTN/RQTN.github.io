@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="RQTN">
+<meta property="og:url" content="http://example.com/page/6/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:author" content="RQTN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/6/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RQTN',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-04-01 11:50:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">RQTN</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec11/" title="Lec11 - 矩阵空间、秩 1 矩阵和小世界图">Lec11 - 矩阵空间、秩 1 矩阵和小世界图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:04:57.000Z" title="发表于 2019-08-12 18:04:57">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 11 课 矩阵空间、秩 $1$ 矩阵和小世界图
+本章内容可分为三部分：第一部分延续上节课的内容，把向量空间的定义从向量扩展到矩阵和微分方程，第二部分介绍秩 $1$ 矩阵，第三部分简单讲述了图的概念和图与矩阵之间的联系。
+
+我们接着探究上一节课提到的矩阵空间的概念。我们仍然讨论所有的 $3\times 3$ 矩阵这样的矩阵空间，记之为 $M$。
+对于 $M$，很容易找到其子空间，比如所有的上三角矩阵（记为 $U$）以及所有的对称矩阵（记为 $S$）等等。
+
+所有的对称矩阵所组成的矩阵空间 $S$ 其维数为 $6$。容易找出 $S$ 的 $6$ 个基：
+\displaylines{
+\begin{bmatrix}1&0&0\\0&0&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&1&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&0&0\\0&0&1\end{bmatrix},\begin{bmatrix}0&1&0\\1&0&0\\0&0&0\end{bmatrix},\begin{bmatri ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec10/" title="Lec10 - 四个基本子空间">Lec10 - 四个基本子空间</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:04:19.000Z" title="发表于 2019-08-12 18:04:19">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 10 课 四个基本子空间
+本章主要详细介绍了矩阵的四个基本子空间，并对于每个子空间探讨了两个问题：基和维数。课程的最后我们对向量空间的概念进行了一次扩展：从 $R^n$ 到 $R^{n\times n}$。
+
+假设 $A$ 为 $m\times n$ 的一个矩阵，秩为 $r$，则其对应的四个基本子空间为：
+
+$A$ 的列空间 $C(A)$
+$A$ 的零空间 $N(A)$
+$A$ 的行空间 $C(A^T)$
+$A$ 的左零空间 $N(A^T)$
+
+显然，列空间 $C(A)$ 是$A$ 的所有列向量的线性组合，每个列向量为 $m$ 维，所以 $C(A)$ 是 $R^m$ 的子空间；零空间 $N(A)$ 里的向量都是 $n$ 维向量，所以 $N(A)$ 是 $R^n$ 的子空间；行空间 $C(A^T)$ 是所有行的线性组合，每个行向量为 $n$ 维，所以 $C(A^T)$ 是 $R^n$ 的子空间；左零空间 $N(A^T)$ 里的向量都是 $m$ 维向量，所以 $N(A^T)$ 是 $R^m$ 的子空间。
+我们先来探讨相对简单的维数的问题：
+四个子空间的维数分别是什么？
+
+列空间 $C( ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec09/" title="Lec09 - 线性相关性、基和维数">Lec09 - 线性相关性、基和维数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:03:35.000Z" title="发表于 2019-08-12 18:03:35">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 9 课 线性相关性、基和维数
+本章主要讲述了向量组线性相关/无关，生成，基和维数等概念，并额外介绍了如何使用矩阵来判断向量组的线性相关性/无关性。
+
+在介绍线性相关/无关，生成，基和维数这些概念之前，我们首先要明确这些词都是针对什么量的：比如我们一般会说向量组线性相关或无关，向量组生成一个向量空间，向量组作为某个向量空间的基，而不会说矩阵线性相关或无关（对于矩阵我们一般说秩或行列式），矩阵生成一个向量空间，矩阵作为某个向量空间的基。最后需要声明的一点是，这里讨论的维数的概念也并非值的是矩阵的维数，而是向量空间的维数。
+
+向量组线性相关/无关
+
+对于向量组中的所有向量，如果不存在结果为零向量的线性组合（除了系数全部为零也即零组合的情况），那么向量组是线性无关的，否则向量组线性相关。
+如果向量组里面包含了一个零向量，那么向量组必然线性相关。
+
+
+使用矩阵来判断向量组的线性相关性/无关性
+
+给定向量组包括向量 $v_1,v_2,\cdots,v_n$，将向量组中各向量作为列向量以形成一个矩阵，则有 $A=\begin{bmatrix}v_1&amp;v_2&amp;\cdots&amp; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec08/" title="Lec08 - 求解 Ax=b ：可解性和解的结构">Lec08 - 求解 Ax=b ：可解性和解的结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:02:51.000Z" title="发表于 2019-08-12 18:02:51">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 8 课 求解 $Ax=b$ ：可解性和解的结构
+本章将系统讲解线性方程组的求解，也即 $Ax = b$。首先课程讲述了可解性的概念，然后给出求解 $Ax=b$ 的具体算法（$x_p+x_n$），最后从秩的角度来理解解的结构。
+
+我们已经知道， $Ax=b$ 是不一定有解的，其可解性可以通过消元来反映（消元过程可以看出其可解性），如果有解，就需继续探究是唯一解还是多解并求出所有的解（通解）。
+我们还是使用上节课的矩阵，那么易得 $Ax=b$ 的消元过程为：
+\displaylines{
+\begin{bmatrix}
+\color{red}{1}&2&2&2&b_1\\
+2&4&6&8&b_2\\
+3&6&8&10&b_3
+\end{bmatrix}  
+\xrightarrow[r_3=r_3-3 \times r_1]{r_2=r_2-2 \times r_1}  
+\begin{bmatrix}
+\color{red}{1}&2&2&2&b_1\\
+0&0&\color{red}{2}&4&b_2-2b_1\\
+0&0&2&4&b_3-3b_1
+\end{bmatrix}  
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec07/" title="Lec07 - 求解 Ax=0 ：主变量，特解">Lec07 - 求解 Ax=0 ：主变量，特解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:02:04.000Z" title="发表于 2019-08-12 18:02:04">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 7 课 求解 $Ax=0$ ：主变量，特解
+本章主要讲解如何求解 $Ax=0$。其中涉及到了诸多步骤和概念，包括消元（从中可以看出一些线性相关的信息）、秩、主列、主变量、自由列、自由变量以及特解。注意到，在整个课程的后半部分都在探讨  RREF，这有助于我们更加多角度深入地了解 $Ax=0$ 的求解，当然，RREF 在求解零空间时也有其重要的用途。
+
+ 首先我们给出一个矩阵： 
+\displaylines{
+A = \left[
+\begin{matrix}
+1 & 2 & 2 & 2 \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{matrix}
+\right]
+}观察该矩阵的行和列，容易发现，列二是列一的倍数，而行三也等于行一加上行二，这些线性相关的情况都会在消元的过程中表现出来。
+
+在消元的过程中，零空间不会改变。这一点非常重要。零空间实际上就是由满足 $Ax=0$ 的所有 $x$ 所组成。在消元过程中，解是不会改变的，因此零空间也不会改变。实际上，消元过程改变的是列空间（行变换改变列空间）。
+
+行变换改变的是列空间这一点应该不难理解。随着行变 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec06/" title="Lec06 - 列空间和零空间">Lec06 - 列空间和零空间</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:01:23.000Z" title="发表于 2019-08-12 18:01:23">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 6 课 列空间和零空间
+本章主要介绍了列空间和零空间。首先，探讨了关于子空间的并和交是否依然是一个子空间。然后我们开始探讨列空间中列空间的大小问题。最后我们学习了零空间，并对零空间是向量空间这一事实给予了证明。
+
+
+考虑子空间的并和交：
+假设取某个向量空间的两个子空间 $P$ 和 $L$，那么：
+
+关于它们的并 $P\bigcup L$ 是子空间吗？显然，两个子空间的并，不一定是子空间
+
+关于它们的交 $P\bigcap L$ 是子空间吗？是的。实际上，对于任意两子空间的交集都是子空间。这一点很好证明：
+\displaylines{
+我们假设存在子空间 S 和 T，存在向量 v,w且 v,w\in S\bigcap T \\
+\because v\in S\bigcap T, w\in S\bigcap T\\
+\therefore v\in S, w\in S, v\in T, w\in T \\
+\therefore v+w\in S, v+w\in T\\
+\therefore v+w\in S\bigcap T \\
+加法封闭证闭。\\
+假设存在任意常数k，显然有\\
+kv ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec05/" title="Lec05 - 转置、置换和向量空间 R">Lec05 - 转置、置换和向量空间 R</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:00:11.000Z" title="发表于 2019-08-12 18:00:11">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 5 课 转置、置换和向量空间 $R$
+本章介绍的主要内容包括置换、转置和向量空间。在最开始部分对置换矩阵给予介绍：包括对于 $LU$ 分解的扩展 $PA = LU$ 以及置换矩阵的定义和性质。然后介绍了矩阵的转置，并延伸介绍了对称矩阵的概念。后半部分的课程主要对向量空间尤其是 $R^n$及其子空间进行了讲述（从 $R^2$ 和 $R^3$ 看出一定规律），最后引申出列空间的概念。
+
+
+考虑消元过程中的行交换，可得到扩展有：$A = LU \rightarrow PA = LU$。后式对所有的可逆矩阵 $A$ 都适用。
+在前一讲中我们已经提到了，对于可逆矩阵 $A$ ，其在消元过程中可能出现主元为零的情况，此时需要进行行交换，而行交换无非就是乘上一个置换矩阵而已，矩阵 $A$ 通过左乘多个置换矩阵变换成一个相当好的矩阵（也即在消元过程中不需要进行行交换），此时进行 $LU$ 分解就没有任何问题了，而这些左乘的多个置换矩阵的总乘积记为 $P$。
+
+置换矩阵是行重新排列了的单位矩阵。
+
+这意味着置换矩阵显然必须是一个方阵，因为单位矩阵就是方阵，且单位矩阵也是一个置换矩阵（只不过单位矩阵不 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec04/" title="Lec04 - A 的 LU 分解">Lec04 - A 的 LU 分解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-11T13:10:44.000Z" title="发表于 2019-08-11 21:10:44">2019-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 4 课 $A$ 的 $LU$ 分解
+本章介绍的主要内容是 $A$ 的 $LU$ 分解。在最开始部分首先补充介绍了一些逆矩阵的内容。然后我们研究了矩阵的 $LU$ 分解，主要体现在求得一个一击致命的 $E$ (其逆即为 $L$)，同时我们探究了为什么 $L$ 比 $E$ 要好。最后我们考虑了行交换的情况，介绍了置换矩阵。
+
+
+矩阵乘积的逆：
+\displaylines{
+(AB)(B^{-1}A^{-1}) = I \\
+(B^{-1}A^{-1})(AB) = I
+}老师给了一个生动有趣的比喻：“这就像先脱鞋子，再脱袜子，然后其逆动作应该是先穿袜子，再穿鞋子。”
+
+转置矩阵和逆矩阵的关系：
+注意，矩阵乘积的逆和矩阵乘积的转置都调换了矩阵的顺序：$AB$ 的逆为 $B^{-1}A^{-1}$，其转置为 $B^TA^T$。 
+\displaylines{
+已知 AA^{-1} = I \\
+\therefore (AA^{-1})^T=I^T=I\\
+\because (A^{-1})^TA^T = I \\
+\therefore (A^T)^{-1} = (A^{-1})^T
+}由上 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec03/" title="Lec03 - 乘法和逆矩阵">Lec03 - 乘法和逆矩阵</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-11T13:10:06.000Z" title="发表于 2019-08-11 21:10:06">2019-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 3 课 乘法和逆矩阵
+第 3 课的主要内容是矩阵乘法和逆矩阵。矩阵乘法主要介绍了矩阵乘法的多种求解方法、乘法的结合律以及能够相乘的条件。逆矩阵主要介绍了如何判断一个矩阵是逆矩阵，最后顺带提及了求解一个好矩阵（非奇异矩阵）的逆矩阵的方法。
+
+
+矩阵乘法 $AB=C$ 的 $5$ 种求解方法：
+
+从元素的角度（$A$ 的行乘以 $B$ 的列）
+\displaylines{
+c_{ij} = (Row_i\ of\ A)\cdot(Col_j\ of\ B)=
+\begin{bmatrix}
+a_{i1}&a_{i2}&\cdots&a_{in}
+\end{bmatrix}
+\begin{bmatrix}
+b_{1j}\\b_{2j}\\\vdots\\b_{nj}
+\end{bmatrix}
+= \sum^{n}_{k=1}a_{ik}\cdot b_{kj}
+}
+从列的角度（列的线性组合）：$C$ 的各列是 $A$ 中各列的一个线性组合，组合方式由 $B$ 决定。比如 $C$ 的第一列是 $A$ 中各列相对于 $B$ 的第一列的一个线性组合。
+
+从行的角度（行的线性组合）：$C$ 的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec02/" title="Lec02 - 矩阵消元">Lec02 - 矩阵消元</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-11T13:06:05.000Z" title="发表于 2019-08-11 21:06:05">2019-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 2 课 矩阵消元
+第 2 课的主要内容是消元法的介绍。前半部分主要介绍了消元法的具体操作以及消元法成功条件（对矩阵 $A$ 有一定要求）。后半部分主要讲述使用矩阵乘法的观点来表示消元操作，顺带提及了用于矩阵行置换的置换矩阵和逆矩阵。
+
+消元法不总是奏效的，其是否奏效取决于矩阵是否是一个好矩阵。不好的矩阵在消元时会出现主元的位置被零占据且通过行置换也无法解决该问题的情况。
+换句话说，消元失效指的是不能得到 n（矩阵行数）个主元，于是矩阵也因此变得不可逆。
+
+右侧向量 $b$ 是不是在消元过程中也要考虑（也即形成增广矩阵一起参与矩阵消元的行变换过程）
+
+平时计算当然可以形成增广矩阵一起考虑。
+
+但就 MATLAB 而言，MATLAB 一般在消元过程中不考虑右侧向量 $b$，而是在消元过程完成后（也即矩阵从 $A$ 变为 $U$ 后），再对右侧向量进行处理（使用消元矩阵进行左乘，消元矩阵本身能够表示消元过程中的所有消元操作）。
+之所以这样做是有道理的，这样的做法能够在某种场景下大量简化计算量：对于矩阵 $A$，给出大量不同的右侧向量 $b$ 进行 $x$ 的求解，此时只要我们算出了消元矩 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Data-Structure-Algorithm/"><span class="card-category-list-name">Data Structure & Algorithm</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">32</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JUC/"><span class="card-category-list-name">JUC</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JavaSE/"><span class="card-category-list-name">JavaSE</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/Mybatis/"><span class="card-category-list-name">Mybatis</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/Spring/"><span class="card-category-list-name">Spring</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E4%B9%B1%E7%A0%81/" style="font-size: 1.17em; color: #999c9f">乱码</a> <a href="/tags/Java-Socket-%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">Java Socket 编程</a> <a href="/tags/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95/" style="font-size: 1.43em; color: #99a6b9">好文收录</a> <a href="/tags/atguigu-springmvc/" style="font-size: 1.23em; color: #999ea6">atguigu-springmvc</a> <a href="/tags/%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98/" style="font-size: 1.1em; color: #999">多级缓存</a> <a href="/tags/TCC-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" style="font-size: 1.1em; color: #999">TCC 分布式事务</a> <a href="/tags/Mybatis-%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6/" style="font-size: 1.17em; color: #999c9f">Mybatis 接口代理机制</a> <a href="/tags/JNDI/" style="font-size: 1.1em; color: #999">JNDI</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.1em; color: #999">设计模式</a> <a href="/tags/hsp-javase/" style="font-size: 1.43em; color: #99a6b9">hsp-javase</a> <a href="/tags/Sentinel/" style="font-size: 1.1em; color: #999">Sentinel</a> <a href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/" style="font-size: 1.1em; color: #999">浮点数</a> <a href="/tags/mit-18-06/" style="font-size: 1.5em; color: #99a9bf">mit-18.06</a> <a href="/tags/itheima-mysql/" style="font-size: 1.1em; color: #999">itheima-mysql</a> <a href="/tags/laodu-mybatis/" style="font-size: 1.3em; color: #99a1ac">laodu-mybatis</a> <a href="/tags/atguigu-javaweb/" style="font-size: 1.1em; color: #999">atguigu-javaweb</a> <a href="/tags/atguigu-springboot2/" style="font-size: 1.43em; color: #99a6b9">atguigu-springboot2</a> <a href="/tags/itheima-juc/" style="font-size: 1.37em; color: #99a4b2">itheima-juc</a> <a href="/tags/%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/" style="font-size: 1.1em; color: #999">原码/反码/补码</a> <a href="/tags/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" style="font-size: 1.1em; color: #999">隔离级别</a> <a href="/tags/%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" style="font-size: 1.1em; color: #999">静态代理/动态代理</a> <a href="/tags/princeton-algs4/" style="font-size: 1.37em; color: #99a4b2">princeton-algs4</a> <a href="/tags/itheima-springcloud/" style="font-size: 1.23em; color: #999ea6">itheima-springcloud</a> <a href="/tags/SpringBoot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">SpringBoot 异常处理机制</a> <a href="/tags/synchronized/" style="font-size: 1.3em; color: #99a1ac">synchronized</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" style="font-size: 1.1em; color: #999">八皇后问题</a> <a href="/tags/Canal/" style="font-size: 1.1em; color: #999">Canal</a> <a href="/tags/%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/" style="font-size: 1.1em; color: #999">坦克大战</a> <a href="/tags/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/" style="font-size: 1.1em; color: #999">循环依赖</a> <a href="/tags/SpringBoot-%E6%B6%88%E6%81%AF%E8%BD%AC%E6%8D%A2%E5%99%A8/" style="font-size: 1.1em; color: #999">SpringBoot 消息转换器</a> <a href="/tags/laodu-spring6/" style="font-size: 1.17em; color: #999c9f">laodu-spring6</a> <a href="/tags/javassist/" style="font-size: 1.1em; color: #999">javassist</a> <a href="/tags/MVCC/" style="font-size: 1.1em; color: #999">MVCC</a> <a href="/tags/GodBatis/" style="font-size: 1.1em; color: #999">GodBatis</a> <a href="/tags/SpringBoot-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/" style="font-size: 1.23em; color: #999ea6">SpringBoot 请求处理</a> <a href="/tags/SpringBoot-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">SpringBoot 自动配置</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">63</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">199.3k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-01T03:50:30.935Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["风吹落最后一片叶"])
+  } else {
+    document.getElementById("subtitle").textContent = "风吹落最后一片叶"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

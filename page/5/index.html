@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="RQTN">
+<meta property="og:url" content="http://example.com/page/5/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:author" content="RQTN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/5/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RQTN',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-04-01 11:50:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">RQTN</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/princeton-algs4/03-ALGS4-Analysis-Of-Algorithms/" title="Analysis Of Algorithms">Analysis Of Algorithms</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-17T18:00:12.000Z" title="发表于 2019-08-18 02:00:12">2019-08-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Data-Structure-Algorithm/">Data Structure &amp; Algorithm</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/princeton-algs4/">princeton-algs4</a></span></div><div class="content">Analysis Of AlgorithmInterview Questions: Analysis of Algorithms (ungraded)1. 3-SUM in quadratic time.Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst case. You may assume that you can sort the $n$ integers in time proportional to $n^2$ or better.
+Note: these interview questions are ungraded and purely for your own enrichment. To get a hint, submit a solution.
+Solution
+在课程中已经给出了两个求解 3-SUM 问题的算法：暴力方法 ThreeSum 和改进算法 ThreeSumFast。
+其中暴力方法 ThreeSum 的时间复杂度为  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/ai/eight-queens/eight-queens/" title="使用爬山法、模拟退火和遗传算法求解八皇后问题">使用爬山法、模拟退火和遗传算法求解八皇后问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-16T13:04:11.000Z" title="发表于 2019-08-16 21:04:11">2019-08-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AI/">AI</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">八皇后问题</a></span></div><div class="content">使用爬山法、模拟退火和遗传算法求解八皇后问题
+实验使用 C++ 语言，并在 Windows 的 Visual Studio 2017 下能够正常运行。
+参考书籍：《人工智能：一种现代的方法（第三版）》
+
+1. 准备阶段1.1 Board 类
+Board 类数据成员
+
+bool board[8][8]：表示一个 8$\times$8 棋盘的具体情况。某位值为 true 时（即 1），表示该位上为皇后，否则为 false（即 0），表示该位上没有放置任何东西。
+
+int state[8]：表示当前棋盘的状态。使用一个 8 位数串来表示八皇后问题的一个特定的状态。比如 83742516 就表示了这样的一个状态（注意加粗部分）：
+
+第 1 列第 8 行位置有一个皇后
+第 2 列第 3 行位置有一个皇后
+第 3 列第 7 行位置有一个皇后
+…
+第 8 列第 6 行位置有一个皇后
+
+
+
+int h_value_board[8][8]：一个辅助数据成员，表示一个 8$\times$8 棋盘上的所有下一步状态的评估值 —— 相互攻击的皇后的对数。其对应于书本上的下图：
+
+方格中显示的数字表示将这一列中 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec19/" title="Lec19 - 行列式公式和代数余子式">Lec19 - 行列式公式和代数余子式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:08:08.000Z" title="发表于 2019-08-12 18:08:08">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 19 课 行列式公式和代数余子式
+上一节我们讲述了行列式的 $10$ 个性质，根据这些性质，我们能够推导出行列式的一般求解过程。本节，我们将更加深入地讲解行列式公式和代数余子式，这两者都是求解行列式的方法。
+
+行列式公式在上一节中，我们已经提到了二阶行列式公式 $\left|\begin{array}{ll}{a} &amp; {b} \\ {c} &amp; {d}\end{array}\right|=a d-b c$，但我们并没有多做任何解释。
+学习了关于行列式的这么多性质，现在我们有能力推导二阶行列式公式了：
+\displaylines{
+\begin{vmatrix}a& b\\c& d\end{vmatrix}\stackrel{3.b}{=}\begin{vmatrix}a& 0\\c& d\end{vmatrix}+\begin{vmatrix}0& b\\c& d\end{vmatrix}\stackrel{3.b}{=}\begin{vmatrix}a& 0\\c& 0\end{vmatrix}+\begin{vmatrix}a& 0\\0& d\end{vmat ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec18/" title="Lec18 - 行列式及其性质">Lec18 - 行列式及其性质</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:08:01.000Z" title="发表于 2019-08-12 18:08:01">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 18 课 行列式及其性质从这堂课开始，我们就进入了这门课的第二部分。迄今为止，我们已经学习了很多关于长方矩阵的知识，现在，把注意力转向方阵，探讨两个大的话题：行列式和特征值，我们需要行列式的重要原因是求特征值。
+行列式是跟每个方阵都有关的数，每个方阵都有与其相关的行列式，我们一般记为 $\det A$，或者写作 $|A|$。
+行列式最早是应用在用来判断方程组是否有解，在矩阵被发明后，行列式就拥有了更多的性质和应用。行列式是一个神奇的数，一个数很难告诉你整个矩阵是什么样子的，但行列式把矩阵的尽可能多的信息就包含在其中了。就比如，矩阵可逆等价于行列式非零，行列式为零时矩阵是奇异的。从另外一个角度来理解，行列式从某种程度上代表了这个矩阵的特征，这是学习特征分解的前置概念。
+三个行列式基础性质
+首先我们介绍三个行列式基础性质，这三个性质定义了行列式。
+
+
+性质 $1$ ：对于单位矩阵 $I$，有 $\det I=1$。
+
+性质 $2$ ：交换行，行列式的值的符号会相反。
+由上面的两个性质我们可以得到：之前学习的置换矩阵的行列式的值为 $1$ 或 $-1$。例如：$\left|\begin{ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec17/" title="Lec17 - 正交矩阵和 Gram-Schmidt 正交化">Lec17 - 正交矩阵和 Gram-Schmidt 正交化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:07:47.000Z" title="发表于 2019-08-12 18:07:47">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 17 课 正交矩阵和 Gram-Schmidt 正交化
+上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍标准正交向量组的性质和优点，以及将一组向量化为标准正交向量组的方法：Gram-Schmidt 正交化。
+
+标准正交向量与正交矩阵上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则
+\displaylines{
+q_{i}^{T} q_{j}\left\{\begin{array}{l}{0 \ldots . .(i \neq j)} \\ {1 \ldots . .(i=j)}\end{array}\right.
+}这很好地表现了标准正交向量组内各向量的性质：不同向量之间相互垂直（正交），向量长度都为 1（标准）。
+标准正交向量组又被称为标准正交基，显然，相互垂直的各列一定是线性无关的。
+为什么我们这么执着于标准正交向量呢？在后续我们就能看到标准正交向量能够极大的简化计算，许多数值线性代数都建立在标准正交向量的基础上，因为它们容易操控，它们从不上溢或下溢。
+我们再介绍另外一个概念，标准正交矩阵。所谓标准正交矩 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec16/" title="Lec16 - 投影矩阵和最小二乘法">Lec16 - 投影矩阵和最小二乘法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:07:36.000Z" title="发表于 2019-08-12 18:07:36">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 16 课  投影矩阵和最小二乘法
+本章将深入研究投影矩阵，同时对上一课最后引出的最小二乘法做进一步地讲解。最后引出标准正交向量组等概念。
+
+投影矩阵上一章已经介绍过投影矩阵 $P=A(A^TA)^{-1}A^T$。我们知道，投影矩阵 $P$ 与向量 $b$ 相乘将会把 $b$ 投影到 $A$ 的列空间中。那么现在我们来考虑两个极端的例子，这两个极端的例子将会加深我们对投影矩阵的理解。
+
+如果 $b$ 在矩阵 $A$ 的列空间里， 那么 $Pb=b$
+\displaylines{
+证明：如果b在矩阵A的列空间里，那么必然有Ax=b\\
+Pb=A(A^TA)^{-1}A^Tb=A(A^TA)^{-1}A^TAx=AIx=Ax=b
+}
+如果 $b$ 垂直于矩阵 $A$ 的列空间，那么 $Pb=0$
+
+
+\displaylines{
+证明：b垂直于A的列空间，根据正交补的概念\\
+可知b是左零空间中的向量\\
+\therefore A^Tb=0\\
+\therefore Pb=A(A^TA)^{-1}A^Tb=A(A^TA)^{-1}0=0
+}通过上面两个极端的例子，我们可以看出来，向量  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec15/" title="Lec15 - 子空间投影">Lec15 - 子空间投影</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:07:23.000Z" title="发表于 2019-08-12 18:07:23">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 15 课 子空间投影
+这一章我们讲投影，从向量的投影入手，延伸到高维投影，并将投影使用矩阵形式来给出。上一章中我们介绍了正交的基本概念，这一章我们将会使用到这个概念，做投影也即向另一个向量上做垂线。此外上一章我们讨论了当 $Ax=b$ 无解时的最优解求解问题，但我们并没有解释这个最优解为何“最优”，本章将会给出相应的解释。
+
+相对简单的二维空间的投影
+如上图，$p$ 也即向量 $b$ 在向量 $a$ 上的投影，$p$ 在向量 $a$ 上，是 $a$ 的倍数，故令 $p=xa$。将 $b$ 与 $p$ 的差设为 $e$， $e$ 带有误差的意思，同时 $e$ 的模在某种程度上表示了 $b$ 到 $a$ 的最短距离（而这正是最优的体现：误差最小）。$e$ 与 $a$ 正交。
+\displaylines{
+已知 a \bot e，而e=b-p，p=xa\\
+\therefore a\bot(b-xa)\\
+\therefore a^T(b-xa)=0\\
+\therefore x=\frac{a^Tb}{a^Ta}（x是一个标量）\\
+\therefore p=xa=ax=a\frac{ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec14/" title="Lec14 - 正交向量与子空间">Lec14 - 正交向量与子空间</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:07:07.000Z" title="发表于 2019-08-12 18:07:07">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 14 课 正交向量与子空间本章我们研究的重点还是之前提到过的子空间，但是本章我们主要从正交的角度来探讨这些子空间具有的性质，主要内容见下图。
+
+注意，上图指出了我们之前没有关注到的子空间的一些性质：对于一个矩阵，其零空间与行空间正交，其列空间与左零空间正交。
+向量正交与空间正交在线性代数中，正交就是垂直。无论我们讨论的是向量正交还是空间正交，都可以理解为垂直。
+我们先研究最简单的向量正交：
+
+如上图，其中 $x$ 与 $y$ 向量之间相互垂直（正交）。根据垂直关系，可得 $x^Ty=0$，这是初高中的内容：如果两个向量相互垂直（正交），那么这两个向量的数量积（内积）为 $0$。
+这个结论很漂亮，现在我们将证明这个结论。
+\displaylines{
+根据勾股定律有： |x|^2+|y|^2=|x+y|^2 \ \\
+用向量来表示上式有：x^Tx+y^Ty=(x+y)^T(x+y)=(x^T+y^T)(x+y)\\
+化简得：0=x^Ty+y^Tx\\
+\because x^Ty=y^Tx，都表示两个一维向量的数量积，所以可进一步化简得：2x^Ty=0\\
+\therefore x^T ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec13/" title="Lec13 - 复习一">Lec13 - 复习一</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:06:57.000Z" title="发表于 2019-08-12 18:06:57">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 13 课 复习一
+本章是习题课，意在通过习题来对前十二课的内容进行回顾以作复习。
+
+
+设 $u,v,w$ 是 $R^7$ 空间内的非零向量，它们生成了一个属于 $R^7$ 的向量子空间，则此空间的维数是多少？
+由 $3$ 个向量张成的向量空间，显然维数只可能是 $0,1,2,3$ 中的其中一个。题中已经写明 $u,v,w$ 这三个向量都是非零向量，所以维数会是 $1,2,3$ 中的其中一个。
+
+有一个 $5\times 3$ 的阶梯型矩阵 $U$，秩为 $3$，求该矩阵的零空间。
+由题可知该矩阵列满秩，所以不存在自由变量，于是矩阵的零空间将只有零向量。
+
+给定 $10\times 3$ 的矩阵 $B$，$B$ 中含有矩阵 $R$ 和 $2R$ ：$B=\begin{bmatrix}R\\2R\end{bmatrix}$ （$R$ 是 RREF 型矩阵）。
+
+该矩阵的秩是多少，其 RREF 型矩阵是怎样的？
+这两个问题的求解都需要对 $B$ 进行消元，消元可得：$B=\begin{bmatrix}R\\2R\end{bmatrix}\rightarrow \begin{bmatrix ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec12/" title="Lec12 - 图和网络">Lec12 - 图和网络</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-12T10:06:28.000Z" title="发表于 2019-08-12 18:06:28">2019-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 12 课 图和网络
+本章着重于线性代数的应用。和前面的章节不同的是，本章中线性代数处理的矩阵都是有出处的，它们来自于实际问题，描述了问题的拓扑结构。应用数学中最重要的模型，离散数学称之为”图“。本章，我们将探索图和矩阵之间的联系（关联矩阵），从关联矩阵中推导出欧姆定律、基尔霍夫电流定律、欧拉公式，并探究这三者之间的关系。 
+
+为探究图和矩阵之间的联系，我们先给出一个有向图（如下），$4$ 个点（$n=4$），$5$ 条边（$m=5$)。
+该有向图可以来自于一个电路系统，也可以来自于一个液压系统，甚至表示一个建筑结构，但在本课中我们将其视为一个电路网络。
+
+我们可以使用矩阵来表示一个图，矩阵中包含图中的所有信息。通过构造一个矩阵可以解析相应的图的含义，这样的矩阵叫做关联矩阵。在关联矩阵中，每一列代表一个节点，每一行代表一条边（行中的正负代表方向）。易得上（电路网络）图对应的关联矩阵 $A$ 如下：
+
+观察关联矩阵 $A$ 的第一行，第一行代表了电路网络图中边 $1$ 的情况，在图中，边 $1$ 以 点 $1$  作为起点，以点 $2$ 作为终点，反映到矩阵上就是 $A_{(1,1)} ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/4/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/6/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Data-Structure-Algorithm/"><span class="card-category-list-name">Data Structure & Algorithm</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">32</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JUC/"><span class="card-category-list-name">JUC</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JavaSE/"><span class="card-category-list-name">JavaSE</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/Mybatis/"><span class="card-category-list-name">Mybatis</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/Spring/"><span class="card-category-list-name">Spring</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E4%B9%B1%E7%A0%81/" style="font-size: 1.17em; color: #999c9f">乱码</a> <a href="/tags/Java-Socket-%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">Java Socket 编程</a> <a href="/tags/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95/" style="font-size: 1.43em; color: #99a6b9">好文收录</a> <a href="/tags/atguigu-springmvc/" style="font-size: 1.23em; color: #999ea6">atguigu-springmvc</a> <a href="/tags/%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98/" style="font-size: 1.1em; color: #999">多级缓存</a> <a href="/tags/TCC-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" style="font-size: 1.1em; color: #999">TCC 分布式事务</a> <a href="/tags/Mybatis-%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6/" style="font-size: 1.17em; color: #999c9f">Mybatis 接口代理机制</a> <a href="/tags/JNDI/" style="font-size: 1.1em; color: #999">JNDI</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.1em; color: #999">设计模式</a> <a href="/tags/hsp-javase/" style="font-size: 1.43em; color: #99a6b9">hsp-javase</a> <a href="/tags/Sentinel/" style="font-size: 1.1em; color: #999">Sentinel</a> <a href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/" style="font-size: 1.1em; color: #999">浮点数</a> <a href="/tags/mit-18-06/" style="font-size: 1.5em; color: #99a9bf">mit-18.06</a> <a href="/tags/itheima-mysql/" style="font-size: 1.1em; color: #999">itheima-mysql</a> <a href="/tags/laodu-mybatis/" style="font-size: 1.3em; color: #99a1ac">laodu-mybatis</a> <a href="/tags/atguigu-javaweb/" style="font-size: 1.1em; color: #999">atguigu-javaweb</a> <a href="/tags/atguigu-springboot2/" style="font-size: 1.43em; color: #99a6b9">atguigu-springboot2</a> <a href="/tags/itheima-juc/" style="font-size: 1.37em; color: #99a4b2">itheima-juc</a> <a href="/tags/%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/" style="font-size: 1.1em; color: #999">原码/反码/补码</a> <a href="/tags/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" style="font-size: 1.1em; color: #999">隔离级别</a> <a href="/tags/%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" style="font-size: 1.1em; color: #999">静态代理/动态代理</a> <a href="/tags/princeton-algs4/" style="font-size: 1.37em; color: #99a4b2">princeton-algs4</a> <a href="/tags/itheima-springcloud/" style="font-size: 1.23em; color: #999ea6">itheima-springcloud</a> <a href="/tags/SpringBoot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">SpringBoot 异常处理机制</a> <a href="/tags/synchronized/" style="font-size: 1.3em; color: #99a1ac">synchronized</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" style="font-size: 1.1em; color: #999">八皇后问题</a> <a href="/tags/Canal/" style="font-size: 1.1em; color: #999">Canal</a> <a href="/tags/%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/" style="font-size: 1.1em; color: #999">坦克大战</a> <a href="/tags/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/" style="font-size: 1.1em; color: #999">循环依赖</a> <a href="/tags/SpringBoot-%E6%B6%88%E6%81%AF%E8%BD%AC%E6%8D%A2%E5%99%A8/" style="font-size: 1.1em; color: #999">SpringBoot 消息转换器</a> <a href="/tags/laodu-spring6/" style="font-size: 1.17em; color: #999c9f">laodu-spring6</a> <a href="/tags/javassist/" style="font-size: 1.1em; color: #999">javassist</a> <a href="/tags/MVCC/" style="font-size: 1.1em; color: #999">MVCC</a> <a href="/tags/GodBatis/" style="font-size: 1.1em; color: #999">GodBatis</a> <a href="/tags/SpringBoot-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/" style="font-size: 1.23em; color: #999ea6">SpringBoot 请求处理</a> <a href="/tags/SpringBoot-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">SpringBoot 自动配置</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">63</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">199.3k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-01T03:50:30.935Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["风吹落最后一片叶"])
+  } else {
+    document.getElementById("subtitle").textContent = "风吹落最后一片叶"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

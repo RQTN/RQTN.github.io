@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec17 - 正交矩阵和 Gram-Schmidt 正交化 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第 17 课 正交矩阵和 Gram-Schmidt 正交化 上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍标准正交向量组的性质和优点，以及将一组向量化为标准正交向量组的方法：Gram-Schmidt 正交化。  标准正交向量与正交矩阵上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则 \displaylines{ q_{i}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec17 - 正交矩阵和 Gram-Schmidt 正交化">
+<meta property="og:url" content="http://example.com/mit-18.06/mit-18.06-lec17/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="第 17 课 正交矩阵和 Gram-Schmidt 正交化 上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍标准正交向量组的性质和优点，以及将一组向量化为标准正交向量组的方法：Gram-Schmidt 正交化。  标准正交向量与正交矩阵上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则 \displaylines{ q_{i}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2019-08-12T10:07:47.000Z">
+<meta property="article:modified_time" content="2024-04-01T00:30:09.626Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="mit-18.06">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/mit-18.06/mit-18.06-lec17/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lec17 - 正交矩阵和 Gram-Schmidt 正交化',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 08:30:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec17 - 正交矩阵和 Gram-Schmidt 正交化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2019-08-12T10:07:47.000Z" title="发表于 2019-08-12 18:07:47">2019-08-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec17 - 正交矩阵和 Gram-Schmidt 正交化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="第-17-课-正交矩阵和-Gram-Schmidt-正交化"><a href="#第-17-课-正交矩阵和-Gram-Schmidt-正交化" class="headerlink" title="第 17 课 正交矩阵和 Gram-Schmidt 正交化"></a>第 17 课 正交矩阵和 Gram-Schmidt 正交化</h2><blockquote>
+<p>上一课最后我们简单介绍了标准正交向量组的概念，这一课中，我们将深入介绍<strong>标准正交向量组的性质和优点</strong>，以及将一组向量化为标准正交向量组的方法：<strong>Gram-Schmidt 正交化</strong>。</p>
+</blockquote>
+<h3 id="标准正交向量与正交矩阵"><a href="#标准正交向量与正交矩阵" class="headerlink" title="标准正交向量与正交矩阵"></a>标准正交向量与正交矩阵</h3><p>上一节我们介绍过标准正交向量，我们通过一个式子进行回顾。设 $q$ 是标准正交向量组中的任意向量，则</p>
+<script type="math/tex; mode=display">\displaylines{
+q_{i}^{T} q_{j}\left\{\begin{array}{l}{0 \ldots . .(i \neq j)} \\ {1 \ldots . .(i=j)}\end{array}\right.
+}</script><p>这很好地表现了标准正交向量组内各向量的性质：<strong>不同向量之间相互垂直（正交），向量长度都为 1（标准）</strong>。</p>
+<p><strong>标准正交向量组又被称为标准正交基，显然，相互垂直的各列一定是线性无关的。</strong></p>
+<p>为什么我们这么执着于标准正交向量呢？在后续我们就能看到<strong>标准正交向量能够极大的简化计算</strong>，许多数值线性代数都建立在标准正交向量的基础上，因为它们容易操控，它们从不上溢或下溢。</p>
+<p>我们再介绍另外一个概念，标准正交矩阵。<strong>所谓标准正交矩阵 $Q$，就是将标准正交向量组中的向量 $q_{1}, q_{2},\cdots,q_{n}$ 列到一个矩阵中去</strong>：</p>
+<script type="math/tex; mode=display">\displaylines{
+Q=\left[\begin{array}{llll}{q_{1}} & {q_{2}} & {\cdots} & {q_{n}}\end{array}\right]
+}</script><p>这样的标准正交矩阵有一个很好的性质：</p>
+<script type="math/tex; mode=display">\displaylines{
+Q^TQ=\begin{bmatrix}q_1^T\\q_2^T\\\vdots\\q_n^T\end{bmatrix}\begin{bmatrix}q_1&q_2&\cdots&q_n\end{bmatrix}=\begin{bmatrix}1& 0& \cdots& 0\\0& 1& \cdots& 0\\\vdots& \vdots& \ddots& \vdots\\0& 0& \cdots& 1\end{bmatrix}=I
+}</script><p><strong>注意，是 $Q^TQ=I$ 而非 $QQ^T=I$。</strong></p>
+<p><strong>特别地，当 $Q$ 是方阵时，我们将这样的矩阵 $Q$ 称为正交矩阵。</strong></p>
+<p>为什么我们要单独将 $Q$ 是方阵的情况拎出来呢？<strong>这是因为当标准正交矩阵 $Q$ 为方阵时，其必有逆矩阵，很明显，由上面的 $Q^TQ=I$ 可知，$Q$ 若为正交矩阵，其逆矩阵正是 $Q^T$，也即 $Q^T=Q^{-1}$。</strong>可以举一些例子：</p>
+<ul>
+<li>回想我们在很久之前提到过的置换矩阵，当时也说明了置换矩阵 $P$ 具有性质：$P^T=P^{-1}$，而显然置换矩阵正是一个正交矩阵：$P=\begin{bmatrix}0&amp; 1&amp; 0\\1&amp; 0&amp; 0\\0&amp; 0&amp; 1\end{bmatrix}$，则 $Q^T=\begin{bmatrix}0&amp; 1&amp; 0\\0&amp; 0&amp; 1\\1&amp; 0&amp; 0\end{bmatrix}$，易得 $Q^TQ=I$。</li>
+<li>另一个例子是我们上一讲介绍过的标准正交向量组：$\left[\begin{array}{c}{\cos \theta} \\ {\sin \theta}\end{array}\right],\left[\begin{array}{c}{-\sin \theta} \\ {\cos \theta}\end{array}\right]$ 。写成矩阵形式即为 $Q=\left[\begin{array}{cc}{\cos \theta} &amp; {-\sin \theta} \\ {\sin \theta} &amp; {\cos \theta}\end{array}\right]$ ，显然该矩阵也有 $Q^TQ=I$。</li>
+<li>$\left[\begin{array}{cc}{1} &amp; {1} \\ {1} &amp; {-1}\end{array}\right]$ 是正交矩阵吗？不是，因为虽然这个矩阵内各列正交，但列向量长度不为 $1$，我们还需要再对其进行单位化（标准化），单位化以后得到 $Q=\frac{1}{\sqrt{2}}\left[\begin{array}{cc}{1} &amp; {1} \\ {1} &amp; {-1}\end{array}\right]$ ，这个矩阵是正交矩阵。</li>
+<li>使用上一个例子中的矩阵 $Q=\frac{1}{\sqrt{2}}\left[\begin{array}{cc}{1} &amp; {1} \\ {1} &amp; {-1}\end{array}\right]$，令 $Q’=c\begin{bmatrix}Q&amp; Q\\Q&amp; -Q\end{bmatrix}$ ，取合适的 $c$ 以使得向量长度为 $1$ 也可以构造出一个正交矩阵：$Q=\frac{1}{2}\begin{bmatrix}1&amp; 1&amp; 1&amp; 1\\1&amp; -1&amp; 1&amp; -1\\1&amp; 1&amp; -1&amp; -1\\1&amp; -1&amp; -1&amp; 1\end{bmatrix}$，这种构造方法以阿德玛（Adhemar）命名，我们现在知道的是这种构造方法在 $Q$ 为 $2, 4, 16, 64, \cdots$ 维矩阵时是有效的，但是没有人知道，究竟哪些维数的正交矩阵可以由 $1$ 和 $-1$ 们构成，阿德玛矩阵是一种只有 $1$ 和 $-1$ 的正交矩阵，有些维度可以，但有些维度就不行，比如说 $5$ 维的矩阵就不可能是阿德玛矩阵，这个比较简单，但有些大小没人能确切地说，能不能由 $1$ 和 $-1$ 构成。</li>
+</ul>
+<p>上面我们介绍了标准正交矩阵 $Q$ 的各种性质，这是一种新的性质优良的矩阵，<strong>这样的矩阵能够极大地简化计算，比如：投影矩阵！</strong></p>
+<p>上一讲中，我们提到，投影矩阵 $P=A(A^TA)^{-1}A^T$，那么到 $A$ 是标准正交矩阵 $Q$ 的时候，根据标准正交矩阵的性质易得：$Q(Q^TQ)^{-1}Q^T=QIQ^T=QQ^T$。特别地，当 $Q$ 还是方阵的时候，由于此时 $Q^T=Q^{-1}$，所以投影矩阵能够进一步化简为 $I$。</p>
+<script type="math/tex; mode=display">\displaylines{
+P=A(A^TA)^{-1}A^T\xrightarrow{A是标准正交矩阵Q}P=QQ^T\xrightarrow{A还是方阵（也即A是正交矩阵）}P=I
+}</script><p>化为 $P=QQ^T$ 之后，我们很容易验证投影矩阵的两条性质：</p>
+<ul>
+<li><strong>投影矩阵为对称矩阵：$(QQ^T)^T=(Q^T)^TQ^T=QQ^T$。</strong></li>
+<li><strong>投影两次等于投影一次：$(QQ^T)(QQ^T)=Q(Q^TQ)Q^T=QQ^T$。</strong></li>
+</ul>
+<p>可以看到 $P$ 的形式得到的极大的化简，实际上很多复杂的方程，在使用标准正交基之后都会变得非常简单。</p>
+<p>考虑我们最近讲过的最重要的方程，<strong>正规方程 $A^TA\hat{x}=A^Tb$，现在变为了 $Q^TQ\hat{x} = Q^Tb$，也就是 $\hat{x}=Q^Tb$，分解开来看就是 $\hat x_i=q_i^Tb$，这个式子在很多数学领域都有重要作用。当我们知道标准正交基，则在第 $i$ 个基方向上的投影等于 $q_i^Tb$。</strong></p>
+<hr>
+<h3 id="Gram-Schmidt-正交化"><a href="#Gram-Schmidt-正交化" class="headerlink" title="Gram-Schmidt 正交化"></a>Gram-Schmidt 正交化</h3><p>我们已经看到标准正交向量的性质特别好，但更多时候我们见到的是线性无关向量组，有没有一种方法能够<strong>将线性无关向量组转换为标准正交基</strong>呢？这也即今天要讲的第二个内容，<strong>Gram-Schmidt 正交化</strong>。</p>
+<p>在介绍它之前，我们需要先说明，<strong>格拉姆-施密特正交化的缺点在于，由于要求的单位向量，我们不可避免地要除以向量的长度，而这个过程很容易产生根号，所以最终产生的标准正交向量组经常会带有根号。</strong></p>
+<p>Gram-Schmidt 正交化的过程如下：</p>
+<script type="math/tex; mode=display">\displaylines{
+线性无关向量a,b\xrightarrow{Graham}正交向量A,B\xrightarrow{Schmidt}标准正交向量q_1=\frac{A}{\|A\|},q_2=\frac{B}{\|B\|}
+}</script><p>可以看到 Schmidt 也即单位化的过程是很简单的，正交化的关键在于找到 $A,B$。</p>
+<p>我们先从简单的情况开始，假设有两个线性无关的向量 $a,b$：</p>
+<p><img src="/img/mit-18.06/lec17-2%20vectors.png" width=50%></p>
+<p>怎样将其转换为两个相互正交的向量呢？容易联想到我们之前学习的投影，我们可以这样做：</p>
+<p><img src="/img/mit-18.06/lec17-2%20vectors%20more.png" width=40%></p>
+<p>直接将 $a$ 向量定为 $A$ 向量，而后，我们将 $b$ 向量投影到 $a$ 向量上得到 $p$，注意到，此时误差向量 $e=b-p$ 恰好就垂直于 $A$ 向量，故令 $B=b-p$ 有：</p>
+<script type="math/tex; mode=display">\displaylines{
+B=b-p=b-Pb=b-A(A^TA)^{-1}A^Tb
+}</script><p>需要强调的是，上述公式中的 $A,B$ 指的都是向量，故有 $B=b-\frac{AA^Tb}{A^TA}$，其中 $A^TA$ 是一个内积标量值，而 $AA^T$ 是一个矩阵，注意到 $\frac{A\color{red}{A^Tb}}{\color{red} {A^TA}}$ 中标红部分都是内积标量值，故我们更倾向于让分子中的 $A^Tb$ 先相乘，把 $A$ 向量放到后面，也即写成这样的形式 $B=b-\frac{A^Tb}{A^TA}A$。</p>
+<p>检查一下是否满足 $A\bot B$：</p>
+<script type="math/tex; mode=display">\displaylines{
+A^TB=A^Tb-A^T\frac{A^Tb}{A^TA}A=A^Tb-\frac{A^TA}{A^TA}A^Tb=0
+}</script><p>$A,B$ 正交，求得 $A,B$ 之后，剩下的内容就只是简单的单位化了：$q_1=\frac{A}{\left|A\right|}, q_2=\frac{B}{\left|B\right|}$。</p>
+<p>同样的道理，如果我们有三个线性无关的向量 $a,b,c$，我们如何进行 Gram-Schmidt 正交化呢？</p>
+<p>按照流程，我们首先要得到 $A,B,C$，前两个向量 $A,B$ 我们已经得到了，现在我们要求第三个向量同时垂直于 $A,B$。</p>
+<p>我们依然可以按照上面的思想来求解，也即从 $c$ 中减去其在 $A,B$ 上的分量，即可得到与 $A,B$ 正交的 $C$：</p>
+<script type="math/tex; mode=display">\displaylines{
+C=c-\frac{A^Tc}{A^TA}A-\frac{B^Tc}{B^TB}B
+}</script><p>再把它们单位化：$q_1=\frac{A}{\left|A\right|}, q_2=\frac{B}{\left|B\right|}, q_3=\frac{C}{\left|C\right|}$。</p>
+<p>下面我们通过一个简单的例子来试验一遍：</p>
+<p>假设 $a=\begin{bmatrix}1\\1\\1\end{bmatrix}, b=\begin{bmatrix}1\\0\\2\end{bmatrix}$，求标准正交矩阵 $Q$。</p>
+<script type="math/tex; mode=display">\displaylines{
+首先,\quad A=a=\begin{bmatrix}1\\1\\1\end{bmatrix}\\
+根据公式有,\quad B=b-\frac{A^Tb}{A^TA}A=\begin{bmatrix}1\\0\\2\end{bmatrix}-\frac{3}{3}\begin{bmatrix}1\\1\\1\end{bmatrix}=\begin{bmatrix}0\\-1\\1\end{bmatrix}\\
+验证正交性有,\quad A^TB=0\\
+最后再进行单位化,\quad q_1=\frac{1}{\sqrt 3}\begin{bmatrix}1\\1\\1\end{bmatrix},\quad q_2=\frac{1}{\sqrt 2}\begin{bmatrix}1\\0\\2\end{bmatrix}\\
+则标准正交矩阵为\quad Q=\begin{bmatrix}\frac{1}{\sqrt 3}& 0\\\frac{1}{\sqrt 3}& -\frac{1}{\sqrt 2}\\\frac{1}{\sqrt 3}& \frac{1}{\sqrt 2}\end{bmatrix}
+}</script><p>这就是 Gram-Schmidt 正交化方法。对比原始矩阵 $A=\left[\begin{array}{ll}{1} &amp; {1} \\ {1} &amp; {0} \\ {1} &amp; {2}\end{array}\right]$ 和标准正交矩阵 $Q=\left[\begin{array}{cc}{1 / \sqrt{3}} &amp; {0} \\ {1 / \sqrt{3}} &amp; {-1 / \sqrt{2}} \\ {1 / \sqrt{3}} &amp; {1 / \sqrt{2}}\end{array}\right]$，观察两个矩阵的列空间，它们是相同的，也就是说我们的正交化过程从头到尾都是在同一个空间（列空间）中进行的，正交化过程本质不过是矩阵各列的列变换（比如 $B=b-\frac{A^Tb}{A^TA}A$，其中 $b$ 是原始的列向量，$\frac{A^Tb}{A^TA}$ 是标量值，$A$ 是原始的列向量 $a$），最后得到了一个更好的标准正交基。</p>
+<hr>
+<h3 id="QR-分解"><a href="#QR-分解" class="headerlink" title="QR 分解"></a>QR 分解</h3><p>我们曾经用矩阵的眼光审视消元法，故有 $A=LU$，这即是消元法的矩阵表示。</p>
+<p>以同样的眼光来看待 Gram-Schmidt 正交化，故有 $A=QR$，这既是 Gram-Schmidt 正交化的矩阵表示。</p>
+<p>设 $A$ 有两个列向量：$\Bigg[a_1\ a_2\Bigg]$，标准正交化后有 $\Bigg[a_1\ a_2\Bigg]=\Bigg[q_1\ q_2\Bigg]\begin{bmatrix}a_1^Tq_1&amp; a_2^Tq_1\\a_1^Tq_2&amp; a_2^Tq_2\end{bmatrix}$，而左下角的 $a_1^Tq_2$ 为 $0$。$A=QR$ 的重点在于，$R$ 是一个上三角矩阵，这是因为后来构造的向量总是正交于先前的向量。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/mit-18.06/mit-18.06-lec17/">http://example.com/mit-18.06/mit-18.06-lec17/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/mit-18.06/mit-18.06-lec16/" title="Lec16 - 投影矩阵和最小二乘法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec16 - 投影矩阵和最小二乘法</div></div></a></div><div class="next-post pull-right"><a href="/mit-18.06/mit-18.06-lec18/" title="Lec18 - 行列式及其性质"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec18 - 行列式及其性质</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/mit-18.06/mit-18.06-lec01/" title="Lec01 - 方程组的几何解释"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec01 - 方程组的几何解释</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec02/" title="Lec02 - 矩阵消元"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec02 - 矩阵消元</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec03/" title="Lec03 - 乘法和逆矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec03 - 乘法和逆矩阵</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec04/" title="Lec04 - A 的 LU 分解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec04 - A 的 LU 分解</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec05/" title="Lec05 - 转置、置换和向量空间 R"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec05 - 转置、置换和向量空间 R</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec06/" title="Lec06 - 列空间和零空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec06 - 列空间和零空间</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-17-%E8%AF%BE-%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5%E5%92%8C-Gram-Schmidt-%E6%AD%A3%E4%BA%A4%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">第 17 课 正交矩阵和 Gram-Schmidt 正交化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%AD%A3%E4%BA%A4%E5%90%91%E9%87%8F%E4%B8%8E%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5"><span class="toc-number">1.1.</span> <span class="toc-text">标准正交向量与正交矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gram-Schmidt-%E6%AD%A3%E4%BA%A4%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">Gram-Schmidt 正交化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QR-%E5%88%86%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">QR 分解</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec11 - 矩阵空间、秩 1 矩阵和小世界图 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第 11 课 矩阵空间、秩 $1$ 矩阵和小世界图 本章内容可分为三部分：第一部分延续上节课的内容，把向量空间的定义从向量扩展到矩阵和微分方程，第二部分介绍秩 $1$ 矩阵，第三部分简单讲述了图的概念和图与矩阵之间的联系。  我们接着探究上一节课提到的矩阵空间的概念。我们仍然讨论所有的 $3\times 3$ 矩阵这样的矩阵空间，记之为 $M$。 对于 $M$，很容易找到其子空间，比如所有的上三角">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec11 - 矩阵空间、秩 1 矩阵和小世界图">
+<meta property="og:url" content="http://example.com/mit-18.06/mit-18.06-lec11/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="第 11 课 矩阵空间、秩 $1$ 矩阵和小世界图 本章内容可分为三部分：第一部分延续上节课的内容，把向量空间的定义从向量扩展到矩阵和微分方程，第二部分介绍秩 $1$ 矩阵，第三部分简单讲述了图的概念和图与矩阵之间的联系。  我们接着探究上一节课提到的矩阵空间的概念。我们仍然讨论所有的 $3\times 3$ 矩阵这样的矩阵空间，记之为 $M$。 对于 $M$，很容易找到其子空间，比如所有的上三角">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2019-08-12T10:04:57.000Z">
+<meta property="article:modified_time" content="2024-04-01T00:30:09.621Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="mit-18.06">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/mit-18.06/mit-18.06-lec11/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lec11 - 矩阵空间、秩 1 矩阵和小世界图',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 08:30:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec11 - 矩阵空间、秩 1 矩阵和小世界图</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2019-08-12T10:04:57.000Z" title="发表于 2019-08-12 18:04:57">2019-08-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec11 - 矩阵空间、秩 1 矩阵和小世界图"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="第-11-课-矩阵空间、秩-1-矩阵和小世界图"><a href="#第-11-课-矩阵空间、秩-1-矩阵和小世界图" class="headerlink" title="第 11 课 矩阵空间、秩 $1$ 矩阵和小世界图"></a>第 11 课 矩阵空间、秩 $1$ 矩阵和小世界图</h2><blockquote>
+<p>本章内容可分为三部分：第一部分延续上节课的内容，<strong>把向量空间的定义从向量扩展到矩阵和微分方程</strong>，第二部分介绍<strong>秩 $1$ 矩阵</strong>，第三部分简单讲述了<strong>图的概念和图与矩阵之间的联系</strong>。</p>
+</blockquote>
+<p>我们接着探究上一节课提到的矩阵空间的概念。我们仍然讨论所有的 $3\times 3$ 矩阵这样的矩阵空间，记之为 $M$。</p>
+<p>对于 $M$，很容易找到其子空间，比如所有的上三角矩阵（记为 $U$）以及所有的对称矩阵（记为 $S$）等等。</p>
+<ul>
+<li><p><strong>所有的对称矩阵所组成的矩阵空间 $S$ 其维数为 $6$。容易找出 $S$ 的 $6$ 个基</strong>：</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{bmatrix}1&0&0\\0&0&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&1&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&0&0\\0&0&1\end{bmatrix},\begin{bmatrix}0&1&0\\1&0&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&1\\0&0&0\\1&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&0&1\\0&1&0\end{bmatrix}
+}</script></li>
+<li><p><strong>所有的上三角矩阵所组成的矩阵空间 $U$ 其维数为 $6$。容易找出 $U$ 的 $6$ 个基</strong>：</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{bmatrix}1&0&0\\0&0&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&1&0\\0&0&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&1\\0&0&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&1&0\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&0&1\\0&0&0\end{bmatrix},\begin{bmatrix}0&0&0\\0&0&0\\0&0&1\end{bmatrix}
+}</script></li>
+</ul>
+<p>将 $S$ 和 $U$ 两个子空间相交，容易得到 $M$ 的另外一个更小的子空间：</p>
+<ul>
+<li><p><strong>所有的对角矩阵（记为 $D$），其维数是 $3$。容易找出 $D$ 的 $3$ 个基</strong>：</p>
+<p>$\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;0\end{bmatrix}$，$\begin{bmatrix}0&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{bmatrix}$ , $\begin{bmatrix}0&amp;0&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;1\end{bmatrix}$。</p>
+</li>
+</ul>
+<p>在前面的课程中我们已经知道，两个子空间的并集并非是向量空间。现在我们不谈并集，我们谈和（再次强调，这里的和与并集不是一个概念！），因为<strong>两个向量空间的和是一个向量空间</strong>，在此例中将其记为 $S+U$。</p>
+<p><strong>$S+U$ 也即任意 $S$ 中的元素（任意对称矩阵）加上任意 $U$ 中的元素（任意上三角矩阵）所组成的一个矩阵空间，容易看出来这个所组成的矩阵空间实际上就是 $M$，故 $S+U$ 的维数为 $9$。</strong></p>
+<p>显然，$S+U$ 和 $S\bigcup U$ 是不同的，$S\bigcup U$ 只包含了 $S$ 和 $U$，而 <strong>$S+U$ 包含的是 $S$ 中元素和 $U$ 中元素的线性组合（这样的线性组合显然包含了 $S$ 和 $U$，也即 $(S\bigcup U)\subseteq(S+U)$）</strong>。</p>
+<p>联系上面所有向量空间的维数，有这么一个等式：</p>
+<script type="math/tex; mode=display">\displaylines{
+dim(S)+dim(U)=dim(S\bigcap U)+dim(S+U)\\
+6\quad+\quad6\quad=\quad3\quad+\quad9\qquad\qquad
+}</script><p>同样的<strong>“向量空间”的概念还能进一步扩展，空间内元素不局限于向量和矩阵，其还可以是微分方程的解。</strong></p>
+<p>例如，求解如下微分方程：</p>
+<script type="math/tex; mode=display">\displaylines{
+\frac{d^2y}{dx^2}+y=0
+}</script><p>只考虑实数范围，我们容易找到这个微分方程的解有：$y=sinx$ 和 $y=cosx$。实际上，所有 $sinx$ 和 $cosx$ 的线性组合，也即 $c_1sinx+c_2cosx$ 都是该微分方程的解。而<strong>该微分方程的所有解的集合实际上就可以看做是一个“向量空间“</strong>，我们可称其为解空间，解空间中的元素是解（而非向量或者矩阵），且<strong>这些解都满足线性组合封闭的条件</strong>。</p>
+<p>从向量空间的角度思考这个解空间，那么<strong>这个解空间的维数为 $2$，其具有两个基，恰为 $sinx$ 和 $cosx$</strong>。</p>
+<hr>
+<p>秩 $1$ 矩阵也即秩为 $1$ 的矩阵。</p>
+<p><strong>所有的秩 $1$ 矩阵都可以表示为一列乘以一行的形式（因为行向量之间都线性相关，列向量之间都线性相关）</strong>，如：</p>
+<script type="math/tex; mode=display">\displaylines{
+A=\begin{bmatrix}
+1&4&5\\
+2&8&10
+\end{bmatrix}
+=\begin{bmatrix}
+1\\
+2
+\end{bmatrix}
+\begin{bmatrix}
+1&4&5
+\end{bmatrix}
+=
+UV^T
+}</script><p>此外，<strong>秩 $1$ 矩阵还可以用来搭建其他矩阵</strong>。假设有一个 $5\times 17$ 的矩阵其秩为 $4$，那么该矩阵可以通过四个秩 $1$ 矩阵搭建出来，具体过程类似于我们在第 $3$ 课中讲到的矩阵乘法中的“列乘行”形式：</p>
+<script type="math/tex; mode=display">\displaylines{
+C = \sum_{i = 1}^{n}(Col_i\ of\ A)\cdot(Row_i\ of\ B)
+}</script><p>从空间的角度看，所有秩为 $4$ 的矩阵的集合（注意，是集合而不是线性组合）是一个向量空间吗？显然不是，因为<strong>显然至少其中都不包含零矩阵</strong>。</p>
+<p>另外，<strong>矩阵的加法存在这样的性质：$rank(A+B)\le rank(A)+rank(B)$。</strong></p>
+<p>这个性质意味着，<strong>对于同样规模的同秩矩阵所组成的集合，其加法是不封闭的。</strong>两个 $5\times 6$ 的秩为 $4$ 矩阵相加，结果的秩可能大于 $4$。</p>
+<hr>
+<p>在介绍图的知识之前，我们先考虑下面这个例子：</p>
+<p>四维空间中的向量都有四个分量 $v=\begin{bmatrix}v_1&amp;v_2&amp;v_3&amp;v_4\end{bmatrix}^T$，设 $S$ 为一个集合，$S$ 中的向量都满足： $v_1+v_2+v_3+v_4=0$。则 $S$ 是一个向量空间吗？若是，那么其基和维数是多少？</p>
+<p>$S$ 显然是一个向量空间，因为 $v_1+v_2+v_3+v_4=0$ 这个特点，所以 $S$ 对加法和数乘都封闭，$S$ 中也显然包含零向量。那么，$S$ 这样的向量空间其维数和基是什么呢？</p>
+<p>我们考虑矩阵 $A=\begin{bmatrix}1&amp;1&amp;1&amp;1\end{bmatrix}$，由 $S$ 中向量元素的特殊性质可得：</p>
+<script type="math/tex; mode=display">\displaylines{
+Av=\begin{bmatrix}1&1&1&1\end{bmatrix}\begin{bmatrix}v_1\\v_2\\v_3\\v_4\end{bmatrix}=v1+v2+v3+v4=0
+}</script><p>注意到，<strong>所有满足条件的 $v$ 对应的向量空间 $S$ 正好是 $A$ 的零空间，这样我们就把问题转化为求矩阵的零空间的基和维数了，这样的转换十分巧妙</strong>。</p>
+<p>矩阵 $A$ 的秩 $r$ 为 1，列数 $n=4$，因此，$S$ 的维数为 $n-r=3$，其基为 $Av=0$ 的三个特解：</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{bmatrix}-1\\1\\0\\0\end{bmatrix}, \begin{bmatrix}-1\\0\\1\\0\end{bmatrix}, \begin{bmatrix}-1\\0\\0\\1\end{bmatrix}
+}</script><p>再观察 $A$ 的列空间和左零空间列，其列空间正好就为 $R^1$，其左零空间只包含数 $0$。</p>
+<hr>
+<p>课程的最后，我们介绍图的概念，引出图与线性代数之间的关系。</p>
+<p><strong>图是点和边的集合，边连通各个点。</strong></p>
+<p> 一个包含五个点六条边的图，完全可以使用一个 $5\times 6$ 的矩阵来表示该图中的所有信息。 </p>
+<p><img src="/img/mit-18.06/lec11-graph.png" width=50%></p>
+<p>一个有趣的问题是：<strong>一个由很多点和很多条边组成的图，最大的两点距离是多少？有研究表明，通常不超过6步，这也即所谓的“六度分割理论”</strong>。</p>
+<p>具体的关于图和矩阵之间的联系将在下一章中细讲。 </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/mit-18.06/mit-18.06-lec11/">http://example.com/mit-18.06/mit-18.06-lec11/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/mit-18.06/mit-18.06-lec10/" title="Lec10 - 四个基本子空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec10 - 四个基本子空间</div></div></a></div><div class="next-post pull-right"><a href="/mit-18.06/mit-18.06-lec12/" title="Lec12 - 图和网络"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec12 - 图和网络</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/mit-18.06/mit-18.06-lec01/" title="Lec01 - 方程组的几何解释"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec01 - 方程组的几何解释</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec02/" title="Lec02 - 矩阵消元"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec02 - 矩阵消元</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec03/" title="Lec03 - 乘法和逆矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec03 - 乘法和逆矩阵</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec04/" title="Lec04 - A 的 LU 分解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec04 - A 的 LU 分解</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec05/" title="Lec05 - 转置、置换和向量空间 R"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec05 - 转置、置换和向量空间 R</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec06/" title="Lec06 - 列空间和零空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec06 - 列空间和零空间</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-11-%E8%AF%BE-%E7%9F%A9%E9%98%B5%E7%A9%BA%E9%97%B4%E3%80%81%E7%A7%A9-1-%E7%9F%A9%E9%98%B5%E5%92%8C%E5%B0%8F%E4%B8%96%E7%95%8C%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">第 11 课 矩阵空间、秩 $1$ 矩阵和小世界图</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

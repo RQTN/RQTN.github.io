@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>GoF 之工厂模式 - 回顾已学过的设计模式 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="GoF 之工厂模式 - 回顾已学过的设计模式GoF 包含 23 种设计模式，其中有一些设计模式，老杜在之前的课程中（JavaSE JavaWeb MyBatis）中已经讲过。这里做一个简单的回顾。 设计模式优秀博客或文章 《深入设计模式》在线电子书网站 菜鸟教程 - 设计模式 hochan100 的博客园 - 设计模式分类  单例模式 单例模式是一种创建型设计模式，让你能够保证一个类只有一个实例，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GoF 之工厂模式 - 回顾已学过的设计模式">
+<meta property="og:url" content="http://example.com/laodu-spring6/%E7%AC%AC%206%20%E7%AB%A0%20GoF%20%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20-%20%E5%9B%9E%E9%A1%BE%E5%B7%B2%E5%AD%A6%E8%BF%87%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="GoF 之工厂模式 - 回顾已学过的设计模式GoF 包含 23 种设计模式，其中有一些设计模式，老杜在之前的课程中（JavaSE JavaWeb MyBatis）中已经讲过。这里做一个简单的回顾。 设计模式优秀博客或文章 《深入设计模式》在线电子书网站 菜鸟教程 - 设计模式 hochan100 的博客园 - 设计模式分类  单例模式 单例模式是一种创建型设计模式，让你能够保证一个类只有一个实例，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2022-11-09T10:00:55.000Z">
+<meta property="article:modified_time" content="2024-04-01T01:48:02.030Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="laodu-spring6">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/laodu-spring6/%E7%AC%AC%206%20%E7%AB%A0%20GoF%20%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20-%20%E5%9B%9E%E9%A1%BE%E5%B7%B2%E5%AD%A6%E8%BF%87%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GoF 之工厂模式 - 回顾已学过的设计模式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 09:48:02'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GoF 之工厂模式 - 回顾已学过的设计模式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-11-09T10:00:55.000Z" title="发表于 2022-11-09 18:00:55">2022-11-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GoF 之工厂模式 - 回顾已学过的设计模式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="GoF-之工厂模式-回顾已学过的设计模式"><a href="#GoF-之工厂模式-回顾已学过的设计模式" class="headerlink" title="GoF 之工厂模式 - 回顾已学过的设计模式"></a>GoF 之工厂模式 - 回顾已学过的设计模式</h2><p>GoF 包含 23 种设计模式，其中有一些设计模式，老杜在之前的课程中（JavaSE JavaWeb MyBatis）中已经讲过。这里做一个简单的回顾。</p>
+<h3 id="设计模式优秀博客或文章"><a href="#设计模式优秀博客或文章" class="headerlink" title="设计模式优秀博客或文章"></a>设计模式优秀博客或文章</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns">《深入设计模式》在线电子书网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html">菜鸟教程 - 设计模式</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/category/1985734.html">hochan100 的博客园 - 设计模式分类</a></li>
+</ul>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><blockquote>
+<p>单例模式是一种创建型设计模式，让你能够保证一个类只有一个实例，并提供一个访问该实例的全局节点。</p>
+</blockquote>
+<p>在韩顺平的 JavaSE 课程中学过单例模式。</p>
+<p>常见的实现方式有：懒汉式，饿汉式。</p>
+<p>目前最佳实现方式是：单元素的枚举。</p>
+<h3 id="简单工厂模式，工厂方法模式，抽象工厂模式"><a href="#简单工厂模式，工厂方法模式，抽象工厂模式" class="headerlink" title="简单工厂模式，工厂方法模式，抽象工厂模式"></a>简单工厂模式，工厂方法模式，抽象工厂模式</h3><p>老杜的工厂模式讲解中，工厂方法模式讲得不够完美，讲义中的抽象工厂模式的内容除了开头，后面几乎都是错的，这里略作补充。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14888101.html">工厂模式（上）：为什么说没事不要随便用工厂模式创建对象？</a><br><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/abstract-factory">抽象工厂模式</a></p>
+<p>对象生产与对象消费的分离，或者说解耦，是工厂模式的最核心设计目的。</p>
+<p>简单工厂模式，以相对简单的方式进行实现，来达到对象生产与消费分离的目的。但它的问题很明显：</p>
+<ul>
+<li>不满足 OCP 原则，需要新增产品时，必须要修改工厂类。</li>
+<li>工厂类是超级工厂，是全能工厂，包含了各种产品的生产逻辑。如果产品的生产逻辑比较简单，产品的类型不多，那么问题还不大；可如果产品的生产逻辑很复杂，或者产品很多，工厂类的代码会非常臃肿。</li>
+</ul>
+<p>工厂方法模式，是对简单工厂模式的改进。<br>它当然也满足对象生产与消费分离的目的，此外它还成功解决了简单工厂模式的两个问题。<br>怎么解决的？将工厂类角色拆分为抽象工厂角色和具体工厂角色，一个具体工厂角色对应生产一个具体产品。</p>
+<ul>
+<li>新增产品时，只需要额外再新增相应的具体工厂类即可。对客户端使用而言，已经满足了 OCP 原则。</li>
+<li>不同产品的生产逻辑被分离到相应的具体工厂类中，能够适应产品生产逻辑复杂，或者产品类型较多的场景。</li>
+</ul>
+<p>工厂方法模式虽然解决了简单工厂模式的问题，但也引入了一些新的问题。其中最主要的问题就是类爆炸问题：每增加一个新的产品类型，就需要增加两个类。当产品类型特别多的时候，系统中的类数量爆炸。</p>
+<p>抽象工厂模式，是对工厂方法模式的改进。<br>它当然也满足对象生产与消费分离的目的，此外它还成功解决了工厂方法模式的类爆炸问题。<br>怎么解决的？让一个具体工厂角色能够生产多种具体产品。<br>需要注意的细节是，一个具体工厂角色所生产的多种具体产品中，每种具体产品的父类或者说接口应该是不同的，也即属于不同的产品族。</p>
+<p>老杜讲义中的举例是有些问题的，明明是 <code>WeaponFactory</code> 却拥有 <code>getFruit()</code> 方法，这是很矛盾的，而且 <code>WeaponFactory</code> 中的 <code>getWeapon</code> 是传入武器类型获取相应具体的 <code>Weapon</code>，这并不是经典的抽象工厂模式！</p>
+<p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/abstract-factory">抽象工厂模式</a> 的举例就好多了，有 <code>Chair</code> <code>Sofa</code> <code>Coffe Table</code> 三种产品族，这三种产品族都属于家具产品，每个具体工厂是家具工厂，都能够生产这三族产品，只是所生产的家具的风格不同，比如 <code>Modern­Furniture­Factory</code> 所生产的是现代风格的 <code>Modern­Chair</code> <code>Modern­Sofa</code> <code>Modern­Coffee­Table</code>。</p>
+<p>回到工厂方法模式，在该模式下，具体工厂的创建与对象消费是耦合的。在大部分情况下，这并没有什么问题，客户端往往需要的是一个具体的对象，此时创建具体工厂来生产即可。</p>
+<p>但有些时候，客户端并不关心对象的具体类型是什么，只关心对象的方法，即客户端希望完全面向接口来消费对象。这就与工厂方法模式有矛盾了，客户端要消费对象，就必须先创建具体工厂，既然是创建具体工厂，客户端就不可能是完全面向接口的。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14888101.html">工厂模式（上）：为什么说没事不要随便用工厂模式创建对象？</a>中提到了相应的问题场景：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RuleConfigSource</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> RuleConfig <span class="title function_">load</span><span class="params">(String ruleConfigFilePath)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">ruleConfigFileExtension</span> <span class="operator">=</span> getFileExtension(ruleConfigFilePath);</span><br><span class="line"></span><br><span class="line">    <span class="type">IRuleConfigParserFactory</span> <span class="variable">parserFactory</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;json&quot;</span>.equalsIgnoreCase(ruleConfigFileExtension)) &#123;</span><br><span class="line">      parserFactory = <span class="keyword">new</span> <span class="title class_">JsonRuleConfigParserFactory</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;xml&quot;</span>.equalsIgnoreCase(ruleConfigFileExtension)) &#123;</span><br><span class="line">      parserFactory = <span class="keyword">new</span> <span class="title class_">XmlRuleConfigParserFactory</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;yaml&quot;</span>.equalsIgnoreCase(ruleConfigFileExtension)) &#123;</span><br><span class="line">      parserFactory = <span class="keyword">new</span> <span class="title class_">YamlRuleConfigParserFactory</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;properties&quot;</span>.equalsIgnoreCase(ruleConfigFileExtension)) &#123;</span><br><span class="line">      parserFactory = <span class="keyword">new</span> <span class="title class_">PropertiesRuleConfigParserFactory</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidRuleConfigException</span>(<span class="string">&quot;Rule config file format is not supported: &quot;</span> + ruleConfigFilePath);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">IRuleConfigParser</span> <span class="variable">parser</span> <span class="operator">=</span> parserFactory.createParser();</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">configText</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="comment">//从ruleConfigFilePath文件中读取配置文本到configText中</span></span><br><span class="line">    <span class="type">RuleConfig</span> <span class="variable">ruleConfig</span> <span class="operator">=</span> parser.parse(configText);</span><br><span class="line">    <span class="keyword">return</span> ruleConfig;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String <span class="title function_">getFileExtension</span><span class="params">(String filePath)</span> &#123;</span><br><span class="line">    <span class="comment">//...解析文件名获取扩展名，比如rule.json，返回json</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端提供一个配置文件路径，并希望获得一个解析器。客户端并不关心解析器是 <code>Json</code> 解析器还是 <code>XML</code> 解析器，而只希望所获得的解析器，能够通过 <code>parse()</code> 方法完成解析操作。</p>
+<p>工厂方法模式，具体工厂的创建与对象消费的耦合，决定了客户端不能完全面向接口，即客户端必须要关心解析器创建的细节：上面的代码中，客户端需要获取配置文件路径的后缀，然后根据后缀来创建不同格式的解析器工厂，这显然给客户端造成了使用上的负担，这是另一种生产与消费的耦合。</p>
+<p>老杜的讲课中也提到了这个问题，并给出了和<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14888101.html">工厂模式（上）：为什么说没事不要随便用工厂模式创建对象？</a>一样的解决方案？引入简单工厂模式，创建一个生产具体工厂的简单工厂。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RuleConfigSource</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> RuleConfig <span class="title function_">load</span><span class="params">(String ruleConfigFilePath)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">ruleConfigFileExtension</span> <span class="operator">=</span> getFileExtension(ruleConfigFilePath);</span><br><span class="line"></span><br><span class="line">    <span class="type">IRuleConfigParserFactory</span> <span class="variable">parserFactory</span> <span class="operator">=</span> RuleConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);</span><br><span class="line">    <span class="keyword">if</span> (parserFactory == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">InvalidRuleConfigException</span>(<span class="string">&quot;Rule config file format is not supported: &quot;</span> + ruleConfigFilePath);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">IRuleConfigParser</span> <span class="variable">parser</span> <span class="operator">=</span> parserFactory.createParser();</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">configText</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="comment">//从ruleConfigFilePath文件中读取配置文本到configText中</span></span><br><span class="line">    <span class="type">RuleConfig</span> <span class="variable">ruleConfig</span> <span class="operator">=</span> parser.parse(configText);</span><br><span class="line">    <span class="keyword">return</span> ruleConfig;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String <span class="title function_">getFileExtension</span><span class="params">(String filePath)</span> &#123;</span><br><span class="line">    <span class="comment">//...解析文件名获取扩展名，比如rule.json，返回json</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//因为工厂类只包含方法，不包含成员变量，完全可以复用，</span></span><br><span class="line"><span class="comment">//不需要每次都创建新的工厂类对象，所以，简单工厂模式的第二种实现思路更加合适。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RuleConfigParserFactoryMap</span> &#123; <span class="comment">//工厂的工厂</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, IRuleConfigParserFactory&gt; cachedFactories = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    cachedFactories.put(<span class="string">&quot;json&quot;</span>, <span class="keyword">new</span> <span class="title class_">JsonRuleConfigParserFactory</span>());</span><br><span class="line">    cachedFactories.put(<span class="string">&quot;xml&quot;</span>, <span class="keyword">new</span> <span class="title class_">XmlRuleConfigParserFactory</span>());</span><br><span class="line">    cachedFactories.put(<span class="string">&quot;yaml&quot;</span>, <span class="keyword">new</span> <span class="title class_">YamlRuleConfigParserFactory</span>());</span><br><span class="line">    cachedFactories.put(<span class="string">&quot;properties&quot;</span>, <span class="keyword">new</span> <span class="title class_">PropertiesRuleConfigParserFactory</span>());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> IRuleConfigParserFactory <span class="title function_">getParserFactory</span><span class="params">(String type)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (type == <span class="literal">null</span> || type.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">IRuleConfigParserFactory</span> <span class="variable">parserFactory</span> <span class="operator">=</span> cachedFactories.get(type.toLowerCase());</span><br><span class="line">    <span class="keyword">return</span> parserFactory;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的做法，显然会重新违背 OCP 原则。当需要增加一种新格式的解析器时，除了创建新的具体解析器类，新的具体解析器工厂类以外，还需要修改简单工厂 <code>RuleConfigParserFactoryMap</code>。</p>
+<p>虽然重新违背了 OCP 原则，但是考虑到：</p>
+<ul>
+<li>一般不会频繁添加新格式解析器</li>
+<li>工厂类的创建一般比较简单（往往一行 <code>new</code> 即可），不像产品的创建那么复杂，简单工厂 <code>RuleConfigParserFactoryMap</code> 的改动不会很大<br>此时稍微不符合开闭原则，也是可以接受的。</li>
+</ul>
+<p>另外，同样由于工厂类的创建比较简单，简单工厂 <code>RuleConfigParserFactoryMap</code> 在解析器不断增多的情况下，也能较好地控制住类的体积。</p>
+<p>有没有一种完美的解决方案呢？对工厂方法模式引入简单工厂后，又不至于重新违背 OCP 原则？那就只能想到利用配置文件加反射机制了。简单说一下就是：</p>
+<ul>
+<li>增加一种新格式的解析器时，除了创建新的具体解析器类，新的具体解析器工厂类以外，还需要在配置文件中进行注册（指明新的具体解析器工厂的全类名）</li>
+<li>修改简单工厂 <code>RuleConfigParserFactoryMap</code> 的代码，在静态代码块中，完成对配置文件的解析，以反射的方式创建配置文件中所有注册的具体解析器工厂，并放到缓存中。</li>
+</ul>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><blockquote>
+<p>代理模式是一种结构型设计模式，让你能够提供目标对象的替代品或其占位符。代理控制着对于目标对象的访问，并允许在将请求提交给对象前后进行一些处理。</p>
+</blockquote>
+<p>代理模式可细分为静态代理和动态代理。</p>
+<p>JavaSE 中的 <code>Thread</code> 就是代理模式中，静态代理的经典案例。</p>
+<p>Mybatis 中的 <code>sqlSession.getMapper()</code> 接口代理机制就是代理模式中，动态代理的经典案例。</p>
+<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>在 JavaSE 的 <code>IO</code> 类库中学过装饰器模式，比如 <code>BufferedInputStream</code> 就是对 <code>FileInputStream</code> 进行装饰（或者说包装），从而额外提供缓存读取的支持。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14899653.html">装饰器模式：通过剖析Java IO类库源码学习装饰器模式</a></p>
+<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><blockquote>
+<p>适配器模式是一种结构型设计模式，它能使接口不兼容的对象能够相互合作。</p>
+</blockquote>
+<p>在 Servlet 中讲到 <code>GenericServlet</code> 时提到过。</p>
+<p><code>Servlet</code> 规范接口有 5 个方法，如 <code>init</code>，<code>destroy</code>，<code>getServletConfig</code>，<code>getServletInfo</code> 和 <code>service</code>。这 5 个方法中，<code>service</code> 方法是最常用的最核心的，一般情况下，我们往往只关注于对 <code>service</code> 方法提供具体实现。但是，如果是实现 <code>Servlet</code> 接口，即使我们只关心 <code>service</code> 方法，却还是同时需要实现其他方法（哪怕是实现为空方法）。</p>
+<p>想象一下，一个 <code>UserServlet</code> 类实现了 <code>Servlet</code> 接口，该 <code>UserServlet</code> 类中存在一堆重写方法（基本都是空实现），但是只有 <code>service</code> 方法是真正有意义，真正需要进行重写的。这样的 <code>UserServlet</code> 类内部充斥了大量无意义的内容，可不可以让 <code>UserServlet</code> 中只实现 <code>service</code> 方法就可以了。</p>
+<p>可以，我们不让 <code>UserServlet</code> 去直接实现 <code>Servlet</code> 接口，而是去继承 <code>GenericServlet</code> 类。<code>GenericServlet</code> 是一个抽象类，该类实现了 <code>Servlet</code> 接口，对其中 <code>service</code> 以外的所有方法提供了默认实现，唯独 <code>service</code> 方法被声明为 <code>abstract</code>。这样，继承了 <code>GenericServlet</code> 的 <code>UserServlet</code> 就只需要关注于提供 <code>service</code> 的实现了。</p>
+<p><code>GenericServlet</code> 可以视为对原接口 <code>Servlet</code> 的一个适配器，它相对原接口更加易用。</p>
+<p>其实 Servlet 中 <code>GenericServlet</code> 算是对适配器模式的最简单应用，它的主要作用是减少方法的 Override。更多的时候，适配器是需要做一些转换工作的。比如可以阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/adapter">适配器模式</a></p>
+<h3 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h3><p>在 JavaSE 的 <code>Integer</code> 的缓存以及 <code>String</code> 的字符串常量池中学过。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14913417.html">享元模式（上）：如何利用享元模式优化文本编辑器的内存占用？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14913501.html">享元模式（下）：剖析享元模式在Java Integer、String中的应用</a></p>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
+<p>策略模式是一种行为设计模式，它能让你定义一系列算法，并将每种算法分别放入独立的类中，以使算法的对象能够相互替换。</p>
+</blockquote>
+<p>策略模式的思想非常朴素：一个接口（问题）下有多个实现类（策略）。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14917433.html">策略模式（上）：如何避免冗长的if-else/switch分支判断代码？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14918028.html">策略模式（下）：如何实现一个支持给不同大小文件排序的小程序？</a></p>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><blockquote>
+<p>观察者模式是一种行为设计模式，允许你定义一种订阅机制，可在对象事件发生时通知多个“观察”该对象的其他对象。</p>
+</blockquote>
+<p>MVC 架构模式，是符合观察者模式的，而 Servlet Listener 是观察者模式的经典应用。</p>
+<p>在老杜的 JavaWeb 课程中，学到 MVC 架构模式和 Servlet Listener 时，其实并没有讲解观察者模式相关的内容。</p>
+<p>至于 MVC 架构模式与观察者模式的关系，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35680070">深入理解MVC - 陈大侠的文章 - 知乎</a> 中提到：</p>
+<blockquote>
+<p>对应到 MVC 中，Model 是被观察的对象，View 是观察者，Model 层一旦发生变化，View 层即被通知更新</p>
+</blockquote>
+<p>经典的观察者模式中，被观察者内部除了维护一个状态变量外，还维护了一个观察者的列表，当被观察者的状态发生更新后，会遍历通知所有观察者。</p>
+<p>如果将 Model 视为经典观察者模式中的被观察者，显然:</p>
+<ul>
+<li>Model 内部并没有维护一个观察者的列表。</li>
+<li>Model 内部也没有提供观察者的注册方法，以及通知观察者的方法。</li>
+</ul>
+<p>实际上这些工作，都被转移到 Controller 中了：</p>
+<ul>
+<li>Model 与 View 的关系是在 Controller 层编码写死的，因此不存在一个显式的观察者列表，也不存在注册观察者的方法。</li>
+<li>通知 View 的逻辑是在 Controller 层直接定义的。Controller 在收到 Model 返回的数据后，通知 View 进行更新。</li>
+</ul>
+<p>因此，我更倾向于这样理解 MVC 架构模式与经典观察者模式的关系：<strong>Model 相当于是被观察者中的状态变量，Controller 层相当于是被观察者，View 相当于是观察者。</strong></p>
+<p>随着前后端的分离，MVC 架构中的 View 层已经基本从后端中剥离出去了，对于后端来说，接口就是 View。因此，在前后端分离的场景下，感官上后端的一个 Model 其实只对应一个 View。但是站在全局的角度来说，后端通过接口返回给前端的数据，在被前端利用时，可能会影响到前端意义下的多个 View 组件。</p>
+<p>知乎上看到过一句可能不是很准确的话：前后端通过接口通信，接口中传递的 <code>json</code> 数据可以看做是后端 MVC 中的 V，前端 MVC 中的 M。</p>
+<p>至于 Servlet Listener，就是观察者模式的经典应用了。</p>
+<p>以 <code>ServletContextListener</code> 接口为例，该接口的实现类，就是观察者。<br><code>ServletContext</code> 就是被观察者中的状态变量。<br>至于被观察者，需要深入了解 Servlet 容器的初始化过程了。</p>
+<p>应该是存在一个类，管理着所有 <code>ServletContextListener</code> 实现类的注册，注册应该是在读取解析 配置文件时候就完成的；另外该类应该也持有 <code>ServletContext</code> 对象，管理着 <code>ServletContext</code> 对象的创建与销毁（状态变化），从而便于通知所有观察者，即所有 <code>ServletContextListener</code> 实现类。</p>
+<p>可以阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/observer">观察者模式</a></p>
+<h3 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h3><p>在 Servlet 中学过。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14917091.html">模板模式（上）：剖析模板模式在JDK、Servlet、JUnit等中的应用</a></p>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>在 Servlet Filter 中学过。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14921281.html">职责链模式（上）：如何实现可灵活扩展算法的敏感信息过滤框架？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hochan100/p/14921324.html">职责链模式（下）：框架中常用的过滤器、拦截器是如何实现的？</a>：主要看 Servlet Filter 小节</p>
+<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><p>在 JavaSE 的 <code>Iterator</code> 里学过。建议阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/iterator-pattern.html">迭代器模式</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7027810772570865700">学习设计模式——迭代器模式</a></p>
+<p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/iterator">迭代器模式</a>：《深入设计模式》的图书网站</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/laodu-spring6/%E7%AC%AC%206%20%E7%AB%A0%20GoF%20%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20-%20%E5%9B%9E%E9%A1%BE%E5%B7%B2%E5%AD%A6%E8%BF%87%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">http://example.com/laodu-spring6/%E7%AC%AC%206%20%E7%AB%A0%20GoF%20%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20-%20%E5%9B%9E%E9%A1%BE%E5%B7%B2%E5%AD%A6%E8%BF%87%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/laodu-spring6/">laodu-spring6</a><a class="post-meta__tags" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/laodu-mybatis/%E7%AC%AC%2010%20%E7%AB%A0%20MyBatis%20%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86%20-%20%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" title="MyBatis 参数处理 - 接口代理机制源码分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MyBatis 参数处理 - 接口代理机制源码分析</div></div></a></div><div class="next-post pull-right"><a href="/laodu-spring6/%E7%AC%AC%209%20%E7%AB%A0%20Bean%20%E7%9A%84%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98%20-%20Spring%20%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" title="Bean 的循环依赖问题 - Spring 循环依赖源码分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Bean 的循环依赖问题 - Spring 循环依赖源码分析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/laodu-spring6/%E7%AC%AC%209%20%E7%AB%A0%20Bean%20%E7%9A%84%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98%20-%20Spring%20%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" title="Bean 的循环依赖问题 - Spring 循环依赖源码分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">Bean 的循环依赖问题 - Spring 循环依赖源码分析</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GoF-%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F-%E5%9B%9E%E9%A1%BE%E5%B7%B2%E5%AD%A6%E8%BF%87%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">GoF 之工厂模式 - 回顾已学过的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%88%96%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">设计模式优秀博客或文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%EF%BC%8C%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">简单工厂模式，工厂方法模式，抽象工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">装饰器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text">适配器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.</span> <span class="toc-text">享元模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.8.</span> <span class="toc-text">策略模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.9.</span> <span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.10.</span> <span class="toc-text">模板方法模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.11.</span> <span class="toc-text">责任链模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.12.</span> <span class="toc-text">迭代器模式</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

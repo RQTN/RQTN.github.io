@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>浮点数使用陷阱 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="浮点数使用陷阱问题在 P45 0044_韩顺平Java_浮点数细节2 中，提到了浮点数使用陷阱：2.7 和 8.1 &#x2F; 3 比较 1234double n8 &#x3D; 2.7;double n9 &#x3D; 8.1 &#x2F; 3;    &#x2F;&#x2F; 数学上，除法结果就是 2.7System.out.println(n8); &#x2F;&#x2F; 输出 2.7System.out.println(n9); &#x2F;&#x2F; 输出一个接近 2.7 的小数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浮点数使用陷阱">
+<meta property="og:url" content="http://example.com/hsp-javase/ch03-%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BD%BF%E7%94%A8%E9%99%B7%E9%98%B1/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="浮点数使用陷阱问题在 P45 0044_韩顺平Java_浮点数细节2 中，提到了浮点数使用陷阱：2.7 和 8.1 &#x2F; 3 比较 1234double n8 &#x3D; 2.7;double n9 &#x3D; 8.1 &#x2F; 3;    &#x2F;&#x2F; 数学上，除法结果就是 2.7System.out.println(n8); &#x2F;&#x2F; 输出 2.7System.out.println(n9); &#x2F;&#x2F; 输出一个接近 2.7 的小数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2022-08-09T12:05:30.000Z">
+<meta property="article:modified_time" content="2024-04-01T01:34:09.665Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="hsp-javase">
+<meta property="article:tag" content="浮点数">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/hsp-javase/ch03-%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BD%BF%E7%94%A8%E9%99%B7%E9%98%B1/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浮点数使用陷阱',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 09:34:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">浮点数使用陷阱</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-08-09T12:05:30.000Z" title="发表于 2022-08-09 20:05:30">2022-08-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/JavaSE/">JavaSE</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="浮点数使用陷阱"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="浮点数使用陷阱"><a href="#浮点数使用陷阱" class="headerlink" title="浮点数使用陷阱"></a>浮点数使用陷阱</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在 <code>P45 0044_韩顺平Java_浮点数细节2</code> 中，提到了浮点数使用陷阱：<code>2.7</code> 和 <code>8.1 / 3</code> 比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">n8</span> <span class="operator">=</span> <span class="number">2.7</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">n9</span> <span class="operator">=</span> <span class="number">8.1</span> / <span class="number">3</span>;    <span class="comment">// 数学上，除法结果就是 2.7</span></span><br><span class="line">System.out.println(n8); <span class="comment">// 输出 2.7</span></span><br><span class="line">System.out.println(n9); <span class="comment">// 输出一个接近 2.7 的小数：2.6999999999999997</span></span><br></pre></td></tr></table></figure>
+<p>为什么 <code>n8</code> 的输出是 <code>2.7</code>，而 <code>n9</code> 的输出是 <code>2.6999999999999997</code>？</p>
+<p>要把这个问题彻底解释清楚不是一件简单的事情，其中涉及到：</p>
+<ol>
+<li><strong>十进制到二进制的转换</strong></li>
+<li><strong>浮点数 IEEE 754 标准</strong>，以及该标准下的<strong>除法运算</strong></li>
+<li>Java 的浮点数输出的设计机制</li>
+</ol>
+<p>以上 1.2. 涉及到计算机组成原理方面的知识，3. 则是涉及到浮点数转字符串的算法</p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>当然，这里也没必要太深入其中的细节，一个简单的解释是：</p>
+<p><strong>因为二进制表示能力有限，绝大多数的十进制小数，转换为二进制后就变成了无限循环小数。</strong><br>而计算机的存储空间是有限的，给每个浮点数分配的存储空间自然也是有限的，所以<strong>计算机只能保存有限的二进制位数，这其实本质上就是一种舍入</strong>，最终实际<strong>在计算机中存储的十进制小数只是一个近似值</strong>。</p>
+<p>所以上面的 <code>double n8 = 2.7</code> 中的 <code>2.7</code>，实际保存到 <code>n8</code> 中的是一个接近 <code>2.7</code> 的小数<br>同理，<code>double n9 = 8.1 / 3</code> 中的 <code>8.1</code> 同样在参与运算时，是一个接近 <code>8.1</code> 的小数，自然 <code>8.1 / 3</code> 最后的结果不会是一个精确的 <code>2.7</code>。</p>
+<p>总之，在输出前，<code>n8</code> 和 <code>n9</code> 中都保存了一个接近 <code>2.7</code> 的近似值，但又各不相同。</p>
+<p>最后，Java <code>System.out.println(double)</code> 其中的浮点数输出的设计机制，决定了：</p>
+<ul>
+<li>对于 <code>n8</code> 实际存储的近似于 <code>2.7</code> 的浮点数，输出 <code>2.7</code></li>
+<li>对于 <code>n9</code> 实际存储的另一个近似于 <code>2.7</code> 的浮点数，输出 <code>2.6999999999999997</code></li>
+</ul>
+<hr>
+<p>下面借助一些转换工具，举一个更具象的例子，同样是浮点数使用陷阱：<code>0.3</code> 和 <code>0.1 + 0.2</code> 比较</p>
+<p>使用工具：<a target="_blank" rel="noopener" href="https://baseconvert.com/ieee-754-floating-point">十进制小数转 IEEE 754 标准浮点数工具</a>，我们可以直接得到 <code>0.1</code>、<code>0.2</code> 和 <code>0.3</code> 的 IEEE 754 存储和对应的近似值如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0.1 -&gt; 0 01111111011 1001100110011001100110011001100110011001100110011010</span><br><span class="line">    -&gt; 0.1000000000000000055511151231257827021181583404541015625</span><br><span class="line"></span><br><span class="line">0.2 -&gt; 0 01111111100 1001100110011001100110011001100110011001100110011010</span><br><span class="line">    -&gt; 0.200000000000000011102230246251565404236316680908203125</span><br><span class="line"></span><br><span class="line">0.3 -&gt; 0 01111111101 0011001100110011001100110011001100110011001100110011</span><br><span class="line">    -&gt; 0.299999999999999988897769753748434595763683319091796875</span><br></pre></td></tr></table></figure>
+<p>然后我们使用 <a target="_blank" rel="noopener" href="https://tooltt.com/ieee/">在线IEEE浮点二进制计算器工具</a> 来计算一下 <code>0.1 + 0.2</code> 的结果对应的 IEEE 754 存储，然后再次使用 <a target="_blank" rel="noopener" href="https://baseconvert.com/ieee-754-floating-point">十进制小数转 IEEE 754 标准浮点数工具</a> 得到对应的真实值，结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.1 + 0.2 -&gt; 0 01111111101 0011001100110011001100110011001100110011001100110100</span><br><span class="line">          -&gt; 0.3000000000000000444089209850062616169452667236328125</span><br></pre></td></tr></table></figure>
+<p>可以看到，直接赋值 <code>0.3</code> 与赋值 <code>0.1 + 0.2</code> 的计算结果，最终在计算机中存储的是两个不同的但又都近似于 <code>0.3</code> 的近似值。尝试输出一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> <span class="number">0.3</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">d2</span> <span class="operator">=</span> <span class="number">0.1</span> + <span class="number">0.2</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">d3</span> <span class="operator">=</span> <span class="number">0.299999999999999988897769753748434595763683319091796875</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">d4</span> <span class="operator">=</span> <span class="number">0.3000000000000000444089209850062616169452667236328125</span></span><br><span class="line">System.out.println(d1); <span class="comment">// 输出 0.3</span></span><br><span class="line">System.out.println(d2); <span class="comment">// 输出 0.30000000000000004</span></span><br><span class="line">System.out.println(d3); <span class="comment">// 输出 0.3</span></span><br><span class="line">System.out.println(d4); <span class="comment">// 输出 0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，Java 的浮点数输出机制对这两个都近似于 <code>0.3</code> 但又各自不同的近似值的输出设计是不一样的。</p>
+<hr>
+<p>下面简单谈一谈，Java 浮点数输出的设计机制。</p>
+<p>你可能已经注意到了，无论是输出 <code>2.6999999999999997</code> 还是输出 <code>0.30000000000000004</code>，好像它们从左往右数，恰好都是有 17 位有效数字。</p>
+<p>其实这并不是巧合，而是精心设计的结果：Java 浮点数输出最多会保留 17 位有效数字！</p>
+<p>为什么最多是保留 17 位呢，因为 IEEE 754 浮点数标准下，64 位的浮点数在二进制上的最微小变化，反映到十进制上，必然能在前 17 位有效数字上看到变化。</p>
+<p>比如，下面是 IEEE 754 标准下，两个相邻的 64 位浮点数的实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 01111111101 0011001100110011001100110011001100110011001100110100</span><br><span class="line">0 01111111101 0011001100110011001100110011001100110011001100110101</span><br></pre></td></tr></table></figure>
+<p>可以看到，这两个浮点数的内部存储，只有最后一位不同（这一位的变化对值的影响最小）！<br>而这两个浮点数内部存储对应的真实值是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.3000000000000000444089209850062616169452667236328125</span><br><span class="line">0.300000000000000099920072216264088638126850128173828125</span><br></pre></td></tr></table></figure>
+<p>前 16 位看不出来变化，<strong>但到第 17 位就不一样了</strong>！也即，对于任何浮点数的内部存储对应的完整真实值，只看前 17 位，必然是存在差别的。</p>
+<p>这个特性对于简化浮点数的输出非常有用，我们可以舍去大量低位的信息不去输出！毕竟对于小数，我们一般不太关注后面太低位的信息。</p>
+<p>至于为什么要强调差别呢？我觉得可能是，希望对于不同的浮点数的内部二进制存储，最后输出的内容也是不同的。也即希望 <code>内部 64 位二进制存储</code> 与 <code>输出内容</code> 存在一个一一映射的关系。</p>
+<p>按 IEEE 754 标准的换算逻辑，<code>内部 64 位二进制存储</code> 和 <code>完整真实值</code> 是一一映射的关系，现在我们可以再简化一下，<code>内部 64 位二进制存储</code> 和 <code>完整真实值前 17 位</code> 是一一映射的关系。只要保留 17 位，就能保证找到对应的内部二进制存储。</p>
+<p>以上只是 Java 浮点数输出设计的冰山一角。</p>
+<p>其实不局限于 Java，在任何语言中，都要考虑输出浮点数这件事情。</p>
+<p>输出浮点数，本质就是将浮点数转换为恰当的字符串，这个问题看似简单，实际上是很复杂的事情。针对这个问题，设计了非常多的算法，如：<code>Dragon4</code>，<code>Grisu</code>，<code>Grisu2</code>，<code>Grisu3</code>，<code>Ryu</code> 等。</p>
+<p>不论哪种算法，为了保证浮点数转换得到的字符串尽可能合理，有三个基本要求：</p>
+<ul>
+<li><p>保值：一个正确的解析器可以将输出解析为原数。<br>实际上这个可以理解为是，要保证内部二进制存储与输出内容的一一映射关系。</p>
+</li>
+<li><p>最短输出：输出的字符串必须尽可能短。<br>不可能对任意内部二进制存储，都输出前 17 位！17 位是最坏的情况，我们要做的是让它尽可能短。</p>
+</li>
+<li><p>正确舍入：输出的字符串必须尽可能接近原数。<br>这一点必不可少，因为在输出内容与内部二进制存储毫无关系的情况下，是完全可以做到前两个要求的：保值与最短输出</p>
+</li>
+</ul>
+<h3 id="相关博文"><a href="#相关博文" class="headerlink" title="相关博文"></a>相关博文</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56545018/answer/149620518">为什么java里面3*0.1=0.30000000000000004，而4*0.1=0.4？ - 蓝色的回答 - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56545018/answer/149944907">为什么java里面3*0.1=0.30000000000000004，而4*0.1=0.4？ - 罗智勇的回答 - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/335761161/answer/756081163">一个浮点数到底是怎么被转换为字符串输出？一个浮点数不精确，那么其输出的值是怎么被确定的呢？ - 大宽宽的回答 - 知乎</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/hsp-javase/ch03-%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BD%BF%E7%94%A8%E9%99%B7%E9%98%B1/">http://example.com/hsp-javase/ch03-%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BD%BF%E7%94%A8%E9%99%B7%E9%98%B1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hsp-javase/">hsp-javase</a><a class="post-meta__tags" href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/">浮点数</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/mit-18.06/mit-18.06-lec21/" title="Lec21 - 特征值和特征向量"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec21 - 特征值和特征向量</div></div></a></div><div class="next-post pull-right"><a href="/hsp-javase/ch04-%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E4%B8%8E%E8%A1%A5%E7%A0%81/" title="原码反码与补码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">原码反码与补码</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/hsp-javase/ch04-%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E4%B8%8E%E8%A1%A5%E7%A0%81/" title="原码反码与补码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-11</div><div class="title">原码反码与补码</div></div></a></div><div><a href="/hsp-javase/ch22-%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%20-%20Socket%20%E7%BC%96%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1%E6%B5%81%E8%BF%9B%E8%A1%8C%E9%80%9A%E4%BF%A1%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="多用户通信系统 - Socket 编程使用对象流进行通信的踩坑记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-28</div><div class="title">多用户通信系统 - Socket 编程使用对象流进行通信的踩坑记录</div></div></a></div><div><a href="/hsp-javase/ch20-%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98%20-%20%E9%98%B2%E6%AD%A2%E6%95%8C%E4%BA%BA%E5%9D%A6%E5%85%8B%E9%87%8D%E5%8F%A0%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="坦克大战 - 防止敌人坦克重叠 踩坑记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-24</div><div class="title">坦克大战 - 防止敌人坦克重叠 踩坑记录</div></div></a></div><div><a href="/hsp-javase/ch24-MySQL%20%E6%9D%82%E8%AE%B0/" title="MySQL 杂记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-01</div><div class="title">MySQL 杂记</div></div></a></div><div><a href="/hsp-javase/ch24-%E8%AF%BB%E5%8F%96%E7%8E%B0%E8%B1%A1%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="读取现象和隔离级别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-30</div><div class="title">读取现象和隔离级别</div></div></a></div><div><a href="/hsp-javase/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E9%99%8C%E7%94%9F%E4%BA%BA%EF%BC%8C%E9%82%A3%E4%BA%9B%E5%85%B3%E4%BA%8EString%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-01</div><div class="title">好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BD%BF%E7%94%A8%E9%99%B7%E9%98%B1"><span class="toc-number">1.</span> <span class="toc-text">浮点数使用陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-number">1.2.</span> <span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%8D%9A%E6%96%87"><span class="toc-number">1.3.</span> <span class="toc-text">相关博文</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

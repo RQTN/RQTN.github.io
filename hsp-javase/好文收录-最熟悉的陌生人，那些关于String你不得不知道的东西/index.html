@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西 原文地址：最熟悉的陌生人，那些关于String你不得不知道的东西-腾讯云开发者社区-腾讯云 (tencent.com)  老套的笔试题在一些老套的笔试题中，会要你判断s1&#x3D;&#x3D;s2为false还是true，s1.equals(s2)为false还是true。 1234String s1 &#x3D; new String(&quot;xyz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西">
+<meta property="og:url" content="http://example.com/hsp-javase/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E9%99%8C%E7%94%9F%E4%BA%BA%EF%BC%8C%E9%82%A3%E4%BA%9B%E5%85%B3%E4%BA%8EString%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%9C%E8%A5%BF/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西 原文地址：最熟悉的陌生人，那些关于String你不得不知道的东西-腾讯云开发者社区-腾讯云 (tencent.com)  老套的笔试题在一些老套的笔试题中，会要你判断s1&#x3D;&#x3D;s2为false还是true，s1.equals(s2)为false还是true。 1234String s1 &#x3D; new String(&quot;xyz">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2022-09-01T08:00:33.000Z">
+<meta property="article:modified_time" content="2024-04-01T01:42:49.732Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="好文收录">
+<meta property="article:tag" content="hsp-javase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/hsp-javase/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E9%99%8C%E7%94%9F%E4%BA%BA%EF%BC%8C%E9%82%A3%E4%BA%9B%E5%85%B3%E4%BA%8EString%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%9C%E8%A5%BF/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 09:42:49'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-09-01T08:00:33.000Z" title="发表于 2022-09-01 16:00:33">2022-09-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/JavaSE/">JavaSE</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="好文收录-最熟悉的陌生人，那些关于String你不得不知道的东西"><a href="#好文收录-最熟悉的陌生人，那些关于String你不得不知道的东西" class="headerlink" title="好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西"></a>好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西</h1><blockquote>
+<p>原文地址：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2047278">最熟悉的陌生人，那些关于String你不得不知道的东西-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+</blockquote>
+<h2 id="老套的笔试题"><a href="#老套的笔试题" class="headerlink" title="老套的笔试题"></a><strong>老套的笔试题</strong></h2><p>在一些老套的笔试题中，会要你判断s1==s2为false还是true，s1.equals(s2)为false还是true。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;xyz&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;xyz&quot;</span>;</span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line">System.out.println(s1.equals(s2));</span><br></pre></td></tr></table></figure>
+<p>对于这种题，你总能很快的给出标准答案：==比较的是对象地址，equals方法比较的是真正的字符数组。所以输出的是false和true。</p>
+<p>上面的属于最低阶的题目，没有什么难度。</p>
+<p>现在这种老套的题目已经慢慢消失了，取而代之的是有一些变形的新题目：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;aa&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;bb&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str1</span> <span class="operator">=</span> s1 + s2;</span><br><span class="line"><span class="type">String</span> <span class="variable">str2</span> <span class="operator">=</span> <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="comment">//输出什么呢？？？</span></span><br><span class="line">System.out.println(str1 == str2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="string">&quot;cc&quot;</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="type">String</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="string">&quot;dd&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str3</span> <span class="operator">=</span> s3 + s4;</span><br><span class="line"><span class="type">String</span> <span class="variable">str4</span> <span class="operator">=</span> <span class="string">&quot;ccdd&quot;</span>;</span><br><span class="line"><span class="comment">//又输出什么呢？？？</span></span><br><span class="line">System.out.println(str3 == str4);</span><br></pre></td></tr></table></figure>
+<p>难度提升了一些，但思考一下也不难得出答案是false和true。</p>
+<p>今天的文章就是以这几个题目展开的。</p>
+<h2 id="String对象的创建"><a href="#String对象的创建" class="headerlink" title="String对象的创建"></a><strong>String对象的创建</strong></h2><p>先简单看一下String类的结构：</p>
+<p><img src="/img/hsp-javase/d4369d8f0be4780a058070ece698bff6.png" alt="img"></p>
+<p>可以发现，String里面有一个value属性，是真正存储字符的char数组。</p>
+<p>在执行<code>String s = &quot;xyz&quot;;</code>的时候，在堆区创建了一个String对象，一个char数组对象。</p>
+<p><img src="/img/hsp-javase/189f608bfa34fbbe0445f65786d48efd.png" alt="img"></p>
+<p>如何证明创建了一个String对象和一个char数组对象呢？我们可以通过IDEA的Debug功能验证：</p>
+<p><img src="/img/hsp-javase/5861ca856f2b4bee052e905f8b00fb10.gif" alt="img"></p>
+<p>注意看我截图的位置，在执行完<code>String s = &quot;xyz&quot;;</code>之后，再次点击load classes，Diff栏的String和char[]分别加了1，表示在内存中新增了一个char数组对象和一个String对象。</p>
+<p>现在，我们再来看<code>String s = new String(&quot;xyz&quot;);</code>创建了几个对象。</p>
+<p><img src="/img/hsp-javase/df16d76c219cea1155a49409da20f9cb.gif" alt="img"></p>
+<p>从这张Debug动图中，我们可以得出在<code>String s = new String(&quot;xyz&quot;);</code>之后，创建了两个String对象和一个char数组对象。</p>
+<p>又因为<code>String s = new String(&quot;xyz&quot;);</code>的<code>s</code>引用只能指向一个对象，可以画出内存分布图：</p>
+<p><img src="/img/hsp-javase/26f1074736b3780565a15ee41fe5304d.png" alt="img"></p>
+<p>从图中可以看到，在堆区，有两个String对象，这两个String对象的value都指向同一个char数组对象。</p>
+<p>那么问题来了，下面的那个String对象根本就没被引用，也就是说他没有被用到，那么它到底是干什么的呢？</p>
+<p>占了内存空间又不使用，难道这是JDK的设计缺陷？</p>
+<p><img src="/img/hsp-javase/487e6c61245b97f448d406a0ad6533cb.png" alt="img"></p>
+<p>很显然不是JDK的缺陷，JDK虽然确实有设计缺陷，但不至于这么明显，这么愚蠢。</p>
+<p>那下面的那个String对象是干什么的呢？</p>
+<p>答案是用于驻留到字符串常量池中去的，注意，这里我用了一个<code>驻留</code>，并不是直接把对象放到字符串常量池里面去，有什么区别我们后面再讲。</p>
+<p>这里出现了<code>字符串常量池</code>的概念，我在<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzU0ODU1OTI3Mg%3D%3D%26mid%3D2247486592%26idx%3D1%26sn%3Dcb3bc81545b37a6caa8447d12bfec9b9%26scene%3D21%23wechat_redirect"><strong>String s = new String(“xyz”)创建了几个实例你真的能答对吗？</strong></a>中也有过比较详细的介绍，有兴趣的可以去看一下，这里不再重复了。</p>
+<p>你只需要知道，字符串常量池在JVM源码中对应的类是StringTable，底层实现是一个Hashtable。</p>
+<p><img src="/img/hsp-javase/174f28d689d0b590b2704fdbe67148ae.png" alt="img"></p>
+<p>我们以<code>String s = new String(&quot;xyz&quot;);</code>为例：</p>
+<p>首先去找字符串常量池找，看能不能找到“xyz”字符串对应对象的引用，如果字符串常量池中找不到：</p>
+<ul>
+<li>创建一个String对象和char数组对象</li>
+<li>将创建的String对象封装成HashtableEntry，作为StringTable的value进行存储</li>
+<li>new String(“xyz”)会在堆区又创建一个String对象，char数组直接指向创建好的char数组对象</li>
+</ul>
+<p>如果字符串常量池中能找到：</p>
+<ul>
+<li>new String(“xyz”)会在堆区创建一个对象，char数组直接指向已经存在的char数组对象</li>
+</ul>
+<p><img src="/img/hsp-javase/01c2a05332f293ec9b12d112d32be556.png" alt="img"></p>
+<p>而<code>String s = &quot;xyz&quot;;</code>是怎么样的逻辑：</p>
+<p>首先去找字符串常量池找，看能不能找到“xyz”字符串的引用，如果字符串常量池中能找不到：</p>
+<ul>
+<li>创建一个String对象和char数组对象</li>
+<li>将创建的String对象封装成HashtableEntry，作为StringTable的value进行存储</li>
+<li>返回创建的String对象</li>
+</ul>
+<p>如果字符串常量池中能找到：</p>
+<ul>
+<li>直接返回找到引用对应的String对象</li>
+</ul>
+<p><img src="/img/hsp-javase/4a809d72cdd833e4789de42f2fa974d5.png" alt="img"></p>
+<p>总结而言就是：</p>
+<p>对于<code>String s = new String(&quot;xyz&quot;);</code>这种形式创建字符串对象，如果字符串常量池中能找到，创建一个String对象；如果如果字符串常量池中找不到，创建两个String对象。</p>
+<p>对于<code>String s = &quot;xyz&quot;;</code>这种形式创建字符串对象，如果字符串常量池中能找到，不会创建String对象；如果如果字符串常量池中找不到，创建一个String对象。</p>
+<p><img src="/img/hsp-javase/da2bdac8640366ac83dc47ad7d879fe9.png" alt="img"></p>
+<p>所以，在日常开发中，能用<code>String s = &quot;xyz&quot;;</code>尽量不用<code>String s = new String(&quot;xyz&quot;);</code>，因为可以少创建一个对象，节省一部分空间。</p>
+<p>需要强调的是，字符串常量池存的不是字符串也不是String对象，而是一个个HashtableEntry，HashtableEntry里面的value指向的才是String对象，为了不让表述变得复杂，我省略了HashtableEntry的存在，但不代表它就不存在。</p>
+<p>上文提到的驻留就是新建HashtableEntry指向String对象，并把HashtableEntry存入字符串常量池的过程。</p>
+<p>在网上一些文章中，一些作者可能是为了让读者更好的理解，省略了一些这些，一定要注意辨别区分。</p>
+<p><img src="/img/hsp-javase/833ffe80b39c7b894d8236f52eace88f.png" alt="img"></p>
+<p>达成以上共识之后，我们再回顾一下那个老套的笔试题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;xyz&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;xyz&quot;</span>;</span><br><span class="line"><span class="comment">//为什么输出的是false呢？</span></span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line"><span class="comment">//为什么输出的是true呢？</span></span><br><span class="line">System.out.println(s1.equals(s2));</span><br></pre></td></tr></table></figure>
+<p>有了上面的基础之后，我们画出对应的内存图，s1 == s2为什么是false就一目了然了。</p>
+<p><img src="/img/hsp-javase/280b54796630b73484c7a0ac227778b9.png" alt="img"></p>
+<p>因为equals方法比较的真正的char数组，而s1和s2最终指向的都是同一个char数组对象，所以s1.equals(s2)等于true。</p>
+<p>关于他们最终指向的都是同一个char数组对象这一观点，也可以通过反射证明：</p>
+<p><img src="/img/hsp-javase/f5aa4d6ae3f9e70d573d5d0da1fed98b.png" alt="img"></p>
+<p>我修改了str1指向的String对象的value，str2指向的对象也被影响了。</p>
+<p><img src="/img/hsp-javase/f800d7be8c3d5b369ec6781efbbfc3a5.png" alt="img"></p>
+<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a><strong>字符串拼接</strong></h2><p>现在，我们再来看一下变式题：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;aa&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;bb&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str1</span> <span class="operator">=</span> s1 + s2;</span><br><span class="line"><span class="type">String</span> <span class="variable">str2</span> <span class="operator">=</span> <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="comment">//为什么输出的是false</span></span><br><span class="line">System.out.println(str1 == str2);</span><br></pre></td></tr></table></figure>
+<p>对于这个题目，我们需要先看一下这段代码的字节码。</p>
+<p><img src="/img/hsp-javase/7d2cc9adb7705555abfb84d12e08b160.png" alt="img"></p>
+<p>字节码指令看不懂没有关系，看我用红色框框起来的部分就行了，可以看到居然出现了StringBuilder。</p>
+<p>什么意思呢，就是说<code>String str1 = s1 + s2;</code>会被编译器会优化成<code>new StringBuilder().append(&quot;aa&quot;).append(&quot;bb&quot;).toString();</code></p>
+<p>StringBuilder里面的append方法就是对char数组进行操作，那StringBuilder的toString方法做了什么呢？</p>
+<p><img src="/img/hsp-javase/53577c66bf25d0a228dc0bd0fa799ed8.png" alt="img"></p>
+<p>从源码中可以看到，StringBuilder里面的toString方法调用的是String类里面的<code>String(char value[], int offset, int count)</code>构造方法，这个方法做了什么呢？</p>
+<ul>
+<li>根据参数复制一份char数组对象。复制了一份！</li>
+<li>创建一个String对象，String对象的value指向复制的char数组对象。</li>
+</ul>
+<p>注意，并没有驻留到字符串常量池里面去，这个很关键！！！画一个图理解一下：</p>
+<p><img src="/img/hsp-javase/95cf0d630d3c0217d6387cece9bf9f36.png" alt="img"></p>
+<p>也就是说str2指向的String对象并没有驻留到字符串常量池，而str1指向的对象驻留到字符串常量池里面去了，且他们并不是同一个对象。所以str1 == str2还是false</p>
+<p>因为复制一份char数组对象，所以如果我们改变其中一个char数组的话，另一个也不会造成影响：</p>
+<p><img src="/img/hsp-javase/f5db6b6e9707b011ca8ea8c58990b9a9.png" alt="img"></p>
+<p>把其中String变成丑比之后，另一个还是帅比，也说明了两个String对象用的不是同一份char数组。</p>
+<p><img src="/img/hsp-javase/f2168652cb57cda695a8365413e108ca.gif" alt="img"></p>
+<h2 id="intern方法"><a href="#intern方法" class="headerlink" title="intern方法"></a><strong>intern方法</strong></h2><p>上面说到，调用StringBuilder的toString方法创建的String对象是不会驻留到字符串常量池的，那如果我偏要驻留到字符串常量池呢？有没有办法呢？</p>
+<p>有的，String类的intern方法就可以帮你完成这个事情。</p>
+<p>以这段代码为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;aa&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;bb&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> s1 + s2;</span><br><span class="line">str.intern();</span><br></pre></td></tr></table></figure>
+<p>在执行<code>str.intern();</code>之前，内存图是这样的：</p>
+<p><img src="/img/hsp-javase/84647f576cb1efa707a8d653f77f31b7.png" alt="img"></p>
+<p>在执行<code>str.intern();</code>之后，内存图是这样的：</p>
+<p><img src="/img/hsp-javase/41062bdc464551f6559516a5485ea8dd.png" alt="img"></p>
+<p>intern方法就是创建了一个HashtableEntry对象，并把value指向String对象，然后把HashtableEntry通过hash定位存到对应的字符串成常量池中。当然，前提是字符串常量池中原来没有对应的HashtableEntry。</p>
+<p>没了，intern方法，就是这么简单，一句话给你说清楚了。</p>
+<p>关于intern方法，还有一个很有趣的故事，有兴趣的可以去看一下why神的这篇文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg3NjU3NTkwMQ==&amp;mid=2247505093&amp;idx=1&amp;sn=1d4214e04c2ed6d9381d38953958d057&amp;source=41#wechat_redirect"><strong>《深入理解Java虚拟机》第2版挖的坑终于在第3版中被R大填平了</strong></a></p>
+<h2 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a><strong>编译优化</strong></h2><p>写到这里，好像只有一个坑没有填。就是这个题为什么输出的是true。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="string">&quot;cc&quot;</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="type">String</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="string">&quot;dd&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str3</span> <span class="operator">=</span> s3 + s4;</span><br><span class="line"><span class="type">String</span> <span class="variable">str4</span> <span class="operator">=</span> <span class="string">&quot;ccdd&quot;</span>;</span><br><span class="line"><span class="comment">//为什么输出的是true呢？？？</span></span><br><span class="line">System.out.println(str3 == str4);</span><br></pre></td></tr></table></figure>
+<p>这道题和上面那道题相比，有点相似，在原来的基础上加了两个final关键字。我们先看一下这段代码的字节码：</p>
+<p><img src="/img/hsp-javase/e8fc0c71d3de989718abc3bd63045f46.png" alt="img"></p>
+<p><img src="/img/hsp-javase/2c311a20217ded5b1bbd8270471985c6.png" alt="img"></p>
+<p>又是一段字节码指令，不需要看懂，你点一下#4，居然就可以看到“ccdd”字符串。</p>
+<p>原来，用final修饰后，JDK的编译器会识别优化，会把<code>String str3 = s3 + s4;</code>优化成<code>String str3 = &quot;ccdd&quot;</code>。</p>
+<p><img src="/img/hsp-javase/2228ff72b27fe0cbaae2d5b017f570a8.png" alt="img"></p>
+<p>所以原题就相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str3</span> <span class="operator">=</span> <span class="string">&quot;ccdd&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str4</span> <span class="operator">=</span> <span class="string">&quot;ccdd&quot;</span>;</span><br><span class="line"><span class="comment">//为什么输出的是true呢？？？</span></span><br><span class="line">System.out.println(str3 == str4);</span><br></pre></td></tr></table></figure>
+<p>这样的题目还难吗？是不是那不管str3和str4怎么比，肯定是相等的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>String对于Java程序员来说就是“最熟悉的陌生人”，你说String简单，它确实简单。你说它难，深究起来确实也有难度，但这些题目，只要你脑海里有一副内存图就会很简单。</p>
+<p>面试题也只会越来越难，这个行业看起来也越来越内卷，但只要我学的快，内卷就卷不到我。</p>
+<p>好了，今天就写到了，我要去打游戏了。</p>
+<p>希望这篇文章，能对你有一点帮助。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/hsp-javase/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E9%99%8C%E7%94%9F%E4%BA%BA%EF%BC%8C%E9%82%A3%E4%BA%9B%E5%85%B3%E4%BA%8EString%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%9C%E8%A5%BF/">http://example.com/hsp-javase/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E9%99%8C%E7%94%9F%E4%BA%BA%EF%BC%8C%E9%82%A3%E4%BA%9B%E5%85%B3%E4%BA%8EString%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%9C%E8%A5%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95/">好文收录</a><a class="post-meta__tags" href="/tags/hsp-javase/">hsp-javase</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/hsp-javase/ch24-%E8%AF%BB%E5%8F%96%E7%8E%B0%E8%B1%A1%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="读取现象和隔离级别"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">读取现象和隔离级别</div></div></a></div><div class="next-post pull-right"><a href="/hsp-javase/ch24-MySQL%20%E6%9D%82%E8%AE%B0/" title="MySQL 杂记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL 杂记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/atguigu-springboot2/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95%20-%20SpringMVC%20%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%E2%80%94%E2%80%94%20part1%20%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/" title="好文收录 - SpringMVC 处理请求源码分析 —— part1 整体流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-19</div><div class="title">好文收录 - SpringMVC 处理请求源码分析 —— part1 整体流程</div></div></a></div><div><a href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-26</div><div class="title">好文收录 - 死磕Synchronized底层实现--偏向锁</div></div></a></div><div><a href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E6%A6%82%E8%AE%BA/" title="好文收录 - 死磕Synchronized底层实现--概论"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-25</div><div class="title">好文收录 - 死磕Synchronized底层实现--概论</div></div></a></div><div><a href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-27</div><div class="title">好文收录 - 死磕Synchronized底层实现--轻量级锁</div></div></a></div><div><a href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-28</div><div class="title">好文收录 - 死磕Synchronized底层实现--重量级锁</div></div></a></div><div><a href="/itheima-springcloud/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95%20-%20%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%20TCC%20%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" title="好文收录 - 如何理解 TCC 分布式事务"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-16</div><div class="title">好文收录 - 如何理解 TCC 分布式事务</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E9%99%8C%E7%94%9F%E4%BA%BA%EF%BC%8C%E9%82%A3%E4%BA%9B%E5%85%B3%E4%BA%8EString%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="toc-number">1.</span> <span class="toc-text">好文收录 - 最熟悉的陌生人，那些关于String你不得不知道的东西</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%81%E5%A5%97%E7%9A%84%E7%AC%94%E8%AF%95%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">老套的笔试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">String对象的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="toc-number">1.3.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#intern%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">intern方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">编译优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

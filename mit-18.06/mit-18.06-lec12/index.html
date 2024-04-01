@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Lec12 - 图和网络 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第 12 课 图和网络 本章着重于线性代数的应用。和前面的章节不同的是，本章中线性代数处理的矩阵都是有出处的，它们来自于实际问题，描述了问题的拓扑结构。应用数学中最重要的模型，离散数学称之为”图“。本章，我们将探索图和矩阵之间的联系（关联矩阵），从关联矩阵中推导出欧姆定律、基尔霍夫电流定律、欧拉公式，并探究这三者之间的关系。   为探究图和矩阵之间的联系，我们先给出一个有向图（如下），$4$ 个点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lec12 - 图和网络">
+<meta property="og:url" content="http://example.com/mit-18.06/mit-18.06-lec12/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="第 12 课 图和网络 本章着重于线性代数的应用。和前面的章节不同的是，本章中线性代数处理的矩阵都是有出处的，它们来自于实际问题，描述了问题的拓扑结构。应用数学中最重要的模型，离散数学称之为”图“。本章，我们将探索图和矩阵之间的联系（关联矩阵），从关联矩阵中推导出欧姆定律、基尔霍夫电流定律、欧拉公式，并探究这三者之间的关系。   为探究图和矩阵之间的联系，我们先给出一个有向图（如下），$4$ 个点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2019-08-12T10:06:28.000Z">
+<meta property="article:modified_time" content="2024-04-01T00:30:09.622Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="mit-18.06">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/mit-18.06/mit-18.06-lec12/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lec12 - 图和网络',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 08:30:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lec12 - 图和网络</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2019-08-12T10:06:28.000Z" title="发表于 2019-08-12 18:06:28">2019-08-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lec12 - 图和网络"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="第-12-课-图和网络"><a href="#第-12-课-图和网络" class="headerlink" title="第 12 课 图和网络"></a>第 12 课 图和网络</h2><blockquote>
+<p>本章着重于线性代数的应用。和前面的章节不同的是，本章中线性代数处理的矩阵都是有出处的，它们来自于实际问题，描述了问题的拓扑结构。<strong>应用数学中最重要的模型，离散数学称之为”图“。</strong>本章，我们将<strong>探索图和矩阵之间的联系（关联矩阵）</strong>，从<strong>关联矩阵</strong>中推导出<strong>欧姆定律</strong>、<strong>基尔霍夫电流定律</strong>、<strong>欧拉公式</strong>，并探究这三者之间的关系。 </p>
+</blockquote>
+<p>为探究图和矩阵之间的联系，我们先给出一个有向图（如下），$4$ 个点（$n=4$），$5$ 条边（$m=5$)。</p>
+<p>该有向图可以来自于一个电路系统，也可以来自于一个液压系统，甚至表示一个建筑结构，但在本课中我们将其视为一个电路网络。</p>
+<p><img src="/img/mit-18.06/lec12-digraph.png" width=70%></p>
+<p>我们可以使用矩阵来表示一个图，矩阵中包含图中的所有信息。通过构造一个矩阵可以解析相应的图的含义，这样的矩阵叫做<strong>关联矩阵</strong>。<strong>在关联矩阵中，每一列代表一个节点，每一行代表一条边（行中的正负代表方向）。</strong>易得上（电路网络）图对应的关联矩阵 $A$ 如下：</p>
+<p><img src="/img/mit-18.06/lec12-incidence%20matrix.png" width=70%></p>
+<p>观察关联矩阵 $A$ 的第一行，第一行代表了电路网络图中边 $1$ 的情况，在图中，边 $1$ 以 点 $1$  作为起点，以点 $2$ 作为终点，反映到矩阵上就是 $A_{(1,1)}=-1$，$A_{(1,2)}=1$，以此类推。</p>
+<p>由图可知，边 $1$，边 $2$，边 $3$ 组成了一个回路，而观察矩阵可发现，这三条边对应的矩阵中的前三行是线性相关的，其中行 $1$ $+$ 行 $2$ $=$ 行 $3$ 。<strong>这说明“回路”意味着“相关”，回路对应的行向量组是线性相关的，这是一个图与矩阵之间很巧妙的联系。</strong></p>
+<p>关联矩阵源于问题，描述了问题的拓扑结构。<strong>一般来说关联矩阵是一个非常稀疏的矩阵</strong>，因为它的每行只有两个非零的元素，用于表示起点和终点。</p>
+<hr>
+<blockquote>
+<p>我们已经从实际问题中抽象出相应的关联矩阵，现在我们试图去探究一些关于矩阵的主要问题。</p>
+</blockquote>
+<p>矩阵 $A$ 的零空间是什么？</p>
+<p>该问题等价于求解 $Ax=0$。</p>
+<script type="math/tex; mode=display">\displaylines{
+Ax=\begin{bmatrix}-1&1&0&0\\
+0&-1&1&0\\-1&0&1&0\\-1&0&0&1\\
+0&0&-1&1\end{bmatrix}
+\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}
+=\begin{bmatrix}x_2-x_1\\
+x_3-x_2\\x_3-x_1\\x_4-x_1\\
+x_4-x_3\end{bmatrix}=\begin{bmatrix}0\\0\\0\\0\\0\end{bmatrix}
+}</script><p>$Ax=0$ 的求解是简单的，但在给出答案之前，我们先引入上式的实际意义：<strong>将 $x=\begin{bmatrix}x_1&amp;x_2&amp;x_3&amp;x_4\end{bmatrix}^T$ 视为各结点的电势，比如 $x_1$ 表示结点 $1$ 的电势。于是，上式中诸如 $x_2-x_1$ 的元素就相当于结点 $2$ 与结点 $1$ 这条边上的电势差。</strong></p>
+<p>容易得出解为 <strong>$x=c\begin{bmatrix}1&amp;1&amp;1&amp;1\end{bmatrix}^T$，这也即等电势情况，当 $b=0$ 时， 每个结点上的电势都必须相等</strong>。</p>
+<p>这代表了什么呢？</p>
+<p>我们都知道，<strong>电势差和电流的形成之间有着直接关系，$b=0$ ，说明我们求解的情况是各个边上都没有电流（或者说电势差）的情况，而我们最后所得到的解就意味着，当各点电势相等时，边上电流（电势差）为零，符合我们的常识。 而这就是零空间的物理意义。</strong></p>
+<hr>
+<p>矩阵 $A$ 的左零空间是什么？</p>
+<p>该问题等价于求解 $A^Ty=0$。</p>
+<script type="math/tex; mode=display">\displaylines{
+A^Ty=\begin{bmatrix}-1&0&-1&-1&0\\
+1&-1&0&0&0\\0&1&1&0&-1\\0&0&0&1&1\end{bmatrix}
+\begin{bmatrix}y_1\\y_2\\y_3\\y_4\\y_5\end{bmatrix}
+=\begin{bmatrix}-y_1-y_3-y_4\\
+y_1-y_2\\y_2+y_3-y_5\\y_4+y_5\end{bmatrix}=\begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+}</script><p>求解前我们先引入上式中 $y$ 的实际意义：<strong>将 $y=\begin{bmatrix}y_1&amp;y_2&amp;y_3&amp;y_4&amp;y_5\end{bmatrix}^T$ 视为各边上的电流</strong>。已知，<strong>电流和电势差的关系服从欧姆定律：边上的电流值是边上电势差的倍数，这个倍速就是边的电导即电阻的倒数，通常我们把这个常数视为一个系数矩阵记为 $C$。</strong>于是：</p>
+<script type="math/tex; mode=display">\displaylines{
+y=\begin{bmatrix}y_1\\y_2\\y_3\\y_4\\y_5\end{bmatrix}=C\begin{bmatrix}x_2-x_1\\
+x_3-x_2\\x_3-x_1\\x_4-x_1\\
+x_4-x_3\end{bmatrix}
+}</script><p>然后我们观察 $A^Ty=0$ 中的方程，比如第一个方程 $-y_1-y_3-y_4=0$，这个方程是关于结点 $1$ 上的电流的，方程指出结点 $1$ 上的电流之和为零。</p>
+<p>实际上， <strong>$A^Ty=0$ 阐述了基尔霍夫电流定律（Kirchoff’s Current Law​，简称 KCL），基尔霍夫电流定律是一个平衡方程，守恒定律，它说明了流入等于流出，电荷在结点上不会积累。</strong></p>
+<p>现在，我们开始求解 $y$。对 $A$ 进行消元可知 $A$ 的秩 $r$ 为 $3$。所以 $A$ 的左零空间的维数为 $m-r=5-3=2$，这也即左零空间的基有两个向量。在这里我们不打算使用前面讲过的方法来求解左零空间的基向量，而是直接通过观察求解以发现一些有趣的事情。</p>
+<p>假设 $y_1=1$，也即 $1A$ 的电流在边 $1$ 上流动，那么由图（或者方程）可知 $y_2=1$。为符合基尔霍夫电流定律，那么只需再令 $y_3=-1$ ，也即让 $1A$ 的电流从结点 $2$ 流回结点 $1$，此时令 $y_4=y_5=0$，即可得到一个符合 KCL 的向量 $\begin{bmatrix}1&amp;1&amp;-1&amp;0&amp;0\end{bmatrix}^T$。容易发现，该解发生在结点 $1\rightarrow2\rightarrow3$ 组成的回路中。</p>
+<p>同理，我们也容易得到发生在结点 $1\rightarrow3\rightarrow4$ 组成的回路中的解 $\begin{bmatrix}0&amp;0&amp;1&amp;-1&amp;1\end{bmatrix}^T$，该解显然也符合 KCL。</p>
+<p>注意到，这两个从最小回路得到的向量彼此线性无关，这两个向量所组成的向量组恰好就是 $A$ 的左零空间的基。显然，<strong>我们似乎找到了一种捷径去求解关联矩阵的左零空间：借助图中的最小回路可以快速求得左零空间的基（注意是最小回路，这样可以确保每个回路所得出的向量之间都是线性无关的，故我们也称线性无关的回路）。事实上，图中的最小回路数 = $dim(N(A^T))$ = $m-r$</strong>。</p>
+<p>最后，我们把视角放到结点 $1\rightarrow2\rightarrow3\rightarrow4$ 组成的大回路上，得到符合 KCL 的向量 $\begin{bmatrix}1&amp;1&amp;0&amp;-1&amp;1\end{bmatrix}^T$，恰为上述两个基向量之和。</p>
+<hr>
+<p>矩阵 $A$ 的行空间是什么？这也即求 $A^T$ 的列空间。</p>
+<script type="math/tex; mode=display">\displaylines{
+A^T=\begin{bmatrix}-1&0&-1&-1&0\\
+1&-1&0&0&0\\0&1&1&0&-1\\0&0&0&1&1\end{bmatrix}
+}</script><p>在上文求 $A$ 的左零空间时，我们已经知道 $A$ 的秩 $r=3$，所以 $A^T$ 的秩也为 $3$。对 $A^T$ 消元可知，其列 $1,2,4$ 为主列。而在电路图中，这三列对应的三条边恰好是没有回路的，同时注意到列 $1,2,3$ 线性相关，在电路图中，这三列对应的三条边存在回路，于是可知，<strong>线性相关/无关性与回路有关，线性相关等价于存在回路，线性无关等价于没有回路。</strong>一般，<strong>我们把没有回路的图称为树</strong>。</p>
+<p>通过探究矩阵 $A$ 的行空间，<strong>我们发现 $A^T$ 的秩与图存在的联系：矩阵的秩为 $r$ ，则图中有 $r$ 个线性无关的边，转换成图的语言那就是图中的 $r$ 个边构成了该图的最大无回路（存在回路就线性相关）。</strong>这里需要思考最大无回路的概念，<strong>就连通图而言，如果该图存在 $n$ 个结点，那么该图的最大无回路应该包括了 $n-1$ 条边，这条性质是很自然的，因为只要再多一条边，那么就会构成回路，从而线性相关。</strong>于是，我们可以得到，<strong>矩阵的秩 $r$ = 图中的结点数 $n$ 再减去 $1$。</strong></p>
+<p>万事具备，现在我们可以引出<strong>欧拉公式</strong>了。已知：</p>
+<script type="math/tex; mode=display">\displaylines{
+\begin{align}
+dim(N(A^T))&=m-r\tag{1}&&&&&\\
+dim(N(A^T))&=\#loops\tag{2}\\ 
+m&=\#edges\tag{3}\\ 
+r&=\#nodes-1\tag{4}\\
+\end{align}
+}</script><p>其中 $\#loops$ 为最小回路数，也即线性无关的回路数，$\#edges$ 为边数，$\#nodes$ 为结点数，将 (2) (3) (4) 代入到 (1) 中可得 $\#loops=\#edges-(\#nodes-1)$，再整理即：</p>
+<script type="math/tex; mode=display">\displaylines{
+\#nodes-\#edges+\#loops=1
+}</script><p>这也即欧拉公式：$结点数 - 边数 + 最小回路 = 1$</p>
+<hr>
+<p>综上内容，我们画出<strong>应用数学的基本方程的蓝图</strong>：</p>
+<script type="math/tex; mode=display">\displaylines{
+x=\begin{bmatrix}x_1&x_2&x_3&x_4\end{bmatrix}^T：各结点的电势\qquad\qquad
+A^Ty=0（f=0）：基尔霍夫电流定律\\
+\qquad\downarrow e=Ax\qquad\qquad\qquad\qquad\qquad\qquad\qquad\uparrow f=A^Ty\\
+\qquad x_2-x_1，等等：各边的电势差\ e\quad\xrightarrow[\qquad欧姆定律\qquad]{\qquad y=Ce\qquad}\quad y=\begin{bmatrix}y_1&y_2&y_3&y_4&y_5\end{bmatrix}^T：各边上的电流\ y
+}</script><p>上述三式是在<strong>无外部电源</strong>情况下的方程。</p>
+<p>考虑添加外部电源的因素，那么电源可以通过<strong>在边上加电压源</strong>和<strong>在点上加电流源</strong>两种方式接入。</p>
+<p><strong>如果是在边上加电压源，那么会直接体现在 $e=Ax$ 的 $e$ 中（边上两点的电势差改变了，$e$ 中的分量会因此改变）。如果是在点上加电流源，那么会直接体现在 $A^Ty=f$ 的 $f$ 中（点上的电流情况改变了，$f$ 中的分量会因此改变）。</strong></p>
+<p>联立上述三个等式<strong>可得 $A^TCAx=f$</strong>。需要注明的是，该方程作为一个平衡方程仅描述平衡状态，并没有考虑时间，牛顿定律不适用于此。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/mit-18.06/mit-18.06-lec12/">http://example.com/mit-18.06/mit-18.06-lec12/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/mit-18.06/mit-18.06-lec11/" title="Lec11 - 矩阵空间、秩 1 矩阵和小世界图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lec11 - 矩阵空间、秩 1 矩阵和小世界图</div></div></a></div><div class="next-post pull-right"><a href="/mit-18.06/mit-18.06-lec13/" title="Lec13 - 复习一"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lec13 - 复习一</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/mit-18.06/mit-18.06-lec01/" title="Lec01 - 方程组的几何解释"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec01 - 方程组的几何解释</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec02/" title="Lec02 - 矩阵消元"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec02 - 矩阵消元</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec03/" title="Lec03 - 乘法和逆矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec03 - 乘法和逆矩阵</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec04/" title="Lec04 - A 的 LU 分解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-11</div><div class="title">Lec04 - A 的 LU 分解</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec05/" title="Lec05 - 转置、置换和向量空间 R"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec05 - 转置、置换和向量空间 R</div></div></a></div><div><a href="/mit-18.06/mit-18.06-lec06/" title="Lec06 - 列空间和零空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-08-12</div><div class="title">Lec06 - 列空间和零空间</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-12-%E8%AF%BE-%E5%9B%BE%E5%92%8C%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">第 12 课 图和网络</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

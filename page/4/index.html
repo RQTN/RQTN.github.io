@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="RQTN">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:author" content="RQTN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/4/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RQTN',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-04-01 11:50:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">RQTN</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hsp-javase/ch24-%E8%AF%BB%E5%8F%96%E7%8E%B0%E8%B1%A1%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" title="读取现象和隔离级别">读取现象和隔离级别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-30T13:56:32.000Z" title="发表于 2022-08-30 21:56:32">2022-08-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MySQL/">MySQL</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hsp-javase/">hsp-javase</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">隔离级别</a></span></div><div class="content">读取现象和隔离级别在学习 MySQL 的事务机制时，发现不同的课程，对于读取现象和隔离级别的解释存在较大差异（主要是读取现象中的不可重复读和幻读，以及隔离级别中各级别下可能发生的读取现象）。
+上网进一步查询后，发现这方面的解释确实是众说纷纭，为了理清这两个概念，我不得不从官方资料入手来查证。
+官方资料
+SQL-92 Standard
+  SQL-92 Standard 应该是这两个概念的源头。
+  读取现象：
+
+脏读：SQL 事务 T1 修改了某一行。在 T1 执行 COMMIT 之前，SQL 事务 T2 已经可以读到这一行的修改。如果 T1 执行了 ROLLBACK，那么 T2 将读到从没有提交过的行，因此可以认为是读到了从未存在过的一行数据。
+
+不可重复读：SQL 事务 T1 读到了一行数据，SQL 事务 T2 紧接着提交了对该行数据的修改和删除。此时如果 T1 尝试重新读取该行，它可能接收到的是修改后的值或者发现该行已被删除。
+
+幻影（读）：SQL 事务 T1 读到满足某些&lt;搜索条件&gt;的行集合。然后，SQL 事务 T2 执行了一些 SQL 语句并提交，这些 SQL 语 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hsp-javase/ch22-%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%20-%20Socket%20%E7%BC%96%E7%A8%8B%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1%E6%B5%81%E8%BF%9B%E8%A1%8C%E9%80%9A%E4%BF%A1%E7%9A%84%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="多用户通信系统 - Socket 编程使用对象流进行通信的踩坑记录">多用户通信系统 - Socket 编程使用对象流进行通信的踩坑记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-27T17:09:27.000Z" title="发表于 2022-08-28 01:09:27">2022-08-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/JavaSE/">JavaSE</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hsp-javase/">hsp-javase</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Java-Socket-%E7%BC%96%E7%A8%8B/">Java Socket 编程</a></span></div><div class="content">多用户通信系统 - Socket 编程使用对象流进行通信的踩坑记录在多用户通信系统项目中，客户端 Socket 与服务端 Socket 的所有通信均使用对象流的方式来完成。一切很好，直到在完成离线发送消息/发送文件功能时，我才踩到在 Socket 编程中使用对象流通信的坑
+java.io.StreamCorruptedException: invalid stream header: 7371007E在数据通道某一端的 Socket 使用同一个 ObjectOutputStream 写多个对象，但在另外一端的 Socket 使用不同的 ObjectInputStream 来读数据通道内的多个对象，就会产生异常：java.io.StreamCorruptedException: invalid stream header: 7371007E。
+参考：StackOverflow - java.io.StreamCorruptedException: invalid stream header: 7371007E 高赞回答可知该异常发生的原因（虽然提问者问得不太好）：
+
+The error  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hsp-javase/ch20-%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98%20-%20%E9%98%B2%E6%AD%A2%E6%95%8C%E4%BA%BA%E5%9D%A6%E5%85%8B%E9%87%8D%E5%8F%A0%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" title="坦克大战 - 防止敌人坦克重叠 踩坑记录">坦克大战 - 防止敌人坦克重叠 踩坑记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-24T05:17:20.000Z" title="发表于 2022-08-24 13:17:20">2022-08-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/JavaSE/">JavaSE</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hsp-javase/">hsp-javase</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/">坦克大战</a></span></div><div class="content">坦克大战 - 防止敌人坦克重叠 踩坑记录目前，我们在 chapter_18 中完成的坦克大战 0.4 版还存在一个问题：敌人坦克在运动时会发生重叠现象！现在在 chapter_20 中我们就要解决这个问题。
+启动点（目前我的坦克大战代码）
+我的启动点和老韩的代码存在一定差异，这里先给出目前我的坦克大战代码，方便后续基于我的代码实现时进行说明
+
+Tank 类：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210310410510610710810911011111211311411511611711811912012112212312412512612712812913013113213313413513613713813914014114214 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hsp-javase/ch04-%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E4%B8%8E%E8%A1%A5%E7%A0%81/" title="原码反码与补码">原码反码与补码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-11T15:30:05.000Z" title="发表于 2022-08-11 23:30:05">2022-08-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/">原码/反码/补码</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hsp-javase/">hsp-javase</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/">原码/反码/补码</a></span></div><div class="content">原码反码与补码在 0098_韩顺平Java_原码 反码 补码 中，提到了原码补码和反码的概念，下面给出一些补充的非常有助于理解的相关博文！
+相关博文
+原码、反码、补码的产生、应用以及优缺点有哪些？ - 李俊达的回答 - 知乎：快速入门，但未涉及到本质
+
+补码的本质看下面两篇文章：
+
+在8位二进制中，-128 没有原码、反码形式，那么它的补码是怎么计算出来的？还是约定的？ - Simon Cao的回答 - 知乎
+为什么-0的补码是00000000？ - Coldwings的回答 - 知乎
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/hsp-javase/ch03-%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BD%BF%E7%94%A8%E9%99%B7%E9%98%B1/" title="浮点数使用陷阱">浮点数使用陷阱</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-09T12:05:30.000Z" title="发表于 2022-08-09 20:05:30">2022-08-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/JavaSE/">JavaSE</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hsp-javase/">hsp-javase</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/">浮点数</a></span></div><div class="content">浮点数使用陷阱问题在 P45 0044_韩顺平Java_浮点数细节2 中，提到了浮点数使用陷阱：2.7 和 8.1 / 3 比较
+1234double n8 = 2.7;double n9 = 8.1 / 3;    // 数学上，除法结果就是 2.7System.out.println(n8); // 输出 2.7System.out.println(n9); // 输出一个接近 2.7 的小数：2.6999999999999997
+为什么 n8 的输出是 2.7，而 n9 的输出是 2.6999999999999997？
+要把这个问题彻底解释清楚不是一件简单的事情，其中涉及到：
+
+十进制到二进制的转换
+浮点数 IEEE 754 标准，以及该标准下的除法运算
+Java 的浮点数输出的设计机制
+
+以上 1.2. 涉及到计算机组成原理方面的知识，3. 则是涉及到浮点数转字符串的算法
+解释当然，这里也没必要太深入其中的细节，一个简单的解释是：
+因为二进制表示能力有限，绝大多数的十进制小数，转换为二进制后就变成了无限循环小数。而计算机的存储空间是有限的，给每个浮点数分配的存储空间自然也是有限 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec21/" title="Lec21 - 特征值和特征向量">Lec21 - 特征值和特征向量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-09-01T04:12:29.000Z" title="发表于 2019-09-01 12:12:29">2019-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 21 课 特征值和特征向量特征值与特征向量初探给定矩阵 $A$ ，矩阵 $A$ 乘以向量 $x$，就像是使用矩阵 $A$ 作用在向量 $x$上，最后得到新的向量 $Ax$。在这里，矩阵 $A$ 就像是一个函数，接受一个向量 $x$ 作为输入，给出向量 $Ax$ 作为输出。
+在这一过程中，我们对一些特殊的向量很感兴趣，也即 $x$ 和 $Ax$ 始终保持同一个方向，这是比较特殊的，因为在大多情况下，$Ax$ 与 $x$ 指向不同的方向。
+在这种特殊的情况下，$Ax$ 平行于 $x$，我们把满足这个条件的非零向量 $x$ 称为 $A$ 特征向量，而 $\lambda$ 为 $A$ 的特征值 。这个平行条件用方程表示就是： 
+\displaylines{
+Ax=\lambda x
+}对这个式子，我们试着计算特征值为 $0$ 的特征向量，易得 $Ax=0x=0$，因此，特征值为 $0$ 的特征向量位于 $A$ 的零空间中。
+显然对于奇异矩阵（不可逆），必然存在非零向量使得 $Ax=0$，所以若矩阵是奇异的，那么它有一个特征值为 $\lambda =0$。
+
+我们先来看投影矩阵 $P=A(A ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/princeton-algs4/06-ALGS4-Elementary-Sorts/" title="Elementary Sorts">Elementary Sorts</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-31T14:04:09.000Z" title="发表于 2019-08-31 22:04:09">2019-08-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Data-Structure-Algorithm/">Data Structure &amp; Algorithm</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/princeton-algs4/">princeton-algs4</a></span></div><div class="content">Elementary SortsInterview Questions: Elementary Sorts (ungraded)1. Intersection of two sets.Given two arrays a[] and b[], each containing $n$ distinct 2D points in the plane, design a subquadratic algorithm to count the number of points that are contained both in array a[] and array b[].
+Note: these interview questions are ungraded and purely for your own enrichment. To get a hint, submit a solution.
+
+subquadratic : Describing an algorithm that runs in greater than linear, but less than quadrati ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/mit-18.06/mit-18.06-lec20/" title="Lec20 - 克拉默法则、逆矩阵、体积">Lec20 - 克拉默法则、逆矩阵、体积</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-31T14:00:31.000Z" title="发表于 2019-08-31 22:00:31">2019-08-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/">Mathematics</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mathematics/Linear-Algebra/">Linear Algebra</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mit-18-06/">mit-18.06</a></span></div><div class="content">第 20 课 克拉默法则、逆矩阵、体积本节是关于行列式的最后一课，经过前两节课的努力，我们研究了行列式的性质，并从性质出发得到了行列式的求解方法。这一节我们将介绍行列式的应用，主要包含三个方面：求逆矩阵，克莱姆法则和体积。
+求逆矩阵 $A^{-1}$早在第三课，我们就已经介绍了求解逆矩阵的方法：高斯-若尔当求逆法。高斯-若尔当求逆法对于数值计算无懈可击，但很难想象这是如何做到的，也许我们需要一个更直观的逆矩阵的代数表达式，这就用到了行列式的知识。
+我们先给出二阶逆矩阵公式：$\begin{bmatrix}a&amp; b\\c&amp; d\end{bmatrix}^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d&amp; -b\\ -c&amp; a\end{bmatrix}$ ，从 $2\times 2$ 的情况中，我们能够看出一些端倪。
+首先关注公式的分母，其为行列式的值，也许一般逆矩阵公式其中一部分正是 $1$ 除以矩阵的行列式，这一部分是合理的，因为只有当行列式的值不等于 $0$ 时，矩阵才是可逆的。
+接下来的问题是，公式右边那一块矩阵是什么？从代数 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/princeton-algs4/05-ALGS4-Stacks-And-Queues/" title="Stacks And Queues">Stacks And Queues</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-22T12:17:19.000Z" title="发表于 2019-08-22 20:17:19">2019-08-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Data-Structure-Algorithm/">Data Structure &amp; Algorithm</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/princeton-algs4/">princeton-algs4</a></span></div><div class="content">Stacks And QueuesInterview Questions: Stacks and Queues (ungraded)1. Queue with two stacks.Implement a queue with two stacks so that each queue operations takes a constant amortized number of stack operations.
+Note: these interview questions are ungraded and purely for your own enrichment. To get a hint, submit a solution.
+Solution
+思路很简单，用到栈逆序输出其中元素的特性，一个栈 inStack 用作 enqueue，一个栈 outStack 用作 dequeue。在 dequeue 时先检查是否 outStack 中有元素，如果没有先将 inStack 中所有元素依次 pop 出再 push 到 outStack 中去，此时元素结果两次逆序，自然输出为顺序 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/princeton-algs4/04-ALGS4-Assignment2-Queues/" title="Assignment2 - Queues">Assignment2 - Queues</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-08-22T12:15:42.000Z" title="发表于 2019-08-22 20:15:42">2019-08-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Data-Structure-Algorithm/">Data Structure &amp; Algorithm</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/princeton-algs4/">princeton-algs4</a></span></div><div class="content">Assignment2 - Queues
+作业网站：Assignment2-Queues，包含本次作业的说明，FAQ，相关的有用资源文件。
+
+Deque
+Performance requirements.  Your deque implementation must support each deque operation (including construction) in constant worst-case time. A deque containing n items must use at most 48n + 192 bytes of memory. Additionally, your iterator implementation must support each operation (including construction) in constant worst-case time.
+
+对于 deque 的每个操作都要求 $O(1)$ 的时间复杂度。如果才用 resizing-array 实现，那么在需要 resize 操作时，显然操作的时间复杂度不满足 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AI/"><span class="card-category-list-name">AI</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Data-Structure-Algorithm/"><span class="card-category-list-name">Data Structure & Algorithm</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">32</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JUC/"><span class="card-category-list-name">JUC</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JavaSE/"><span class="card-category-list-name">JavaSE</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/JavaWeb/"><span class="card-category-list-name">JavaWeb</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/Mybatis/"><span class="card-category-list-name">Mybatis</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/Spring/"><span class="card-category-list-name">Spring</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E4%B9%B1%E7%A0%81/" style="font-size: 1.17em; color: #999c9f">乱码</a> <a href="/tags/Java-Socket-%E7%BC%96%E7%A8%8B/" style="font-size: 1.1em; color: #999">Java Socket 编程</a> <a href="/tags/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95/" style="font-size: 1.43em; color: #99a6b9">好文收录</a> <a href="/tags/atguigu-springmvc/" style="font-size: 1.23em; color: #999ea6">atguigu-springmvc</a> <a href="/tags/%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98/" style="font-size: 1.1em; color: #999">多级缓存</a> <a href="/tags/TCC-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" style="font-size: 1.1em; color: #999">TCC 分布式事务</a> <a href="/tags/Mybatis-%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6/" style="font-size: 1.17em; color: #999c9f">Mybatis 接口代理机制</a> <a href="/tags/JNDI/" style="font-size: 1.1em; color: #999">JNDI</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 1.1em; color: #999">设计模式</a> <a href="/tags/hsp-javase/" style="font-size: 1.43em; color: #99a6b9">hsp-javase</a> <a href="/tags/Sentinel/" style="font-size: 1.1em; color: #999">Sentinel</a> <a href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/" style="font-size: 1.1em; color: #999">浮点数</a> <a href="/tags/mit-18-06/" style="font-size: 1.5em; color: #99a9bf">mit-18.06</a> <a href="/tags/itheima-mysql/" style="font-size: 1.1em; color: #999">itheima-mysql</a> <a href="/tags/laodu-mybatis/" style="font-size: 1.3em; color: #99a1ac">laodu-mybatis</a> <a href="/tags/atguigu-javaweb/" style="font-size: 1.1em; color: #999">atguigu-javaweb</a> <a href="/tags/atguigu-springboot2/" style="font-size: 1.43em; color: #99a6b9">atguigu-springboot2</a> <a href="/tags/itheima-juc/" style="font-size: 1.37em; color: #99a4b2">itheima-juc</a> <a href="/tags/%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81/" style="font-size: 1.1em; color: #999">原码/反码/补码</a> <a href="/tags/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" style="font-size: 1.1em; color: #999">隔离级别</a> <a href="/tags/%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" style="font-size: 1.1em; color: #999">静态代理/动态代理</a> <a href="/tags/princeton-algs4/" style="font-size: 1.37em; color: #99a4b2">princeton-algs4</a> <a href="/tags/itheima-springcloud/" style="font-size: 1.23em; color: #999ea6">itheima-springcloud</a> <a href="/tags/SpringBoot-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/" style="font-size: 1.1em; color: #999">SpringBoot 异常处理机制</a> <a href="/tags/synchronized/" style="font-size: 1.3em; color: #99a1ac">synchronized</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" style="font-size: 1.1em; color: #999">八皇后问题</a> <a href="/tags/Canal/" style="font-size: 1.1em; color: #999">Canal</a> <a href="/tags/%E5%9D%A6%E5%85%8B%E5%A4%A7%E6%88%98/" style="font-size: 1.1em; color: #999">坦克大战</a> <a href="/tags/%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/" style="font-size: 1.1em; color: #999">循环依赖</a> <a href="/tags/SpringBoot-%E6%B6%88%E6%81%AF%E8%BD%AC%E6%8D%A2%E5%99%A8/" style="font-size: 1.1em; color: #999">SpringBoot 消息转换器</a> <a href="/tags/laodu-spring6/" style="font-size: 1.17em; color: #999c9f">laodu-spring6</a> <a href="/tags/javassist/" style="font-size: 1.1em; color: #999">javassist</a> <a href="/tags/MVCC/" style="font-size: 1.1em; color: #999">MVCC</a> <a href="/tags/GodBatis/" style="font-size: 1.1em; color: #999">GodBatis</a> <a href="/tags/SpringBoot-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/" style="font-size: 1.23em; color: #999ea6">SpringBoot 请求处理</a> <a href="/tags/SpringBoot-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">SpringBoot 自动配置</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">三月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">63</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">199.3k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-01T03:50:30.935Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["风吹落最后一片叶"])
+  } else {
+    document.getElementById("subtitle").textContent = "风吹落最后一片叶"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

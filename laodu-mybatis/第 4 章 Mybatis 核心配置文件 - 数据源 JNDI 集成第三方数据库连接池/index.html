@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池 | RQTN</title><meta name="author" content="RQTN"><meta name="copyright" content="RQTN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池建议阅读：  什么是JNDI？ JNDI学习总结(一)——JNDI数据源的配置 JNDI学习总结(三)——Tomcat下使用Druid配置JNDI数据源 Tomcat——Tomcat数据源的配置（四种方式，区别webapps目录下的Web应用和其他Web应用）  在 Tomcat 中使用 JNDI 可以对数据源进行配置，配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池">
+<meta property="og:url" content="http://example.com/laodu-mybatis/%E7%AC%AC%204%20%E7%AB%A0%20Mybatis%20%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20%E6%95%B0%E6%8D%AE%E6%BA%90%20JNDI%20%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/index.html">
+<meta property="og:site_name" content="RQTN">
+<meta property="og:description" content="Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池建议阅读：  什么是JNDI？ JNDI学习总结(一)——JNDI数据源的配置 JNDI学习总结(三)——Tomcat下使用Druid配置JNDI数据源 Tomcat——Tomcat数据源的配置（四种方式，区别webapps目录下的Web应用和其他Web应用）  在 Tomcat 中使用 JNDI 可以对数据源进行配置，配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2022-10-14T13:20:17.000Z">
+<meta property="article:modified_time" content="2024-04-01T00:48:01.849Z">
+<meta property="article:author" content="RQTN">
+<meta property="article:tag" content="laodu-mybatis">
+<meta property="article:tag" content="JNDI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/laodu-mybatis/%E7%AC%AC%204%20%E7%AB%A0%20Mybatis%20%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20%E6%95%B0%E6%8D%AE%E6%BA%90%20JNDI%20%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: RQTN","link":"链接: ","source":"来源: RQTN","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-01 08:48:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/index_img_cut.png')"><nav id="nav"><span id="blog-info"><a href="/" title="RQTN"><span class="site-name">RQTN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-10-14T13:20:17.000Z" title="发表于 2022-10-14 21:20:17">2022-10-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Mybatis/">Mybatis</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">804</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Mybatis-核心配置文件-数据源-JNDI-集成第三方数据库连接池"><a href="#Mybatis-核心配置文件-数据源-JNDI-集成第三方数据库连接池" class="headerlink" title="Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池"></a>Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池</h2><p>建议阅读：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cloudgyb.blog.csdn.net/article/details/82717578">什么是JNDI？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xdp-gacl/p/3951952.html">JNDI学习总结(一)——JNDI数据源的配置</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xdp-gacl/p/4040019.html">JNDI学习总结(三)——Tomcat下使用Druid配置JNDI数据源</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/caigen0001/article/details/103774854">Tomcat——Tomcat数据源的配置（四种方式，区别webapps目录下的Web应用和其他Web应用）</a></li>
+</ul>
+<p>在 Tomcat 中使用 JNDI 可以对数据源进行配置，配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Resource</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;jdbc/mysql&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">auth</span>=<span class="string">&quot;Container&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;javax.sql.DataSource&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">driverClassName</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">url</span>=<span class="string">&quot;jdbc:mysql://127.0.0.1:3306/task&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">username</span>=<span class="string">&quot;root&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">password</span>=<span class="string">&quot;123456&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">maxActive</span>=<span class="string">&quot;10&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">maxIdle</span>=<span class="string">&quot;5&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">maxWait</span>=<span class="string">&quot;-1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上述配置中，只是指定了数据源接口 <code>javax.sql.DataSource</code>，并没有指定具体实现，但该配置依然可以生效。因此怀疑 Tomcat 是否有默认的数据库连接池实现。</p>
+<p>查阅了一些资料发现，Tomcat 确实有自己默认的数据库连接池。</p>
+<p>以前默认用的是 DBCP，现在默认用似乎是 DBCP2，另外还有一个 Tomcat 也自己实现了一个 Tomcat JDBC Pool，不过似乎该连接池并不是默认使用的，需要通过 <code>factory</code> 属性明确指定。Tomcat JDBC Pool 是基于 DBCP 实现的，不过不确定是 DBCP1 还是 DBCP2，但与 DBCP 似乎是完全兼容的。</p>
+<p>打开 Tomcat 的安装目录下的 lib 目录，会发现其中存在 <code>tomcat-dbcp.jar</code>，打开查看里面有包名 <code>org.apache.tomcat.dbcp.dbcp2</code> 和 <code>org.apache.tomcat.dbcp.pool2</code>，这个 jar 包应该就提供了默认的 DBCP2 的数据库连接池实现。</p>
+<p>另外还有一个 <code>tomcat-jdbc.jar</code>，该包应该就是 Tomcat 自己基于 DBCP 实现的 Tomcat JDBC Pool，要使用该连接池，需要额外指定 <code>factory=org.apache.tomcat.jdbc.pool.DataSourceFactory</code>。</p>
+<hr>
+<p>如果希望使用 Druid 数据库连接池，那么 Tomcat 中 JNDI 的数据源配置应改为如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Resource</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;jdbc/mysql&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">factory</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSourceFactory&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">auth</span>=<span class="string">&quot;Container&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;javax.sql.DataSource&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">driverClassName</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">url</span>=<span class="string">&quot;jdbc:mysql://127.0.0.1:3306/task&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">username</span>=<span class="string">&quot;root&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">password</span>=<span class="string">&quot;123456&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">maxActive</span>=<span class="string">&quot;10&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">maxIdle</span>=<span class="string">&quot;5&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">maxWait</span>=<span class="string">&quot;-1&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>关键在于多了一个 <code>factory=&quot;com.alibaba.druid.pool.DruidDataSourceFactory&quot;</code> 的配置。</p>
+<p>在 Tomcat 中通过 JNDI 配置好 Druid 数据源以后，在 Java 代码中可以这样进行查找：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一次查到</span></span><br><span class="line"><span class="type">Context</span> <span class="variable">initContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InitialContext</span>();</span><br><span class="line"><span class="type">DataSource</span> <span class="variable">ds</span> <span class="operator">=</span> (DataSource) initContext.lookup(<span class="string">&quot;java:comp/env/jdbc/mysql&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分两次查找</span></span><br><span class="line"><span class="type">Context</span> <span class="variable">initContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InitialContext</span>();</span><br><span class="line"><span class="type">Context</span> <span class="variable">envContext</span> <span class="operator">=</span> (Context) initContext.lookup(<span class="string">&quot;java:/comp/env&quot;</span>);</span><br><span class="line"><span class="type">DataSource</span> <span class="variable">ds</span> <span class="operator">=</span> (DataSource) envContext.lookup(<span class="string">&quot;jdbc/mysql&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>回到 Mybatis 核心配置文件中，希望 Mybatis 集成 Druid 数据库连接池，相应的 <code>dataSource</code> 标签的配置如下：</p>
+<p>没有提供 <code>initial_context</code> 时，是直接在 InitialContext 中查找，因此需要提供完整路径 <code>java:comp/env/jdbc/mysql</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;JNDI&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;data_source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;java:comp/env/jdbc/mysql&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>提供 <code>initial_context</code> 时，是先在 InitialContext 中查找该属性值 <code>java:/comp/env</code> 对应的 Context，然后再基于该 Context 再查找其下的 <code>jdbc/mysql</code> 对应的数据源。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;JNDI&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;initial_context&quot;</span> <span class="attr">value</span>=<span class="string">&quot;java:/comp/env&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;data_source&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc/mysql&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">RQTN</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/laodu-mybatis/%E7%AC%AC%204%20%E7%AB%A0%20Mybatis%20%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20%E6%95%B0%E6%8D%AE%E6%BA%90%20JNDI%20%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/">http://example.com/laodu-mybatis/%E7%AC%AC%204%20%E7%AB%A0%20Mybatis%20%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20-%20%E6%95%B0%E6%8D%AE%E6%BA%90%20JNDI%20%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">RQTN</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/laodu-mybatis/">laodu-mybatis</a><a class="post-meta__tags" href="/tags/JNDI/">JNDI</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/atguigu-javaweb/ResourceBundle%20%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="ResourceBundle 中文乱码问题解决"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ResourceBundle 中文乱码问题解决</div></div></a></div><div class="next-post pull-right"><a href="/laodu-mybatis/%E7%AC%AC%205%20%E7%AB%A0%20%E6%89%8B%E5%86%99%20MyBatis%20%E6%A1%86%E6%9E%B6%20-%20GodBatis%20%E5%AE%9E%E7%8E%B0%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="手写 MyBatis 框架 - GodBatis 实现上的问题与改进"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">手写 MyBatis 框架 - GodBatis 实现上的问题与改进</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/laodu-mybatis/%E7%AC%AC%2010%20%E7%AB%A0%20MyBatis%20%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86%20-%20%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" title="MyBatis 参数处理 - 接口代理机制源码分析"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-26</div><div class="title">MyBatis 参数处理 - 接口代理机制源码分析</div></div></a></div><div><a href="/laodu-mybatis/%E7%AC%AC%205%20%E7%AB%A0%20%E6%89%8B%E5%86%99%20MyBatis%20%E6%A1%86%E6%9E%B6%20-%20GodBatis%20%E5%AE%9E%E7%8E%B0%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="手写 MyBatis 框架 - GodBatis 实现上的问题与改进"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-17</div><div class="title">手写 MyBatis 框架 - GodBatis 实现上的问题与改进</div></div></a></div><div><a href="/laodu-mybatis/%E7%AC%AC%207%20%E7%AB%A0%20%E4%BD%BF%E7%94%A8%20javassist%20%E7%94%9F%E6%88%90%E7%B1%BB%20-%20javassist%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8A%8A%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B7%BB%E5%8A%A0%E5%88%86%E5%BC%80/" title="使用 javassist 生成类 - javassist 为什么要把方法的创建和添加分开"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="title">使用 javassist 生成类 - javassist 为什么要把方法的创建和添加分开</div></div></a></div><div><a href="/laodu-mybatis/%E7%AC%AC%208%20%E7%AB%A0%20MyBatis%20%E4%B8%AD%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E6%9C%BA%E5%88%B6%E5%8F%8A%E4%BD%BF%E7%94%A8%20-%20sqlSession.getMapper()%20%E7%9A%84%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/" title="MyBatis 中接口代理机制及使用 - sqlSession.getMapper() 的使用问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-22</div><div class="title">MyBatis 中接口代理机制及使用 - sqlSession.getMapper() 的使用问题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RQTN</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RQTN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RQTN" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mybatis-%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-%E6%95%B0%E6%8D%AE%E6%BA%90-JNDI-%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-number">1.</span> <span class="toc-text">Mybatis 核心配置文件 - 数据源 JNDI 集成第三方数据库连接池</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-mysql/MVCC%20-%20undo%20log%20%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99/" title="MVCC - undo log 版本链数据访问规则">MVCC - undo log 版本链数据访问规则</a><time datetime="2023-06-27T14:19:24.000Z" title="发表于 2023-06-27 22:19:24">2023-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/synchronized%20%E5%8E%9F%E7%90%86/" title="synchronized 原理">synchronized 原理</a><time datetime="2023-05-04T09:46:08.000Z" title="发表于 2023-05-04 17:46:08">2023-05-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--重量级锁">好文收录 - 死磕Synchronized底层实现--重量级锁</a><time datetime="2023-04-27T17:00:08.000Z" title="发表于 2023-04-28 01:00:08">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--轻量级锁">好文收录 - 死磕Synchronized底层实现--轻量级锁</a><time datetime="2023-04-26T17:00:08.000Z" title="发表于 2023-04-27 01:00:08">2023-04-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/itheima-juc/%E5%A5%BD%E6%96%87%E6%94%B6%E5%BD%95-%E6%AD%BB%E7%A3%95Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0--%E5%81%8F%E5%90%91%E9%94%81/" title="好文收录 - 死磕Synchronized底层实现--偏向锁">好文收录 - 死磕Synchronized底层实现--偏向锁</a><time datetime="2023-04-25T17:00:08.000Z" title="发表于 2023-04-26 01:00:08">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By RQTN</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://unpkg.com/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
